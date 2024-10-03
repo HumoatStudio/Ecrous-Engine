@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../index.html" class="back-button">
+        <img src="../sprites/close.png" alt="Назад">
+    </a>
+
+    <div class="title">Магазин</div>
+    
+    <div class="goods1"><a href=""><img src="shop/goods1.png" alt="goods1"></a></div>
+    
+    <div class="goods2"><a href=""><img src="shop/goods2.png" alt="goods2"></a></div>
+    
+    <div class="goods3"><a href=""><img src="shop/goods3.png" alt="goods3"></a></div>
+    
+    <div class="goods4"><a href=""><img src="shop/goods4.png" alt="goods4"></a></div>
+    
+    <div class="goods5"><a href=""><img src="shop/goods5.png" alt="goods5"></a></div>
+    
+    <div class="goods6"><a href=""><img src="shop/goods6.png" alt="goods6"></a></div>
+
+    <!-- Круг со счётчиком монет -->
+    <div class="coin-counter" id="coinCounter">0</div>
+
+    <!-- Кнопка промокода -->
+    <button class="promo-button" id="promoButton">Промокод</button>
+
+    <!-- Окно ввода промокода -->
+    <div id="promoModal" class="promo-modal" style="display: none;">
+        <div class="promo-modal-content">
+            <span class="close">&times;</span>
+            <p>Введите промокод:</p>
+            <input type="text" id="promoInput">
+            <button id="submitPromo">Применить</button>
+        </div>
+    </div>
+    
+    <script>
+        // Функция для применения темы
+        function applyTheme(theme) {
+            document.body.style.backgroundImage = theme === 'dark' ? "url('../sprites/bg2.png')" : "url('../sprites/bg2White.png')";
+            document.body.style.backgroundSize = 'cover';
+        }
+
+        // Применяем сохранённую тему при загрузке страницы
+        window.onload = function() {
+            const savedTheme = localStorage.getItem('uiTheme') || 'dark';
+            applyTheme(savedTheme);
+        };
+    </script>
+    <script src="shop.js"></script>
+</body>
+</html>

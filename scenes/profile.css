@@ -1,0 +1,264 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../sprites/bg2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.title {
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для кнопки назад */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    opacity: 1; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.2s; /* Задержка появления кнопки назад */
+}
+
+.back-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
+
+/* Стиль для кнопки подписки */
+.subscribe-button {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px; /* Отступ от нижней границы экрана */
+    left: 50%;
+    transform: translateX(-50%) translateY(50px); /* Начальная позиция для анимации */
+    opacity: 0; /* Начальная прозрачность */
+    animation: fadeInButton 1.5s ease-in-out forwards; /* Анимация появления */
+}
+
+/* Анимация при наведении */
+.subscribe-button:hover {
+    background-color: #ff3b3b;
+    transform: translateX(-50%) scale(1.1); /* Сохраняем центрирование при увеличении */
+}
+
+/* Ключевые кадры для анимации появления */
+@keyframes fadeInButton {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) translateY(50px); /* Кнопка немного ниже и прозрачна */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0); /* Кнопка встает на место и полностью видима */
+    }
+}
+
+/* Модальное окно */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: black;
+    opacity: 0; /* Начальное состояние прозрачности */
+    animation: fadeInClose 1s ease-in-out forwards;
+    animation-delay: 0.5s; /* Задержка для плавного появления */
+}
+
+@keyframes fadeInClose {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Стиль для круга */
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+    top: 75px;
+    left: 30%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInCircle {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для имени пользователя */
+.username {
+    position: absolute;
+    top: 250px;
+    left: 30%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInUsername 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUsername {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для кнопки смены имени */
+.change-name-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    position: absolute;
+    top: 320px;
+    left: 35%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInChangeNameButton 2s ease-in-out forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes fadeInChangeNameButton {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для поля ввода имени */
+.name-input {
+    position: absolute;
+    top: 320px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+}
+
+.coin-counter {
+    font-size: 24px; /* Размер шрифта для счётчика монет */
+    font-weight: bold; /* Полужирный текст */
+    color: #FFD700; /* Цвет монет (золотой) */
+    background-color: #ffffff; /* Фон счётчика монет */
+    padding: 10px; /* Отступы вокруг текста */
+    border-radius: 8px; /* Закругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Лёгкая тень для эффекта */
+    text-align: center; /* Центрирование текста */
+    margin: 10px 0; /* Отступ сверху и снизу */
+}

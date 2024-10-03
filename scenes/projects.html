@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../index.html" class="back-button">
+        <img src="../sprites/close.png" alt="Назад">
+    </a>
+    
+    <!-- Кнопка Добавить проект -->
+    <img src="../sprites/plus.png" class="plus-button" alt="Добавить">
+
+    <!-- Кнопка Импорт -->
+    <img src="../sprites/import.png" class="import-button" alt="Импорт">
+
+    <!-- Заголовок -->
+    <div class="title">Мои Проекты</div>
+
+    <!-- Контейнер для проектов с вертикальным скроллом -->
+    <div class="project-list" id="projectList"></div>
+
+    <!-- Модальное окно для добавления проекта -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <h2>Введите название проекта</h2>
+            <input type="text" id="projectName" placeholder="Название проекта">
+            <button id="submitProject">Готово</button>
+        </div>
+    </div>
+
+    <script src="projects.js"></script>
+</body>
+</html>

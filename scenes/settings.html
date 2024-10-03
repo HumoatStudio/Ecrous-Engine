@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="settings.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../index.html" class="back-button">
+        <img src="../sprites/close.png" alt="Назад">
+    </a>
+
+    <div class="title">Настройки</div>
+
+    <div class="settings-container">
+        <div class="setting">
+            <label for="engine-version">Версия движка:</label>
+            <select id="engine-version">
+                <option value="02.10.2024" selected>02.10.2024</option>
+                <option value="26.12.2024">26.12.2024</option>
+            </select>
+            <div id="version-message" style="color: red; display: none;">В разработке!</div>
+        </div>
+
+        <div class="setting">
+            <label for="file-path">Путь к файлам:</label>
+            <input type="text" id="file-path" placeholder="Введите путь к файлам">
+        </div>
+
+        <div class="setting">
+            <label for="scene-mode">Режим сцены:</label>
+            <select id="scene-mode">
+                <option value="single-player">Одиночный</option>
+                <option value="multiplayer">Многопользовательский</option>
+            </select>
+        </div>
+
+        <div class="setting">
+            <label for="gravity">Гравитация:</label>
+            <input type="number" id="gravity" value="9.81" step="0.1"> <!-- Стандартное значение для Земли -->
+        </div>
+
+        <div class="setting">
+            <label for="ui-theme">Тема интерфейса:</label>
+            <select id="ui-theme">
+                <option value="dark" selected>Темная</option>
+                <option value="light">Светлая</option>
+            </select>
+        </div>
+
+        <div class="setting">
+            <label for="language">Язык:</label>
+            <select id="language">
+                <option value="ru" selected>Русский</option>
+                <option value="en">Английский</option>
+            </select>
+        </div>
+
+        <div class="setting">
+            <label for="script-editor">Редактор скриптов:</label>
+            <select id="script-editor">
+                <option value="default">Стандартный</option>
+                <option value="advanced">Расширенный</option>
+            </select>
+        </div>
+    </div>
+
+    <script>
+        // Функция для сохранения настроек
+        function saveSettings() {
+            const settings = {
+                engineVersion: document.getElementById('engine-version').value,
+                filePath: document.getElementById('file-path').value,
+                sceneMode: document.getElementById('scene-mode').value,
+                gravity: document.getElementById('gravity').value,
+                uiTheme: document.getElementById('ui-theme').value,
+                language: document.getElementById('language').value,
+                scriptEditor: document.getElementById('script-editor').value
+            };
+            localStorage.setItem('gameEngineSettings', JSON.stringify(settings));
+        }
+
+        // Загружаем настройки при загрузке страницы
+        window.onload = function() {
+            const savedSettings = JSON.parse(localStorage.getItem('gameEngineSettings'));
+            if (savedSettings) {
+                document.getElementById('engine-version').value = savedSettings.engineVersion || '02.10.2024';
+                document.getElementById('file-path').value = savedSettings.filePath || '';
+                document.getElementById('scene-mode').value = savedSettings.sceneMode || 'single-player';
+                document.getElementById('gravity').value = savedSettings.gravity || '9.81';
+                document.getElementById('ui-theme').value = savedSettings.uiTheme || 'dark';
+                document.getElementById('language').value = savedSettings.language || 'ru';
+                document.getElementById('script-editor').value = savedSettings.scriptEditor || 'default';
+                
+                // Применение темы
+                applyTheme(savedSettings.uiTheme || 'dark');
+            }
+            saveSettings(); // Автосохранение при загрузке
+        };
+
+        // Обработчик для автосохранения
+        document.querySelectorAll('.setting select, .setting input').forEach(element => {
+            element.addEventListener('change', saveSettings);
+        });
+
+        // Отображение сообщения при выборе версии 26.12.2024
+        document.getElementById('engine-version').addEventListener('change', function() {
+            const versionMessage = document.getElementById('version-message');
+            if (this.value === '26.12.2024') {
+                versionMessage.style.display = 'block';
+            } else {
+                versionMessage.style.display = 'none';
+            }
+            saveSettings(); // Сохраняем при выборе версии
+        });
+
+        // Обработчик для смены языка
+        document.getElementById('language').addEventListener('change', function() {
+            const language = this.value;
+            if (language === 'en') {
+                document.title = 'Settings';
+                document.querySelector('.title').textContent = 'Settings';
+                // Перевод всех меток на английский
+                document.querySelector('label[for="file-path"]').textContent = 'File Path:';
+                document.querySelector('label[for="scene-mode"]').textContent = 'Scene Mode:';
+                document.querySelector('label[for="gravity"]').textContent = 'Gravity:';
+                document.querySelector('label[for="ui-theme"]').textContent = 'UI Theme:';
+                document.querySelector('label[for="script-editor"]').textContent = 'Script Editor:';
+            } else {
+                document.title = 'Настройки';
+                document.querySelector('.title').textContent = 'Настройки';
+                // Перевод всех меток на русский
+                document.querySelector('label[for="file-path"]').textContent = 'Путь к файлам:';
+                document.querySelector('label[for="scene-mode"]').textContent = 'Режим сцены:';
+                document.querySelector('label[for="gravity"]').textContent = 'Гравитация:';
+                document.querySelector('label[for="ui-theme"]').textContent = 'Тема интерфейса:';
+                document.querySelector('label[for="script-editor"]').textContent = 'Редактор скриптов:';
+            }
+        });
+
+        // Функция для применения темы
+        function applyTheme(theme) {
+            document.body.style.backgroundImage = theme === 'dark' ? "url('../sprites/bg2.png')" : "url('../sprites/bg2White.png')";
+            document.body.style.backgroundSize = 'cover';
+        }
+
+        // Обработчик для смены темы
+        document.getElementById('ui-theme').addEventListener('change', function() {
+            applyTheme(this.value);
+        });
+    </script>
+</body>
+</html>

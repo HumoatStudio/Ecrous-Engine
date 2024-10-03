@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../index.html" class="back-button">
+        <img src="../sprites/close.png" alt="Назад">
+    </a>
+
+    <div class="title">Профиль</div>
+    
+    <div class="circle"></div>
+    <div class="username" id="username"></div>
+
+    <!-- Кнопка смены имени -->
+    <button class="change-name-button" id="changeNameButton">Сменить имя</button>
+    
+    <!-- Поле ввода для смены имени -->
+    <input type="text" id="nameInput" placeholder="Введите новое имя" class="name-input" style="display: none;"/>
+
+    <!-- Кнопка подписки -->
+    <button class="subscribe-button" id="openModalButton">Подписка за 129₽</button>
+
+    <!-- Модальное окно для подписки -->
+    <div id="subscribeModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Подписка за 129₽</h2>
+            <p>Приобретите подписку для получения новых функций.</p>
+            <button class="purchase-button">Купить</button>
+        </div>
+    </div>
+    
+    <!-- Стиль для счётчика монет -->
+    <div class="coin-counter" id="coinCounter">0</div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

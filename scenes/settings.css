@@ -1,0 +1,161 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../sprites/bg2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center; /* Центрирование по оси X */
+    align-items: center; /* Центрирование по оси Y */
+    flex-direction: column;
+    animation: fadeIn 0.5s ease; /* Добавлено общее анимирование фона */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.title {
+    position: absolute; /* Возвращено позиционирование */
+    top: 15px; /* Положение от верхней границы */
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для контейнера настроек */
+.settings-container {
+    margin-top: 100px; /* Отступ сверху для настройки */
+    text-align: center;
+    color: white;
+    opacity: 0; /* Скрыто по умолчанию для анимации */
+    animation: fadeInContainer 1s ease-in-out forwards; /* Добавлено анимирование контейнера */
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для отдельных настроек */
+.setting {
+    margin: 15px 0;
+    opacity: 0; /* Скрыто по умолчанию для анимации */
+    animation: fadeInSetting 0.5s ease-in-out forwards; /* Добавлено анимирование для каждого элемента */
+}
+
+@keyframes fadeInSetting {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для полей ввода и выпадающих списков */
+input[type="text"],
+input[type="number"],
+select {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px; /* Ширина полей ввода */
+}
+
+input[type="number"] {
+    width: 100px; /* Ширина для ввода числа */
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+select:hover,
+input[type="text"]:hover,
+input[type="number"]:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Стиль для кнопки сохранить */
+button {
+    background-color: rgba(0, 150, 0, 0.8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: rgba(0, 150, 0, 1);
+}
+
+/* Стиль для кнопки назад */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10; /* Убедитесь, что кнопка выше других элементов */
+}
+
+.back-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
