@@ -1,0 +1,177 @@
+/* Общие стили */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    background-size: cover;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Стили для тёмной темы */
+body.dark-theme {
+    background-image: url('sprites/menu.png');
+    color: white;
+}
+
+body.dark-theme .menu-button {
+    background-color: #6200ea;
+    color: white;
+}
+
+body.dark-theme .build-info {
+    color: white;
+}
+
+/* Стили для светлой темы */
+body.light-theme {
+    background-image: url('sprites/menuWhite.png');
+    color: black;
+}
+
+body.light-theme .menu-button {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid #ccc;
+}
+
+body.light-theme .build-info {
+    color: black;
+}
+
+/* Общие стили для всех тем */
+.title {
+    position: absolute;
+    top: 100px;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    animation: fadeInContainer 3s ease-in-out forwards;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.menu-button {
+    width: 200px;
+    height: 50px;
+    margin: 5px 0;
+    border-radius: 15px;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.menu-button:hover {
+    transform: scale(1.05);
+}
+
+.build-info {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    font-size: 12px;
+    opacity: 0;
+    animation: fadeInBuildInfo 4s ease-in-out forwards;
+}
+
+@keyframes fadeInBuildInfo {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Анимация для соцсетей */
+.social-links {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    opacity: 0;
+    animation: fadeInSocialLinks 4.5s ease-in-out forwards;
+}
+
+@keyframes fadeInSocialLinks {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-links a {
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+@media (max-width: 400px) {
+    .menu-button {
+        width: 80%;
+    }
+}
