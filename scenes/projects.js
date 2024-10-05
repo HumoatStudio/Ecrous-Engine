@@ -7,12 +7,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const projectList = document.getElementById('projectList');
 
     let projects = JSON.parse(localStorage.getItem('projects')) || [];
+    const icons = ['PJicon/iconpj1.png', 'PJicon/iconpj2.png', 'PJicon/iconpj3.png'];
+    const usedIcons = new Set(); // Набор использованных иконок
+
+    function getRandomIcon() {
+        const availableIcons = icons.filter(icon => !usedIcons.has(icon));
+        if (availableIcons.length === 0) return null; // Если нет доступных иконок
+        const randomIndex = Math.floor(Math.random() * availableIcons.length);
+        return availableIcons[randomIndex];
+    }
 
     function renderProjects() {
         projectList.innerHTML = '';
         projects.forEach((project, index) => {
             const projectContainer = document.createElement('div');
             projectContainer.classList.add('project-container');
+
+            const projectIcon = document.createElement('img');
+            projectIcon.classList.add('project-icon');
+            projectIcon.src = project.icon; // Используем иконку из проекта
+            projectIcon.alt = 'Project Icon';
+            projectIcon.style.width = '50px';  // Установка ширины
+            projectIcon.style.height = '50px'; // Установка высоты
 
             const projectButton = document.createElement('button');
             projectButton.classList.add('project-button');
@@ -31,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 openProject(project.name); // Открытие проекта
             });
 
+            projectContainer.appendChild(projectIcon); // Добавляем иконку к контейнеру
             projectContainer.appendChild(projectButton);
             projectContainer.appendChild(menuButton);
             projectList.appendChild(projectContainer);
@@ -57,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const deleteOption = document.createElement('button');
         deleteOption.classList.add('menu-option');
         deleteOption.textContent = 'Удалить проект';
-        deleteOption.addEventListener('click', () => deleteProject(index));
+        deleteOption.addEventListener('click', () => confirmDeleteProject(index));
 
         menu.appendChild(openOption);
         menu.appendChild(exportOption);
@@ -82,8 +99,17 @@ document.addEventListener('DOMContentLoaded', function () {
         // Добавьте код для экспорта проекта
     }
 
+    function confirmDeleteProject(index) {
+        if (confirm('Вы уверены, что хотите удалить этот проект?')) {
+            deleteProject(index);
+        }
+    }
+
     function deleteProject(index) {
-        projects.splice(index, 1);
+        const removedProject = projects.splice(index, 1)[0];
+        if (removedProject) {
+            usedIcons.delete(removedProject.icon); // Удаляем иконку из использованных
+        }
         localStorage.setItem('projects', JSON.stringify(projects));
         renderProjects();
     }
@@ -107,7 +133,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Проект с таким названием уже существует!');
                 return;
             }
-            projects.push({ name: projectName });
+            const icon = getRandomIcon(); // Получаем случайную иконку
+            if (!icon) {
+                alert('Нет доступных иконок для этого проекта.');
+                return;
+            }
+            projects.push({ name: projectName, icon: icon }); // Добавляем проект с иконкой
+            usedIcons.add(icon); // Добавляем иконку в использованные
             localStorage.setItem('projects', JSON.stringify(projects));
             renderProjects();
             projectNameInput.value = '';
