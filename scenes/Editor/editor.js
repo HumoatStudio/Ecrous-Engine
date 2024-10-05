@@ -1,11 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const params = new URLSearchParams(window.location.search);
-    const projectName = params.get('project');
+    const deleteButton = document.querySelector('.button4'); // Кнопка удаления проекта
+    const projectName = localStorage.getItem('currentProject'); // Получаем имя текущего проекта
 
-    if (projectName) {
-        console.log('Открыт проект:', projectName);
-        // Здесь добавьте код для загрузки проекта по его названию
-    } else {
-        console.log('Проект не найден');
+    if (!projectName) {
+        alert('Проект не выбран.');
+        return; // Если проект не выбран, выходим
+    }
+
+    // Ваш код редактора здесь...
+
+    deleteButton.addEventListener('click', () => {
+        if (confirm(`Вы уверены, что хотите удалить проект "${projectName}"?`)) {
+            deleteProject(projectName);
+            window.location.href = '../../Projects/projects.html'; // Перенаправление обратно на список проектов
+        }
+    });
+
+    function deleteProject(projectName) {
+        let projects = JSON.parse(localStorage.getItem('projects')) || [];
+        projects = projects.filter(project => project.name !== projectName);
+        localStorage.setItem('projects', JSON.stringify(projects));
     }
 });
