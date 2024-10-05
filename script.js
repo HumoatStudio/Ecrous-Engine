@@ -41,3 +41,41 @@ function applyLanguage(language) {
         document.querySelector('.menu-button:nth-child(4)').textContent = 'Настройки';
     }
 }
+
+window.onload = function() {
+    const savedSettings = JSON.parse(localStorage.getItem('gameEngineSettings'));
+    if (savedSettings) {
+        applyTheme(savedSettings.uiTheme || 'dark');
+        applyLanguage(savedSettings.language || 'ru');
+    }
+
+    // Проверяем, если это первый визит
+    const firstVisit = localStorage.getItem('firstVisit');
+    if (!firstVisit) {
+        showWelcomeMessage(); // Показываем сообщение для новичков
+    }
+};
+
+// Функция для показа приветственного сообщения
+function showWelcomeMessage() {
+    const welcomeMessage = document.createElement('div');
+    welcomeMessage.className = 'welcome-message';
+    welcomeMessage.innerHTML = `
+        <div class="welcome-content">
+            <p>Добро пожаловать в Ecrous Engine! Мы рады вас видеть!</p>
+            <p>Ecrous Engine - это движок</p>
+            <p>Для создания игр, приложений, здесь</p>
+            <p>Собран весь удобный</p>
+            <p>Функционал. Удачи!</p>
+            <button id="closeWelcomeButton">Окей</button>
+        </div>
+    `;
+
+    document.body.appendChild(welcomeMessage);
+
+    // Закрытие сообщения при нажатии на кнопку
+    document.getElementById('closeWelcomeButton').addEventListener('click', function() {
+        document.body.removeChild(welcomeMessage);
+        localStorage.setItem('firstVisit', 'true'); // Устанавливаем, что сообщение было показано
+    });
+}
