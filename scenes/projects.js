@@ -94,6 +94,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     submitProjectButton.addEventListener('click', () => {
         const projectName = projectNameInput.value.trim();
+
+        // Проверка длины названия проекта
+        if (projectName.length < 3 || projectName.length > 18) {
+            alert('Название проекта должно содержать от 3 до 18 символов!');
+            return;
+        }
+
         if (projectName) {
             // Проверка на уникальность названия проекта
             if (projects.some(p => p.name === projectName)) {
