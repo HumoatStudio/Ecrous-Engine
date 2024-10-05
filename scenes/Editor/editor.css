@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('../fonts/ofont.ttf') format('truetype');
+    src: url('../../fonts/ofont.ttf') format('truetype');
 }
 
 * {
