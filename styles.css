@@ -17,6 +17,8 @@ body, html {
 
 body {
     display: flex;
+    background-image: url('sprites/menu.png');
+    color: white;
     justify-content: center;
     align-items: flex-end;
     flex-direction: column;
