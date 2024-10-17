@@ -6,50 +6,48 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(135deg, #6c5ce7, #fdcb6e); /* Градиентный фон */
+    background-color: #111; /* Тёмный фон */
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #fff;
+    position: relative;
+    overflow: hidden; /* Чтобы скрыть элементы, выходящие за границы */
 }
 
 .container {
     text-align: center;
-    background-color: rgba(255, 255, 255, 0.9); /* Прозрачный фон для контейнера */
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    max-width: 500px; /* Максимальная ширина контейнера */
-    transition: transform 0.3s; /* Эффект при наведении */
-}
-
-.container:hover {
-    transform: scale(1.05); /* Увеличение контейнера при наведении */
+    background-color: #252b33; /* Темно-серый фон контейнера */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    max-width: 600px;
+    z-index: 2; /* Чтобы контейнер был над фоновыми элементами */
 }
 
 h1 {
     font-family: 'Pacifico', cursive;
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    color: #2d3436;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Тень для заголовка */
+    font-size: 3rem;
+    color: #ff0055; /* Ярко-розовый цвет заголовка */
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 p {
-    color: #2d3436;
+    color: #00ff85; /* Ярко-зелёный цвет */
     margin-bottom: 20px;
     font-size: 1.5rem;
 }
 
 .scrollable-list {
-    max-height: 250px; /* Ограничение высоты прокручиваемого списка */
-    overflow-y: auto; /* Вертикальная прокрутка */
+    max-height: 300px;
+    overflow-y: auto;
     padding: 10px;
-    margin: 0 auto; /* Центрирование списка */
-    border: 1px solid #dfe6e9; /* Рамка вокруг списка */
-    border-radius: 10px; /* Скругленные углы */
-    background: rgba(255, 255, 255, 0.8); /* Прозрачный фон для списка */
+    margin: 0 auto;
+    border: 1px solid #ff0055; /* Розовая рамка */
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .thank-you-list {
@@ -59,31 +57,88 @@ p {
 }
 
 .thank-you-list li {
-    color: #2d3436;
+    color: #fff;
     margin: 15px 0;
-    font-size: 1.5rem;
-    display: none; /* Изначально скрыты для анимации */
-    transition: color 0.3s; /* Плавный переход для цвета */
+    font-size: 1.2rem;
+    display: none;
+    transition: color 0.3s;
 }
 
 .thank-you-list li:hover {
-    color: #6c5ce7; /* Цвет при наведении */
+    color: #ff0055; /* Розовый при наведении */
 }
 
 .back-button {
     display: inline-block;
     margin-top: 30px;
-    padding: 12px 25px;
-    background-color: #00b894;
+    padding: 10px 20px;
+    background-color: #ff0055;
     color: white;
     text-decoration: none;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 4px;
     font-size: 1.2rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для кнопки */
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .back-button:hover {
-    background-color: #00b894;
-    transform: scale(1.05);
+    background-color: #e6004d;
+    transform: translateY(-3px);
+}
+
+/* Фоновые неоновые фигуры */
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle, .triangle, .square {
+    position: absolute;
+    border: 4px solid #ff0055; /* Красная неоновая линия */
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.8), 0 0 50px rgba(255, 0, 85, 0.6);
+    opacity: 0.15; /* Чтобы фигуры не отвлекали внимание */
+    animation: pulse 5s infinite ease-in-out; /* Анимация пульсации */
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    top: 10%;
+    left: 20%;
+}
+
+.square {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    left: 70%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 173.2px solid #ff0055; /* Треугольник */
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 20px rgba(255, 0, 85, 0.8), 0 0 50px rgba(255, 0, 85, 0.6);
+}
+
+/* Анимация пульсации для фигур */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
 }
