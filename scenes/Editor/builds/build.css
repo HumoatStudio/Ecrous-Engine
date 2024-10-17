@@ -157,3 +157,47 @@ div {
     text-align: center;
     line-height: 50px;
 }
+
+/* Стили для черной таблички */
+.tooltip {
+    display: none;  /* Скрыто по умолчанию */
+    position: absolute;
+    bottom: 110%; /* Позиция над кнопкой */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+/* Показ таблички */
+.tooltip.show {
+    display: block;
+    opacity: 1;
+}
+
+/* Анимация плавного появления и исчезновения таблички */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Стиль для иконки звезды */
+.star-icon {
+    width: 26px;  /* Уменьшаем ширину звезды */
+    height: 26px; /* Уменьшаем высоту звезды */
+    margin-left: 8px; /* Отступ от текста */
+    vertical-align: middle; /* Выравнивание по центру с текстом */
+}

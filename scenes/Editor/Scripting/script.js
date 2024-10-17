@@ -3,11 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const importButton = document.querySelector('.import-button');
     const scriptModal = document.getElementById('projectModal');
     const scriptNameInput = document.getElementById('projectName');
+    const languageSelect = document.getElementById('languageSelect');
     const submitScriptButton = document.getElementById('submitProject');
     const scriptList = document.getElementById('projectList');
 
     let scripts = JSON.parse(localStorage.getItem('scripts')) || [];
 
+    // Функция для отображения скриптов на экране
     function renderScripts() {
         scriptList.innerHTML = '';
         scripts.forEach((script, index) => {
@@ -16,19 +18,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const scriptButton = document.createElement('button');
             scriptButton.classList.add('project-button');
-            scriptButton.textContent = script.name;
+            scriptButton.textContent = `${script.name} (${script.language})`;
 
             const menuButton = document.createElement('button');
             menuButton.classList.add('menu-button');
-            menuButton.innerHTML = '⋮'; // Кнопка с тремя точками
+            menuButton.innerHTML = '⋮';
 
             menuButton.addEventListener('click', (event) => {
-                event.stopPropagation(); // Останавливаем всплытие событий
+                event.stopPropagation();
                 showScriptMenu(event, index);
             });
 
             scriptButton.addEventListener('click', () => {
-                openScript(script.name); // Открытие скрипта
+                openScript(script);  // Открываем скрипт
             });
 
             scriptContainer.appendChild(scriptButton);
@@ -37,76 +39,89 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function showScriptMenu(event, index) {
-        const existingMenu = document.querySelector('.project-menu');
-        if (existingMenu) existingMenu.remove();
+    // Функция для открытия выбранного скрипта в зависимости от языка
+    function openScript(script) {
+        if (script.language === 'visual') {
+            window.location.href = 'VisualScript/vsscript.html';  // Открываем редактор для визуального программирования
+        } else if (script.language === 'python') {
+            window.location.href = 'Python/python.html';  // Открываем редактор для Python
+        } else if (script.language === 'java') {
+            window.location.href = 'Java/java.html';  // Открываем редактор для java
+        } else {
+            alert(`Открытие редактора для языка ${script.language} пока не поддерживается.`);
+        }
+    }
 
+    // Показать меню для редактирования или удаления скрипта
+    function showScriptMenu(event, index) {
         const menu = document.createElement('div');
         menu.classList.add('project-menu');
 
-        const openOption = document.createElement('button');
-        openOption.classList.add('menu-option');
-        openOption.textContent = 'Открыть скрипт';
-        openOption.addEventListener('click', () => openScript(scripts[index].name));
+        const editOption = document.createElement('button');
+        editOption.classList.add('menu-option');
+        editOption.textContent = 'Редактировать';
+        editOption.addEventListener('click', () => {
+            // Логика редактирования скрипта
+            alert('Функция редактирования пока не реализована.');
+            menu.remove();
+        });
 
         const deleteOption = document.createElement('button');
         deleteOption.classList.add('menu-option');
-        deleteOption.textContent = 'Удалить скрипт';
-        deleteOption.addEventListener('click', () => deleteScript(index));
+        deleteOption.textContent = 'Удалить';
+        deleteOption.addEventListener('click', () => {
+            scripts.splice(index, 1);
+            localStorage.setItem('scripts', JSON.stringify(scripts));
+            renderScripts();
+            menu.remove();
+        });
 
-        menu.appendChild(openOption);
+        menu.appendChild(editOption);
         menu.appendChild(deleteOption);
-        
-        menu.style.top = `${event.clientY}px`;
-        menu.style.left = `${event.clientX}px`;
+
         document.body.appendChild(menu);
 
-        document.addEventListener('click', () => {
-            menu.remove();
-        }, { once: true });
+        const rect = event.target.getBoundingClientRect();
+        menu.style.left = `${rect.left}px`;
+        menu.style.top = `${rect.bottom}px`;
+
+        // Удаляем меню при клике за пределами
+        document.addEventListener('click', function hideMenu(event) {
+            if (!menu.contains(event.target)) {
+                menu.remove();
+                document.removeEventListener('click', hideMenu);
+            }
+        });
     }
 
-    function openScript(scriptName) {
-        window.location.href = `Editor/ScriptEditor.html?script=${encodeURIComponent(scriptName)}`; // Перенаправление на ScriptEditor.html
-    }
-
-    function deleteScript(index) {
-        scripts.splice(index, 1);
-        localStorage.setItem('scripts', JSON.stringify(scripts));
-        renderScripts();
-    }
-
+    // Открытие модального окна для добавления скрипта
     plusButton.addEventListener('click', () => {
         scriptModal.style.display = 'flex';
     });
 
+    // Закрытие модального окна при нажатии на кнопку "Готово"
     submitScriptButton.addEventListener('click', () => {
         const scriptName = scriptNameInput.value.trim();
-
-        // Проверка длины названия скрипта
-        if (scriptName.length < 3 || scriptName.length > 18) {
-            alert('Название скрипта должно содержать от 3 до 18 символов!');
-            return;
-        }
+        const selectedLanguage = languageSelect.value;
 
         if (scriptName) {
-            // Проверка на уникальность названия скрипта
-            if (scripts.some(s => s.name === scriptName)) {
-                alert('Скрипт с таким названием уже существует!');
-                return;
-            }
-            scripts.push({ name: scriptName });
+            scripts.push({ name: scriptName, language: selectedLanguage });
             localStorage.setItem('scripts', JSON.stringify(scripts));
             renderScripts();
+            scriptModal.style.display = 'none';
             scriptNameInput.value = '';
+        } else {
+            alert('Пожалуйста, введите название скрипта.');
+        }
+    });
+
+    // Закрытие модального окна при клике вне его области
+    scriptModal.addEventListener('click', (event) => {
+        if (event.target === scriptModal) {
             scriptModal.style.display = 'none';
         }
     });
 
-    importButton.addEventListener('click', () => {
-        console.log('Импорт скрипта');
-        // Добавьте код для импорта скрипта
-    });
-
+    // Начальная загрузка списка скриптов
     renderScripts();
 });

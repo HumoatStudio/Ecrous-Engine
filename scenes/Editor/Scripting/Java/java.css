@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../../../../fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../../../../sprites/bg2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Центрирование по вертикали */
+    flex-direction: column;
+}
+
+.title {
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Общие стили для кнопки назад */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px; /* Увеличил размер для лучшего восприятия */
+    height: 40px;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+    border: none; /* Убрал рамку */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Тень для объёмности */
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.2s;
+}
+
+.back-button img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease; /* Анимация увеличения изображения */
+}
+
+.back-button:hover {
+    transform: scale(1.1); /* Лёгкое увеличение кнопки */
+    background-color: rgba(255, 255, 255, 1); /* Более яркий белый цвет при наведении */
+}
+
+.back-button:hover img {
+    transform: scale(1.2); /* Увеличение изображения при наведении */
+}
+
+/* Анимация плавного появления кнопки */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стили для текстового поля */
+textarea {
+    width: 90%;
+    height: 70%;
+    padding: 20px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    resize: none;
+    font-family: monospace;
+    opacity: 0; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeInTextarea 1s ease forwards; /* Анимация появления текстового поля */
+}
+
+@keyframes fadeInTextarea {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #8a2be2; /* Изменение цвета рамки при фокусе */
+}
+
+.run-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    background-color: #8a2be2;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.run-button:hover {
+    background-color: #5a189a;
+}
+
+.output {
+    margin-top: 20px;
+    padding: 10px;
+    width: 90%;
+    height: auto;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.9);
+    white-space: pre-wrap;
+    font-family: monospace;
+    color: #333;
+}

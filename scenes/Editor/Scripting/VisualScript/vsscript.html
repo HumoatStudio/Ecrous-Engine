@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>VisualScript Editor</title>
+    <link rel="stylesheet" href="vsscript.css">
+</head>
+<body>
+    
+    <!-- Кнопка назад -->
+    <a href="../script.html" class="back-button">
+        <img src="../../../../sprites/close.png" alt="Назад">
+    </a>
+
+    <div class="title">Визуальное Программирование</div>
+
+    
+    <!-- Кнопка Добавить проект -->
+    <img src="../../../../sprites/plus.png" class="plus-button" alt="Добавить">
+    
+    <!-- Меню выбора блоков -->
+    <div class="block-menu" id="blockMenu">
+        <!-- Раздел События -->
+        <div class="menu-section events">
+            <h3>События</h3>
+            <ul>
+                <li data-block="start">При старте</li>
+                <li data-block="CreateFunction">Создать Функцию</li>
+                
+                <li data-block="CreateFunctionParametrs">Создать Функцию с параметрами</li>
+                
+                <li data-block="ElseConditionTrue">Пока условие истинно</li>
+                
+                <li data-block="WhenVariableValueChanges">Когда значение переменной изменится</li>
+                
+                <li data-block="click">Когда нажали на объект</li>
+                
+                <li data-block="WhenTheObjectwasReleased">Когда отпустили объект</li>
+                <li data-block="WhileFingerMovesAlongObject">Пока палец перемещается по объекту</li>
+                
+                <li data-block="touch">При прикосновению к экрану</li>
+                <li data-block="WhenTheyLetGoTheScreen">Когда отпустили экран</li>
+                
+                <li data-block="WhileFingerMovesAcrossScreen">Пока палец перемещается по экрану</li>
+                
+                <li data-block="WhenYouPressthe BackButton">При нажатии на кнопку назад</li>
+                
+                <li data-block="ApplicationMinimizedFromScreen">Приложение свернули с экрана</li>
+                
+                <li data-block="TheApplicationWasReturNedToThe screen">Приложение вернули на экран</li>
+                
+            </ul>
+        </div>
+
+        <!-- Раздел Данные & Текст -->
+        <div class="menu-section data-text">
+            <h3>Данные & Текст</h3>
+            <ul>
+                <li data-block="createText">Создать текст</li>
+                <li data-block="createTextWidthAndHeight">Создать текст с шириной и высотой</li>
+                <li data-block="setTextSize">Установить размер текста</li>
+                <li data-block="editText">Изменить текст</li>
+                <li data-block="setTextPosition">Установить позицию текста</li>
+                <li data-block="setTextX">Установить X текста</li>
+                <li data-block="setTextY">Установить Y текста</li>
+                <li data-block="setTextColor">Установить цвет текста</li>
+                <li data-block="HideText">Скрыть текст</li>
+                <li data-block="ShowText">Показать текст</li>
+                <li data-block="DeleteText">Удалить текст</li>
+
+                <li data-block="SetVar">Установить значение переменной</li>
+                <li data-block="AddSimVar">Добавить значение к переменной</li>
+                <li data-block="SetVarObject">Установить переменную объекта</li>
+            </ul>
+        </div>
+
+        <!-- Раздел Таблицы -->
+        <div class="menu-section tables">
+            <h3>Таблицы</h3>
+            <ul>
+                <li data-block="SetVarTable">Установить значение в таблицу</li>
+                <li data-block="CtrlSMassiv">Вставить значение в массив</li>
+                <li data-block="DeleteMassiv">Удалить значение из массива</li>
+                <li data-block="SaveMeaning">Сохранить значение</li>
+                <li data-block="PerezapisatTable">Перезаписать таблицу</li>
+                <li data-block="SetMeaningRandom">Установить значение для рандома</li>
+            </ul>
+        </div>
+
+
+<!-- Раздел Объекты и фильтры -->
+<div class="menu-section objects-filters">
+    <h3>Объекты и фильтры</h3>
+    <ul>
+        <li id="createObject" data-block="createObject">Создать объект</li>
+        <li id="createFromParts" data-block="">Создать объект из частей спрайта</li>
+        <li id="createFromGif" data-block="">Создать объект из гиф спрайта</li>
+        <li id="setPositionX" data-block="">Установить позицию Х объекта</li>
+        <li id="setPositionY" data-block="">Установить позицию Y объекта</li>
+        <li id="setObjectSize" data-block="setObjectSize">Установить размер объекта</li>
+        <li id="setRotation" data-block="">Установить вращение объекту</li>
+        <li id="setRotationToObject2" data-block="">Установить вращение к объекту2</li>
+        <li id="setOpacity" data-block="">Установить непрозрачность объекта</li>
+        <li id="setWidth" data-block="">Установить ширину объекта</li>
+        <li id="setHeight" data-block="">Установить высоту объекта</li>
+        <li id="setAnchorPoint" data-block="">Установить точку привязки объекта</li>
+        <li id="changePositionX" data-block="">Изменить позицию Х объекта</li>
+        <li id="changePositionY" data-block="">Изменить позицию Y объекта</li>
+        <li id="changeSize" data-block="">Изменить размер объекта</li>
+        <li id="changeRotation" data-block="">Изменить вращение объекта</li>
+        <li id="changeOpacity" data-block="">Изменить непрозрачность объекта</li>
+        <li id="changeWidth" data-block="">Изменить ширину объекта</li>
+        <li id="changeHeight" data-block="">Изменить высоту объекта</li>
+        <li id="moveUpLayer" data-block="">Разместить объект на слой выше</li>
+        <li id="moveDownLayer" data-block="">Разместить объект на слой ниже</li>
+        <li id="showObject" data-block="">Показать объект</li>
+        <li id="hideObject" data-block="">Скрыть объект</li>
+        <li id="deleteObject" data-block="">Удалить объект</li>
+    </ul>
+</div>
+
+        <!-- Раздел Видео & Медиа -->
+        <div class="menu-section visible-media">
+            <h3>Видео & Медиа</h3>
+            <ul>
+                <li data-block="createVideo">Создать видео</li>
+                
+                <li data-block="EndLoadingFile">Закончилось скачивание файла</li>
+            </ul>
+        </div>
+
+        <!-- Раздел Управление (коричнево-оранжевый) -->
+        <div class="menu-section control">
+            <h3>Управление</h3>
+            <ul>
+                <li data-block="wait">Ждать N секунд</li>
+                <li data-block="openFunction">Вызвать функцию</li>
+            </ul>
+        </div>
+
+        <!-- Раздел Физика (ярко-фиолетовый) -->
+        <div class="menu-section physics">
+            <h3>Физика</h3>
+            <ul>
+                <li data-block="setPhysics">Установить физику объекту</li>
+            </ul>
+        </div>
+        
+        <!-- Раздел Переходы & Частицы (немного-ярко-фиолетовый) -->
+        <div class="menu-section TransitionsParticles">
+            <h3>Переходы & Частицы</h3>
+            <ul>
+                <li data-block="runSmoothTransition">Запустить плавный переход</li>
+            </ul>
+        </div>
+
+        <!-- Новый раздел Сцены & Теги (тёмно оранжевый) -->
+        <div class="menu-section scenes-tags">
+            <h3>Сцены & Теги</h3>
+            <ul>
+                <li data-block="createScene">Создать Сцену</li>
+                <li data-block="addToScene">Добавить в Сцену</li>
+                <li data-block="ShowScene">Показать Сцену</li>
+                <li data-block="HideScene">Скрыть Сцену</li>
+                <li data-block="DeleteScene">Удалить Сцену</li>
+                <li data-block="createTag">Создать Тег</li>
+                <li data-block="addToTag">Добавить в Тег</li>
+                <li data-block="ShowTag">Показать Тег</li>
+                <li data-block="HideTag">Скрыть Тег</li>
+                <li data-block="DeleteTag">Удалить Тег</li>
+            </ul>
+        </div>
+
+        <!-- Новый раздел Текстуры & Фигуры (березовый цвет) -->
+        <div class="menu-section textures-shapes">
+            <h3>Текстуры & Фигуры</h3>
+            <ul>
+                <li data-block="setTexture">Установить текстуру объекту</li>
+                <li data-block="createRectangleCorners">Создать прямоугольник с углами</li>
+                <li data-block="createRectangleColor">Создать прямоугольник с цветом</li>
+            </ul>
+        </div>
+
+        <!-- Новый раздел Виджеты (тёмно фиолетово-синий) -->
+        <div class="menu-section widgets">
+            <h3>Виджеты</h3>
+            <ul>
+                <li data-block="createSingleLineTextField">Создать однострочное текстовое поле</li>
+                
+                <li data-block="WhileSliderMoves">Пока слайдер перемещается</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section SnapshotCamera">
+            <h3>Снапшоты & Камера</h3>
+            <ul>
+                <li data-block="createSnapshot">Создать Снапшот</li>
+                
+                <li data-block="UpdateSnapshot">Обновить Снапшот</li>
+                
+                <li data-block="AddToSnapshot">Добавить в Снапшот</li>
+                
+                <li data-block="DeletFromSnapshot">Удалить из Снапшота</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section WIFI">
+            <h3>Интернет</h3>
+            <ul>
+                <li data-block="openLink">Открыть ссылку в браузере</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section FireBase">
+            <h3>FireBase</h3>
+            <ul>
+                <li data-block="TokenFireBase">Получить ответ от FireBase</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section AnimationMask">
+            <h3>Анимации & Маски</h3>
+            <ul>
+                <li data-block="CreateAnimation">Создать Анимацию</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section Ads">
+            <h3>Реклама</h3>
+            <ul>
+                <li data-block="CreateBannerGoogle">Создать Баннер (GoogleAds)</li>
+                
+                <li data-block="CreateBannerEcr">Создать Рекламу (EcrAds)</li>
+                
+                <li data-block="CreateAdsGoogle">Создать Рекламу (GoogleAds)</li>
+                
+                <li data-block="CreateAdsEcr">Создать Рекламу (EcrAds)</li>
+            </ul>
+        </div>
+        
+        <div class="menu-section Donate">
+            <h3>Донат</h3>
+            <ul>
+                <li data-block="CreateDonate">Создать донат</li>
+                
+                <li data-block="SetDonate">Установить сумму доната</li>
+                
+                <li data-block="Set CurrencyDonate">Установить валюту</li>
+                
+                <li data-block="SetTextButtonDonate">Установить текст кнопки</li>
+                
+                <li data-block="Set descriptionDonate">Установить описание доната</li>
+
+                <li data-block="SetSposoboplaty">Установить способ оплаты</li>
+
+                <li data-block="SeekFormMoney">Показать форму оплаты</li>
+
+                <li data-block="CompliteDonate">Успешный донат</li>
+
+                <li data-block="ErrorDonate">Ошибка доната</li>
+
+                <li data-block="MinSummDonate">Задать минимальную сумму доната</li>
+
+                <li data-block="CountDonations">Считать донаты</li>
+
+                <li data-block="SeekStatistick">Показать Статистику</li>
+
+                <li data-block="ThankYouMessage">Благодарственное сообщение</li>
+            </ul>
+            
+        </div>
+        
+        <div class="menu-section Bluetooth">
+            <h3>Bluetooth</h3>
+            <ul>
+                <li data-block="WhenReceivedValueByBluetooth">Когда получено значение по Bluetooth</li>
+                </ul>
+        </div>
+        
+        <div class="menu-section Colision">
+            <h3>Колизия</h3>
+            
+            <ul>
+                <li data-block="TheBeginningOfALocalCollision">Начало Локальной колизии</li>
+            
+                <li data-block="TheBeginningALocalColisionEnd">Конец Локальной колизии</li>
+            
+                <li data-block="LocalColisionDo">До Локальной колизии</li>
+            
+                <li data-block="PosleLocalColision">После локальной колизии</li>
+            
+                <li data-block="StartGlobalColison">Начало глобальной колизии</li>
+            
+                <li data-block="EndGlobalColison">Конец глобальной колизии</li>
+            
+                <li data-block="GlobalColisionDo">До Глобальной коллизии</li>
+            
+                <li data-block="PosleGlobalColision">После Глобальной колизии</li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="dropArea" style="width: 400px; height: 500px; overflow-y: auto; border: 1px solid #ccc; position: relative;">
+        <!-- Блоки будут добавлены сюда -->
+    </div>
+
+    <script src="vsscript.js"></script>
+</body>
+</html>

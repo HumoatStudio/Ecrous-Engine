@@ -1,0 +1,225 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../../../../fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../../../../sprites/bg2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+/* Анимации для заголовков и кнопок */
+.title, .plus-button, .back-button {
+    transition: opacity 0.3s ease;
+}
+
+.title {
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация для кнопок */
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для кнопки назад - 40px на 40px */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;  /* Ширина кнопки 40px */
+    height: 40px; /* Высота кнопки 40px */
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+/* Устанавливаем размер изображения внутри кнопки */
+.back-button img {
+    width: 100%;  /* Ширина изображения соответствует кнопке */
+    height: 100%; /* Высота изображения соответствует кнопке */
+    object-fit: contain;  /* Изображение масштабируется, сохраняя пропорции */
+}
+
+.plus-button {
+    position: absolute;
+    bottom: 15px;
+    left: 35%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+/* Контейнер для списка проектов с прокруткой */
+.project-list {
+    position: absolute;
+    top: 50%;  /* Центрируем по вертикали */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);  /* Ширина на 200px меньше ширины экрана */
+    max-height: 600px;  /* Установленная высота */
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Оставляем место для 6 кнопок и запрещаем увеличиваться */
+.project-list {
+    height: 600px; /* Фиксируем высоту */
+    max-height: 600px;
+    overflow-y: auto; /* Прокрутка при превышении 6 кнопок */
+}
+
+/* Уменьшаем размер кнопок проектов */
+.project-container {
+    display: flex; /* Чтобы кнопки располагались в строку */
+    justify-content: space-between; /* Разделяем кнопки по краям */
+    align-items: center; /* Выравниваем кнопки по центру */
+    padding: 5px; /* Отступы */
+}
+
+.project-button {
+    width: 275px;  /* Сделали меньше */
+    height: 60px;  /* Также уменьшили высоту */
+    background: linear-gradient(45deg, #6a0dad, #8a2be2);
+    color: white;
+    font-size: 14px;  /* Уменьшили текст */
+    text-align: center;
+    line-height: 60px;  /* Соответственно высоте кнопки */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.project-button:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопка меню */
+.menu-button {
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: white; /* Цвет текста */
+    font-size: 20px; /* Размер текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+/* Модальное окно для добавления проекта */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-content button:hover {
+    background-color: #218838;
+}
+
+/* Стиль для меню проекта */
+.project-menu {
+    position: absolute; /* Чтобы меню отображалось поверх других элементов */
+    background-color: white; /* Белый фон */
+    border-radius: 5px; /* Закругленные углы */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Тень для меню */
+    z-index: 30; /* Обеспечиваем, чтобы меню было сверху */
+    right: 0; /* Прикрепляем к правому краю */
+    top: 0; /* Можно изменить при необходимости */
+    display: flex; /* Чтобы кнопки в меню располагались вертикально */
+    flex-direction: column; /* Вертикальная ориентация */
+}
+
+.menu-option {
+    padding: 10px; /* Отступы */
+    border: none; /* Без границы */
+    background: none; /* Без фона */
+    color: #333; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.menu-option:hover {
+    background-color: #f0f0f0; /* Цвет фона при наведении */
+}

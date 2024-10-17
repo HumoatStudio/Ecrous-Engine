@@ -1,0 +1,440 @@
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../../../../fonts/ofont.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    background-image: url('../../../../sprites/bg2.png');
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.title {
+    position: absolute;
+    top: 15px;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Анимация для плавного появления объектов */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Стиль для кнопки назад с анимацией */
+.back-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    opacity: 0; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeIn 1s ease forwards;
+    animation-delay: 0.2s; /* Задержка появления кнопки назад */
+}
+
+.back-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.back-button:hover {
+    transform: scale(1.1); /* Лёгкое увеличение кнопки */
+}
+
+.plus-button {
+    position: absolute;
+    bottom: 15px;
+    left: 35%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+/* Добавляем анимацию для кнопки плюс */
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Кнопка изначально ниже */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Кнопка поднимается на исходное место */
+    }
+}
+
+/* CSS */
+.block-menu {
+    position: absolute;
+    bottom: 80px;
+    left: 12%;
+    width: 300px;
+    background: linear-gradient(to bottom, #696969, #a9a9a9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    max-height: 550px;
+    overflow-y: auto;
+}
+
+.menu-section {
+    margin-bottom: 20px;
+}
+
+.menu-section h3 {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 0;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+/* События: улучшенный градиент для блоков */
+.menu-section.events li {
+    background: linear-gradient(to bottom, rgb(255, 105, 45), rgb(206, 86, 23), rgb(186, 66, 13)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.events li:hover {
+    background: linear-gradient(to bottom, rgb(186, 66, 13), rgb(166, 56, 3), rgb(145, 46, 0)); /* Градиент для состояния наведения */
+}
+
+/* Данные & Текст: улучшенный градиент для блоков */
+.menu-section.data-text li {
+    background: linear-gradient(to bottom, rgb(244, 192, 72), rgb(214, 172, 52), rgb(194, 152, 32)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.data-text li:hover {
+    background: linear-gradient(to bottom, rgb(194, 152, 32), rgb(174, 132, 12), rgb(154, 112, 0)); /* Градиент для состояния наведения */
+}
+
+/* Таблицы: улучшенный градиент для блоков */
+.menu-section.tables li {
+    background: linear-gradient(to bottom, rgb(244, 192, 72), rgb(214, 172, 52), rgb(194, 152, 32)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.tables li:hover {
+    background: linear-gradient(to bottom, rgb(194, 152, 32), rgb(174, 132, 12), rgb(154, 112, 0)); /* Градиент для состояния наведения */
+}
+
+/* Объекты и фильтры: улучшенный градиент для блоков */
+.menu-section.objects-filters li {
+    background: linear-gradient(to bottom, rgb(155, 225, 72), rgb(140, 198, 62), rgb(120, 178, 42)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.objects-filters li:hover {
+    background: linear-gradient(to bottom, rgb(120, 178, 42), rgb(100, 158, 22), rgb(80, 138, 0)); /* Градиент для состояния наведения */
+}
+
+/* Видео & Медиа: улучшенный градиент для блоков */
+.menu-section.visible-media li {
+    background: linear-gradient(to bottom, rgb(255, 100, 130), rgb(233, 30, 99), rgb(213, 10, 79)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.visible-media li:hover {
+    background: linear-gradient(to bottom, rgb(213, 10, 79), rgb(193, 0, 59), rgb(173, 0, 39)); /* Градиент для состояния наведения */
+}
+
+/* Управление: улучшенный градиент для блоков */
+.menu-section.control li {
+    background: linear-gradient(to bottom, rgb(180, 140, 80), rgb(154, 140, 103), rgb(140, 62, 25)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.control li:hover {
+    background: linear-gradient(to bottom, rgb(140, 62, 25), rgb(120, 42, 15), rgb(100, 22, 5)); /* Градиент для состояния наведения */
+}
+
+/* Физика: улучшенный градиент для блоков */
+.menu-section.physics li {
+    background: linear-gradient(to bottom, rgb(165, 0, 220), rgb(148, 0, 211), rgb(128, 0, 191)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.physics li:hover {
+    background: linear-gradient(to bottom, rgb(128, 0, 191), rgb(108, 0, 171), rgb(88, 0, 151)); /* Градиент для состояния наведения */
+}
+
+/* Переходы & Частицы: улучшенный градиент для блоков */
+.menu-section.TransitionsParticles li {
+    background: linear-gradient(to bottom, rgb(255, 150, 255), #d940ff, rgb(150, 0, 255)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.TransitionsParticles li:hover {
+    background: linear-gradient(to bottom, rgb(150, 0, 255), rgb(128, 0, 191), rgb(100, 0, 170)); /* Градиент для состояния наведения */
+}
+
+/* Сцены & Теги: улучшенный градиент для блоков */
+.menu-section.scenes-tags li {
+    background: linear-gradient(to bottom, rgb(255, 200, 100), rgb(204, 132, 0), rgb(184, 112, 0)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.scenes-tags li:hover {
+    background: linear-gradient(to bottom, rgb(184, 112, 0), rgb(164, 92, 0), rgb(144, 72, 0)); /* Градиент для состояния наведения */
+}
+
+/* Текстуры & Фигуры: улучшенный градиент для блоков */
+.menu-section.textures-shapes li {
+    background: linear-gradient(to bottom, rgb(200, 255, 200), rgb(172, 225, 175), rgb(150, 200, 150)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.textures-shapes li:hover {
+    background: linear-gradient(to bottom, rgb(150, 200, 150), rgb(130, 180, 130), rgb(110, 160, 110)); /* Градиент для состояния наведения */
+}
+
+/* Виджеты: улучшенный градиент для блоков */
+.menu-section.widgets li {
+    background: linear-gradient(to bottom, rgb(75, 0, 130), rgb(65, 0, 120)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.widgets li:hover {
+    background: linear-gradient(to bottom, rgb(65, 0, 120), rgb(55, 0, 110)); /* Градиент для состояния наведения */
+}
+
+/* Снимок камеры: улучшенный градиент для блоков */
+.menu-section.SnapshotCamera li {
+    background: linear-gradient(to bottom, rgb(93, 78, 70), rgb(60, 48, 44)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.SnapshotCamera li:hover {
+    background: linear-gradient(to bottom, rgb(60, 48, 44), rgb(40, 30, 28)); /* Градиент для состояния наведения */
+}
+
+/* WIFI: улучшенный градиент для блоков */
+.menu-section.WIFI li {
+    background: linear-gradient(to bottom, rgb(0, 3, 255), rgb(0, 2, 178)); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px; /* Закругленные углы для улучшенного визуального эффекта */
+    padding: 10px; /* Отступы для удобства восприятия */
+    transition: background 0.3s ease; /* Плавный переход цвета */
+}
+
+.menu-section.WIFI li:hover {
+    background: linear-gradient(to bottom, rgb(0, 2, 178), rgb(0, 1, 150)); /* Градиент для состояния наведения */
+}
+
+/* FireBase: улучшенный градиент для блоков */
+.menu-section.FireBase li {
+    background: linear-gradient(to bottom, #4063ff, #2a41a9); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.FireBase li:hover {
+    background: linear-gradient(to bottom, #2a41a9, #1b2d7a); /* Градиент для состояния наведения */
+}
+
+/* AnimationMask: улучшенный градиент для блоков */
+.menu-section.AnimationMask li {
+    background: linear-gradient(to bottom, #ff40fc, #922590); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.AnimationMask li:hover {
+    background: linear-gradient(to bottom, #922590, #6a1b80); /* Градиент для состояния наведения */
+}
+
+/* Ads: улучшенный градиент для блоков */
+.menu-section.Ads li {
+    background: linear-gradient(to bottom, #40b6ff, #256a94); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.Ads li:hover {
+    background: linear-gradient(to bottom, #256a94, #1a4d66); /* Градиент для состояния наведения */
+}
+
+/* Donate: улучшенный градиент для блоков */
+.menu-section.Donate li {
+    background: linear-gradient(to bottom, #55ff58, #319433); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.Donate li:hover {
+    background: linear-gradient(to bottom, #319433, #1e7525); /* Градиент для состояния наведения */
+}
+
+/* Bluetooth: улучшенный градиент для блоков */
+.menu-section.Bluetooth li {
+    background: linear-gradient(to bottom, #5582ff, #3a59af); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.Bluetooth li:hover {
+    background: linear-gradient(to bottom, #3a59af, #2b4c8a); /* Градиент для состояния наведения */
+}
+
+/* Colision: улучшенный градиент для блоков */
+.menu-section.Colision li {
+    background: linear-gradient(to bottom, #1100ff, #0b009f); /* Градиент с плавным переходом */
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+.menu-section.Colision li:hover {
+    background: linear-gradient(to bottom, #0b009f, #08007a); /* Градиент для состояния наведения */
+}
+
+.menu-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-section li {
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+.menu-section li:last-child {
+    border-bottom: none;
+}
+
+.draggable-block {
+    width: 100px; /* Установите размер блока */
+    height: 100px; /* Установите размер блока */
+    background-color: lightblue; /* Цвет фона блока */
+    border: 1px solid #333; /* Обводка блока */
+    position: absolute; /* Необходимо для перетаскивания */
+    cursor: grab; /* Указатель при наведении */
+}
+
+/* Установите дополнительные стили для блока по желанию */
+
+/* Анимация для меню блоков */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Сдвиг вверх для эффекта появления */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards; /* Анимация появления */
+}
+
+#dropArea {
+    border: 1px solid #ccc;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 20px auto;
+}
+
+.draggable-block {
+    width: 100px;
+    height: 100px;
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    position: absolute;
+    cursor: pointer;
+}

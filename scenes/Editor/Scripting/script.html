@@ -2,30 +2,46 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Scripting</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Управление Скриптами</title>
     <link rel="stylesheet" href="script.css">
 </head>
 <body>
+
     <!-- Кнопка назад -->
     <a href="../Editor.html" class="back-button">
         <img src="../../../sprites/close.png" alt="Назад">
     </a>
     
+    <!-- Кнопки плюс и импорт -->
     <img src="../../../sprites/plus.png" class="plus-button" alt="Добавить">
-
     <img src="../../../sprites/import.png" class="import-button" alt="Импорт">
 
     <!-- Заголовок -->
     <div class="title">Мои Скрипты</div>
     
-    <!-- Контейнер для проектов с вертикальным скроллом -->
+    <!-- Контейнер для списка скриптов -->
     <div class="project-list" id="projectList"></div>
 
-    <!-- Модальное окно для добавления проекта -->
+    <!-- Модальное окно для добавления скрипта -->
     <div class="modal" id="projectModal">
         <div class="modal-content">
             <h2>Введите название скрипта</h2>
             <input type="text" id="projectName" placeholder="Название Скрипта">
+            <select id="languageSelect">
+                <option value="visual">Визуальное Программирование</option>
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="lua">Lua</option>
+                <option value="html">Html</option>
+                <option value="css">CSS</option>
+                <option value="js">JavaScript</option>
+                <option value="csharp">C#</option>
+                <option value="cpp">C++</option>
+                <option value="php">PHP</option>
+                <option value="slashscript">SlashScript</option>
+                <option value="nexlang">NexLang</option>
+            </select>
             <button id="submitProject">Готово</button>
         </div>
     </div>

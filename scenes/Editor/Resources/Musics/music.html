@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musics</title>
+    <link rel="stylesheet" href="music.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../Resources.html" class="back-button">
+        <img src="../../../../sprites/close.png" alt="Назад">
+    </a>
+    
+    <!-- Кнопка Добавить проект -->
+    <img src="../../../../sprites/plus.png" class="plus-button" alt="Добавить">
+
+    <!-- Заголовок -->
+    <div class="title">Музыка</div>
+
+    <!-- Контейнер для проектов с вертикальным скроллом -->
+    <div class="project-list" id="projectList"></div>
+
+    <!-- Модальное окно для добавления проекта -->
+    <div class="modal" id="projectModal">
+        <div class="modal-content">
+            <h2>Введите название звука</h2>
+            <input type="text" id="projectName" placeholder="Название звука">
+            <input type="file" id="musicFile" accept="audio/*" style="display: none;">
+            <button id="submitProject">Готово</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно для проигрывания музыки -->
+    <div class="music-modal" id="musicModal" style="display: none;">
+        <div class="music-modal-content">
+            <audio id="audioPlayer" controls></audio>
+            <button id="closeMusicModal">Закрыть</button>
+        </div>
+    </div>
+
+    <script src="music.js"></script>
+</body>
+</html>

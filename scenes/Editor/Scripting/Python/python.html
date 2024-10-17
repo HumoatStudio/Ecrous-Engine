@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Python IDE</title>
+    <link rel="stylesheet" href="python.css">
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.22.0/full/pyodide.js"></script> <!-- Подключение Pyodide -->
+</head>
+<body>
+    
+    <!-- Кнопка назад -->
+    <a href="../script.html" class="back-button">
+        <img src="../../../../sprites/close.png" alt="Назад">
+    </a>
+
+    <div class="title">Python IDE</div>
+
+    <!-- Текстовое поле для написания кода -->
+    <textarea id="codeEditor" class="code-editor" placeholder="Ваш код на Python"></textarea>
+    
+    <!-- Консоль вывода -->
+    <div class="console-title">Python</div>
+    <div class="console-output" id="output">console</div>
+    
+    <!-- Кнопка для запуска кода -->
+    <button id="runButton" class="run-button"></button>
+
+    <script src="python.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Настройки Проекта</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <!-- Кнопка назад -->
+    <a href="../Editor.html" class="back-button">
+        <img src="../../../sprites/close.png" alt="Назад">
+    </a>
+    
+    <!-- Заголовок -->
+    <div class="title">Настройки Проекта</div>
+    
+    <!-- Форма для настроек проекта -->
+    <div class="project-settings">
+        <label for="version-number">Номер версии:</label>
+        <input type="text" id="version-number" name="version-number" value="1.0">
+        
+        <label for="version-name">Название версии:</label>
+        <input type="text" id="version-name" name="version-name" value="1.0.0">
+        
+        <label for="package-name">Имя пакета:</label>
+        <input type="text" id="package-name" name="package-name" value="com.studio.game.">
+        
+        <label for="project-icon">Иконка проекта:</label>
+        <input type="file" id="project-icon" name="project-icon" accept="image/*" onchange="loadIcon(event)">
+        <div class="icon-preview">
+            <img id="icon-img" src="../../../../sprites/default_icon.png" alt="Иконка проекта">
+        </div>
+        
+        <label for="orientation">Ориентация проекта:</label>
+        <select id="orientation" name="orientation" onchange="updateImage()">
+            <option value="portrait">Портретная</option>
+            <option value="landscape">Альбомная</option>
+            <option value="all">Все ориентации</option>
+        </select>
+        
+        <!-- Картинка ориентации -->
+        <div class="orientation-image">
+            <img id="orientation-img" src="Icons/Portail.png" alt="Ориентация">
+        </div>
+
+        <!-- Кнопка для сохранения настроек -->
+        <button onclick="saveSettings()">Сохранить настройки</button>
+    </div>
+    
+    <script src="options.js"></script>
+</body>
+</html>
