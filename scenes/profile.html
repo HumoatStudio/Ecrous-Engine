@@ -16,6 +16,7 @@
     
     <div class="circle"></div>
     <div class="username" id="username"></div>
+    <span id="subscriptionStatus" class="subscription-status"></span> <!-- Галочка для подписки -->
 
     <!-- Кнопка смены имени -->
     <button class="change-name-button" id="changeNameButton">Сменить имя</button>
@@ -32,7 +33,9 @@
             <span class="close">&times;</span>
             <h2>Подписка за 129₽</h2>
             <p>Приобретите подписку для получения новых функций.</p>
-            <button class="purchase-button">Купить</button>
+            <input type="text" id="activationCode" placeholder="Введите код активации" class="activation-input"/>
+            <button class="purchase-button" id="activateButton">Купить</button>
+            <p id="activationMessage" style="color: red;"></p> <!-- Сообщение для отображения результата активации -->
         </div>
     </div>
     

@@ -6,10 +6,11 @@ const nameInput = document.querySelector('.name-input');
 const subscribeButton = document.querySelector('.subscribe-button');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.close');
+const activationMessage = document.getElementById('activationMessage'); // Сообщение о подписке
 
 // Функция для генерации случайного ника
 function generateRandomNickname() {
-    const nicknames = ['User123', 'GamerBoy', 'CoolCat', 'StarPlayer', 'EpicGamer'];
+    const nicknames = ['User123', '777', 'CoolCat', 'Guest228', 'Ecrous Engine'];
     return nicknames[Math.floor(Math.random() * nicknames.length)];
 }
 
@@ -118,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     currentNickname = loadUsername(); // Загрузим сохраненное или случайное имя
     usernameDisplay.innerText = currentNickname; // Отображаем имя
     loadCircleImage(); // Загрузка иконки
+    displaySubscriptionStatus(); // Проверяем и отображаем статус подписки
 });
 
 let coins = 0;
@@ -130,6 +132,8 @@ window.onload = function() {
         coins = parseInt(savedCoins);
         coinCounter.textContent = coins; // Обновление отображения монет
     }
+
+    checkSubscriptionValidity(); // Проверяем, не истекла ли подписка
 };
 
 // Функция для обновления монет (например, после применения промокода)
@@ -138,3 +142,62 @@ function updateCoinCounter(amount) {
     coinCounter.textContent = coins; // Обновление отображения монет
     localStorage.setItem("coins", coins); // Сохранение монет
 }
+
+const activateButton = document.getElementById('activateButton');
+const activationCodeInput = document.getElementById('activationCode');
+
+// Массив с кодами активации
+const activationCodes = [
+    "XXXX-DDDH-HDME-MODR",
+    "DTTP-HTSS-DSSS-BDR3",
+    // ...добавь сюда остальные коды...
+];
+
+// Функция для проверки валидности подписки
+function checkSubscriptionValidity() {
+    const subscriptionDate = localStorage.getItem('subscriptionDate');
+    if (subscriptionDate) {
+        const currentDate = new Date();
+        const savedDate = new Date(subscriptionDate);
+        const timeDiff = currentDate - savedDate;
+        const daysDiff = timeDiff / (1000 * 60 * 60 * 24);
+
+        // Если прошло более 30 дней с момента активации подписки, она истекает
+        if (daysDiff > 30) {
+            localStorage.removeItem('isSubscribed');
+            localStorage.removeItem('subscriptionDate');
+            activationMessage.textContent = "Подписка истекла."; // Отображаем сообщение об истечении подписки
+        }
+    }
+}
+
+// Функция для сохранения подписки и даты активации
+function saveSubscription() {
+    localStorage.setItem('isSubscribed', 'true');
+    localStorage.setItem('subscriptionDate', new Date().toISOString()); // Сохраняем дату активации
+}
+
+// Функция для отображения статуса подписки
+function displaySubscriptionStatus() {
+    if (localStorage.getItem('isSubscribed')) {
+        activationMessage.textContent = "Подписка активирована."; // Отображаем сообщение, если подписка активна
+    } else {
+        activationMessage.textContent = "Подписка не активирована."; // Сообщение, если подписка не активна
+    }
+}
+
+// Обработчик события на кнопку активации
+activateButton.addEventListener('click', () => {
+    const inputCode = activationCodeInput.value.trim(); // Получаем код из поля ввода
+
+    if (localStorage.getItem('isSubscribed')) {
+        activationMessage.textContent = "Подписка уже активирована!"; // Сообщение, если подписка уже активирована
+    } else if (activationCodes.includes(inputCode)) {
+        saveSubscription(); // Сохраняем подписку
+        activationMessage.textContent = "Подписка активирована!"; // Сообщение об успешной активации
+        activationCodeInput.value = ''; // Очищаем поле ввода
+        modal.style.display = 'none'; // Закрываем модальное окно
+    } else {
+        activationMessage.textContent = "Неверный код активации!"; // Сообщение об ошибке
+    }
+});

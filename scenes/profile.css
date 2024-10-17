@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('../fonts/ofont.ttf') format('truetype');
+    src: url('../fonts/font.otf') format('truetype');
 }
 
 * {
@@ -261,4 +261,21 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Лёгкая тень для эффекта */
     text-align: center; /* Центрирование текста */
     margin: 10px 0; /* Отступ сверху и снизу */
+}
+
+.activation-input {
+    margin: 10px 0; /* Отступы вокруг поля */
+    padding: 10px; /* Отступы внутри поля */
+    border: 1px solid #ccc; /* Граница */
+    border-radius: 5px; /* Закругленные углы */
+}
+
+.subscription-status {
+    font-size: 24px;
+    color: green; /* Цвет галочки */
+    position: absolute;
+    top: 250px;
+    left: 45%; /* Позиция галочки */
+    transform: translateX(-50%);
+    display: none; /* Скрыть по умолчанию */
 }

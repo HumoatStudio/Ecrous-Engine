@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'CustomFont';
-    src: url('../fonts/ofont.ttf') format('truetype');
+    src: url('../fonts/font.otf') format('truetype');
 }
 
 * {
@@ -21,7 +21,7 @@ body {
     justify-content: center; /* Центрирование по оси X */
     align-items: center; /* Центрирование по оси Y */
     flex-direction: column;
-    animation: fadeIn 0.5s ease; /* Добавлено общее анимирование фона */
+    animation: fadeIn 0.5s ease; /* Анимация для фона */
 }
 
 @keyframes fadeIn {
@@ -34,8 +34,8 @@ body {
 }
 
 .title {
-    position: absolute; /* Возвращено позиционирование */
-    top: 15px; /* Положение от верхней границы */
+    position: absolute;
+    top: 15px;
     text-align: center;
     width: 100%;
     font-size: 24px;
@@ -57,11 +57,11 @@ body {
 
 /* Стили для контейнера настроек */
 .settings-container {
-    margin-top: 100px; /* Отступ сверху для настройки */
+    margin-top: 100px;
     text-align: center;
     color: white;
-    opacity: 0; /* Скрыто по умолчанию для анимации */
-    animation: fadeInContainer 1s ease-in-out forwards; /* Добавлено анимирование контейнера */
+    opacity: 0;
+    animation: fadeInContainer 1s ease-in-out forwards;
 }
 
 @keyframes fadeInContainer {
@@ -78,8 +78,8 @@ body {
 /* Стили для отдельных настроек */
 .setting {
     margin: 15px 0;
-    opacity: 0; /* Скрыто по умолчанию для анимации */
-    animation: fadeInSetting 0.5s ease-in-out forwards; /* Добавлено анимирование для каждого элемента */
+    opacity: 0;
+    animation: fadeInSetting 0.5s ease-in-out forwards;
 }
 
 @keyframes fadeInSetting {
@@ -93,7 +93,7 @@ body {
     }
 }
 
-/* Стили для полей ввода и выпадающих списков */
+/* Поля ввода и выпадающие списки */
 input[type="text"],
 input[type="number"],
 select {
@@ -105,11 +105,11 @@ select {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 200px; /* Ширина полей ввода */
+    width: 200px;
 }
 
 input[type="number"] {
-    width: 100px; /* Ширина для ввода числа */
+    width: 100px;
 }
 
 input[type="text"]::placeholder {
@@ -122,24 +122,7 @@ input[type="number"]:hover {
     background-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Стиль для кнопки сохранить */
-button {
-    background-color: rgba(0, 150, 0, 0.8);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-}
-
-button:hover {
-    background-color: rgba(0, 150, 0, 1);
-}
-
-/* Стиль для кнопки назад */
+/* Кнопка назад */
 .back-button {
     position: absolute;
     top: 15px;
@@ -148,7 +131,7 @@ button:hover {
     height: 40px;
     cursor: pointer;
     transition: transform 0.3s ease;
-    z-index: 10; /* Убедитесь, что кнопка выше других элементов */
+    z-index: 10;
 }
 
 .back-button img {

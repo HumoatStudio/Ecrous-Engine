@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="thankyou.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Спасибо!</h1>
+        <p>Я хочу выразить свою благодарность следующим людям:</p>
+        <div class="scrollable-list">
+            <ul class="thank-you-list">
+                <li class="animate">Shodiyor - за помощь с кодом</li>
+                <li class="animate">Dragon Reis - за помощь с кодом</li>
+                <li class="animate">W1NDOW - за тестирование</li>
+                <li class="animate">Квистер - за тестирование</li>
+                <li class="animate">Sevasik - за тестирование</li>
+                <li class="animate">Простiй - за тестирование</li>
+                <li class="animate">[[RUSLAN'S ACCOUNT]] - за тестирование</li>
+                <li class="animate">Findergd2.2 - за тестирование</li>
+                <li class="animate">Dark Games - за тестирование</li>
+                <li class="animate">Mr. pro - за тестирование</li>
+                <li class="animate">Учёный Года - за тестирование</li>
+                <li class="animate">WhyLorn - за тестирование</li>
+                <li class="animate">Prodemo70 - за тестирование</li>
+                <li class="animate">Моим Подписчиков - за моральную поддержку</li>
+                <li class="animate">Квистер - за критику и отзывы</li>
+                <li class="animate">Mate - за дружбу</li>
+                <li class="animate">WesllemCG - за помощь с дизайном</li>
+                <li class="animate">Humbleoff - за помощь с дизайном</li>
+                <li class="animate">Totalitarian Utopia - за помощь с дизайном</li>
+            </ul>
+        </div>
+        <a href="../index.html" class="back-button">Вернуться на главную</a>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('.animate').each(function(index) {
+                $(this).delay(300 * index).fadeIn(1000); // Анимация появления элементов
+            });
+        });
+    </script>
+</body>
+</html>

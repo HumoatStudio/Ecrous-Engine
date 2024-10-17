@@ -1,0 +1,89 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #6c5ce7, #fdcb6e); /* Градиентный фон */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9); /* Прозрачный фон для контейнера */
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 500px; /* Максимальная ширина контейнера */
+    transition: transform 0.3s; /* Эффект при наведении */
+}
+
+.container:hover {
+    transform: scale(1.05); /* Увеличение контейнера при наведении */
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    color: #2d3436;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5); /* Тень для заголовка */
+}
+
+p {
+    color: #2d3436;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.scrollable-list {
+    max-height: 250px; /* Ограничение высоты прокручиваемого списка */
+    overflow-y: auto; /* Вертикальная прокрутка */
+    padding: 10px;
+    margin: 0 auto; /* Центрирование списка */
+    border: 1px solid #dfe6e9; /* Рамка вокруг списка */
+    border-radius: 10px; /* Скругленные углы */
+    background: rgba(255, 255, 255, 0.8); /* Прозрачный фон для списка */
+}
+
+.thank-you-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.thank-you-list li {
+    color: #2d3436;
+    margin: 15px 0;
+    font-size: 1.5rem;
+    display: none; /* Изначально скрыты для анимации */
+    transition: color 0.3s; /* Плавный переход для цвета */
+}
+
+.thank-you-list li:hover {
+    color: #6c5ce7; /* Цвет при наведении */
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 25px;
+    background-color: #00b894;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для кнопки */
+}
+
+.back-button:hover {
+    background-color: #00b894;
+    transform: scale(1.05);
+}
