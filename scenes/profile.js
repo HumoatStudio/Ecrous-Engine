@@ -146,24 +146,37 @@ function updateCoinCounter(amount) {
 const activateButton = document.getElementById('activateButton');
 const activationCodeInput = document.getElementById('activationCode');
 
-async function checkActivationCode(code) {
-    try {
-        const response = await fetch('/check_code.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ code })
-        });
-        const result = await response.json();
-        if (result.success) {
-            console.log('Код активации успешен');
-        } else {
-            console.log('Неверный код активации');
-        }
-    } catch (error) {
-        console.error('Ошибка при проверке кода активации:', error);
+// Функция для отправки кода активации на сервер
+function submitCode() {
+    const activationCode = document.getElementById('activationCode').value;
+
+    // Проверка на пустое значение
+    if (!activationCode) {
+        document.getElementById('result').innerText = 'Пожалуйста, введите код активации.';
+        return;
     }
+
+    // Отправка запроса на сервер
+    fetch('check_code.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ code: activationCode })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Обработка ответа от сервера
+        if (data.success) {
+            document.getElementById('result').innerText = data.message;
+        } else {
+            document.getElementById('result').innerText = data.message;
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        document.getElementById('result').innerText = 'Произошла ошибка при проверке кода.';
+    });
 }
 
 // Функция для проверки валидности подписки
