@@ -1,7 +1,7 @@
 /* Общие стили */
 @font-face {
     font-family: 'CustomFont';
-    src: url('fonts/ofont.ttf') format('truetype');
+    src: url('fonts/font.otf') format('truetype');
 }
 
 * {
@@ -63,8 +63,9 @@ body.light-theme .build-info {
     top: 100px;
     text-align: center;
     width: 100%;
-    font-size: 24px;
+    font-size: 30px;
     opacity: 0;
+    font-weight: bold;
     animation: fadeInTitle 2s ease-in-out forwards;
 }
 
@@ -106,15 +107,18 @@ body.light-theme .build-info {
     margin: 5px 0;
     border-radius: 15px;
     border: none;
-    font-size: 14px;
+    font-size: 20px;
+    font-weight: bold;
     text-align: center;
     cursor: pointer;
     opacity: 0.9;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .menu-button:hover {
     transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
 .build-info {
@@ -122,6 +126,7 @@ body.light-theme .build-info {
     bottom: 15px;
     right: 15px;
     font-size: 12px;
+    font-weight: bold;
     opacity: 0;
     animation: fadeInBuildInfo 4s ease-in-out forwards;
 }
@@ -164,12 +169,14 @@ body.light-theme .build-info {
 .social-links img {
     width: 40px;
     height: 40px;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    border-radius: 10px; /* Добавляет закругленность углов */
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
 }
 
 .social-links img:hover {
     transform: scale(1.1);
     filter: brightness(1.2);
+    opacity: 0.8; /* Добавляет эффект уменьшения непрозрачности */
 }
 
 @media (max-width: 400px) {
@@ -177,7 +184,6 @@ body.light-theme .build-info {
         width: 80%;
     }
 }
-
 
 .welcome-message {
     position: fixed;
@@ -208,9 +214,10 @@ body.light-theme .build-info {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 #welcome-content button:hover {
     background-color: #3700b3;
+    transform: scale(1.05); /* Добавляет эффект увеличения при наведении */
 }
