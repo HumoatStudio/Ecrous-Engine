@@ -132,11 +132,12 @@ function applyLanguage(language) {
 
 // Функция для применения темы
 function applyTheme(theme) {
-    document.body.style.backgroundImage = theme === 'dark' ? "url('../sprites/bg2.png')" : "url('../sprites/bg2White.png')";
-    document.body.style.backgroundSize = 'cover';
+    document.body.className = ''; // Сброс всех классов темы
+    document.body.classList.add(theme); // Добавляем нужный класс
 
     // Меняем цвет текста в зависимости от темы
-    document.querySelector('.settings-container').style.color = theme === 'dark' ? 'white' : 'black';
+    const color = theme === 'dark' || theme === 'contrast' || theme === 'neon' ? 'white' : 'black';
+    document.querySelector('.settings-container').style.color = color;
 }
 
 // Обработчик для смены темы

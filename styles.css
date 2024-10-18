@@ -18,12 +18,36 @@ body, html {
 body {
     display: flex;
     background-image: url('sprites/menu.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: white;
     justify-content: center;
     align-items: flex-end;
     flex-direction: column;
     background-size: cover;
     transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Десктопы и большие экраны */
+@media (min-width: 1200px) {
+    body {
+        background-image: url('../sprites/bg2-large.png');
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        background-image: url('../sprites/bg2-medium.png');
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 767px) {
+    body {
+        background-image: url('../sprites/bg2-small.png');
+    }
 }
 
 /* Стили для тёмной темы */
@@ -55,6 +79,34 @@ body.light-theme .menu-button {
 
 body.light-theme .build-info {
     color: black;
+}
+
+/* Неоновая тема */
+body.neon {
+    background-color: #0F0F0F;
+    color: #ffffff;
+    background-image: url('sprites/neon-bg.png');
+}
+
+/* Пастельная тема */
+body.pastel {
+    background-color: #FFF0F5;
+    color: #F08080;
+    background-image: url('sprites/pastel-bg.png');
+}
+
+/* Контрастная тема */
+body.contrast {
+    background-color: #000000;
+    color: #FFFFFF;
+    background-image: url('sprites/contrast-bg.png');
+}
+
+/* Космическая тема */
+body.cosmic {
+    background-color: #2B2D42;
+    color: #8D99AE;
+    background-image: url('sprites/cosmic-bg.png');
 }
 
 /* Общие стили для всех тем */

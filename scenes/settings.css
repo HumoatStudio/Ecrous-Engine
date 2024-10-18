@@ -17,11 +17,34 @@ body, html {
 body {
     background-image: url('../sprites/bg2.png');
     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center; /* Центрирование по оси X */
     align-items: center; /* Центрирование по оси Y */
     flex-direction: column;
     animation: fadeIn 0.5s ease; /* Анимация для фона */
+}
+
+/* Десктопы и большие экраны */
+@media (min-width: 1200px) {
+    body {
+        background-image: url('../sprites/bg2-large.png');
+    }
+}
+
+/* Планшеты */
+@media (min-width: 768px) and (max-width: 1199px) {
+    body {
+        background-image: url('../sprites/bg2-medium.png');
+    }
+}
+
+/* Мобильные устройства */
+@media (max-width: 767px) {
+    body {
+        background-image: url('../sprites/bg2-small.png');
+    }
 }
 
 @keyframes fadeIn {
@@ -141,4 +164,44 @@ input[type="number"]:hover {
 
 .back-button:hover {
     transform: scale(1.1);
+}
+
+/* Темная тема */
+body.dark {
+    background-image: url('../sprites/bg2.png');
+    color: white;
+}
+
+/* Светлая тема */
+body.light {
+    background-image: url('../sprites/bg2White.png');
+    color: black;
+}
+
+/* Неоновая тема */
+body.neon {
+    background-color: #0F0F0F;
+    color: #00FF41;
+    background-image: url('../sprites/neon-bg.png');
+}
+
+/* Пастельная тема */
+body.pastel {
+    background-color: #FFF0F5;
+    color: #F08080;
+    background-image: url('../sprites/pastel-bg.png');
+}
+
+/* Контрастная тема */
+body.contrast {
+    background-color: #000000;
+    color: #FFFFFF;
+    background-image: url('../sprites/contrast-bg.png');
+}
+
+/* Космическая тема */
+body.cosmic {
+    background-color: #2B2D42;
+    color: #8D99AE;
+    background-image: url('../sprites/cosmic-bg.png');
 }
