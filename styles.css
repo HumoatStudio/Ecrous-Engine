@@ -1,0 +1,2291 @@
+/* Первый шрифт */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('fonts/font.otf') format('opentype');
+}
+
+/* Второй шрифт */
+@font-face {
+    font-family: 'CustomFont2';
+    src: url('fonts/Khand-Bold.ttf') format('opentype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'CustomFont', sans-serif;
+}
+
+body, html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    background-color: #1A1A1A; /* Новый цвет фона */
+    color: white;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Стили для загрузки */
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  z-index: 9999;
+}
+
+.engine-image {
+  max-width: 200px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.loader-content {
+  margin-bottom: 20px;
+}
+
+.loader-content h1 {
+  font-size: 2.5em;
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.loader-content p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.title {
+    position: absolute;
+    top: 25px;
+    text-align: center;
+    width: 100%;
+    font-size: 75px;
+    opacity: 0;
+    font-weight: bold;
+    font-family: 'CustomFont2', sans-serif; /* Если шрифт установлен в системе */
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.center-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center-image {
+    width: 100px; /* Размер картинки */
+    height: auto;
+    margin-bottom: 20px; /* Отступ между картинкой и текстом */
+    opacity: 0; /* Начальная невидимость */
+    animation: fadeInImage 2s ease-in-out forwards; /* Анимация появления картинки */
+}
+
+.center-text {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    opacity: 0; /* Начальная невидимость */
+    animation: fadeInText 2s ease-in-out forwards; /* Анимация появления текста */
+    margin-top: 20px; /* Дополнительное смещение вниз */
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Картинка начинает чуть выше */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Картинка появляется в центре */
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Текст начинается чуть ниже */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Текст появляется в центре */
+    }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    animation: fadeInContainer 3s ease-in-out forwards;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация для соцсетей */
+.social-links {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: rgba(255, 255, 255, 1.0); /* Цвет текста кнопки */
+    background-color: rgba(37, 37, 37, 1.0); /* Цвет фона кнопки */
+    border-radius: 30px;
+    opacity: 0;
+    padding: 10px; /* Увеличиваем отступы внутри кнопки для большего фона */
+    animation: fadeInSocialLinks 4.5s ease-in-out forwards;
+}
+
+@keyframes fadeInSocialLinks {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-links a {
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px; /* Добавляет закругленность углов */
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    opacity: 0.8; /* Добавляет эффект уменьшения непрозрачности */
+    background-color: rgba(0, 255, 204, 1.0); /* Цвет фона при наведении */
+    border-color: rgba(255, 255, 255, 1.0); /* Цвет обводки при наведении */
+    transform: translateY(-2px); /* Немного поднимаем кнопку при наведении */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличиваем тень при наведении */
+}
+
+@media (max-width: 400px) {
+    .menu-button {
+        width: 80%;
+    }
+}
+
+/* Панель с кнопками, расположенная слева */
+.side-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px; /* Ширина панели */
+    height: 100%; /* Высота панели на весь экран */
+    background-color: #222222; /* Цвет фона панели */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирование кнопок по вертикали */
+    align-items: center; /* Выравнивание элементов по центру по оси X */
+    padding-top: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%); /* Скрывает панель по умолчанию */
+    animation: slideUp 0.5s ease-in-out forwards; /* Анимация подъема панели */
+}
+
+/* Анимация подъема панели */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Стили для текста с версией билда */
+.build-info {
+    position: absolute;
+    top: 20px; /* Располагаем текст вверху панели */
+    color: rgba(255, 255, 255, 0.7); /* Белый цвет с прозрачностью */
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'CustomFont2', sans-serif; /* Если шрифт установлен в системе */
+    width: 100%;
+}
+
+/* Кнопки внутри панели */
+.side-panel .menu-button {
+    width: 250px; /* Ширина кнопок */
+    height: 60px; /* Высота кнопок */
+    margin: 10px 0; /* Отступы между кнопками */
+    color: rgba(255, 255, 255, 1.0);
+    background-color: #303030;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 255, 204, 1.0);
+    font-size: 22px; /* Размер шрифта кнопок */
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.side-panel .menu-button:hover {
+    background-color: #1E1E1E; /* Slightly darker on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 400px) {
+    .side-panel {
+        width: 100%; /* При меньших разрешениях панель будет занимать всю ширину */
+    }
+
+    .side-panel .menu-button {
+        width: 80%; /* Кнопки будут занимать 80% от ширины экрана */
+    }
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрываем по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1; /* Помещаем поверх других элементов */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Добавляем полосу прокрутки, если содержимое слишком большое */
+    background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон */
+    font-family: 'CustomFont2', bold;
+}
+
+.modal-content {
+    background-color: #1F1F1F;
+    margin: 15% auto;
+    padding: 25px;
+    border: 5px solid black;
+    width: 80%;
+    height: 40vh;
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
+    border-radius: 15px;
+    display: flex;
+    position: relative;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.modal-menu {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Располагаем элементы в строку */
+    gap: 20px; /* Отступ между пунктами */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.thank-you {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px; /* Отступ под текстом */
+  text-align: center; /* Центрируем текст */
+}
+
+.modal-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal-menu li {
+  margin: 10px 0;
+}
+
+.modal-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.modal-menu a:hover {
+  color: #f39c12;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.block-with-text {
+    overflow: hidden;
+}
+
+/* Для больших экранов */
+@media (min-width: 768px) {
+  .modal-content {
+    width: 60%;
+  }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 767px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
+.news-content {
+  background-color: #1F1F1F;
+  margin: 15% auto;
+  padding: 25px;
+  border: 5px solid black;
+  width: 80%;
+  height: 40vh;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  position: relative;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.NewsText {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px; /* Отступ под текстом */
+  text-align: center; /* Центрируем текст */
+}
+
+.closeNews {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closeNews:hover,
+.closeNews:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.NewsImages {
+  display: flex;
+  justify-content: center; /* Центрируем изображения по горизонтали */
+  gap: 20px; /* Расстояние между изображениями */
+}
+
+.news-image {
+  width: 165px; /* Ширина изображения */
+  height: 240px; /* Высота изображения */
+  object-fit: cover; /* Сохраняем пропорции внутри заданных размеров */
+  border-radius: 10px; /* Закруглённые углы */
+}
+
+.news-image:hover {
+    transform: scale(1.1) rotate(3deg); /* Adds a slight rotation on hover */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.news-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.news-tab {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.news-tab:hover {
+    background-color: #d4d4d4;
+}
+
+.news-tab.active {
+    background-color: #0078d4;
+    color: white;
+}
+
+.news-section {
+    display: none;
+}
+
+.news-section.active {
+    display: block;
+}
+
+/* Settings */
+.settings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-settings {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-settings img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-settings:hover {
+    transform: scale(1.1);
+}
+
+.settings-content {
+    text-align: center;
+}
+
+.titleSettings {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.Settings-Build-info {
+    position: absolute;
+    bottom: 20px; /* Располагаем текст внизу панели */
+    right: 20px; /* Отступ от правого края */
+    color: rgba(255, 255, 255, 0.7); /* Белый цвет с прозрачностью */
+    font-size: 30px;
+    font-weight: normal;
+    font-weight: bold;
+    text-align: right; /* Выравнивание текста по правому краю */
+    font-family: 'CustomFont', sans-serif; /* Если шрифт установлен в системе */
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.settings-containerr {
+    margin-top: 100px;
+    text-align: center;
+    color: white;
+    opacity: 0;
+    animation: fadeInContainer 1s ease-in-out forwards;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px;
+    margin: 10px;
+}
+
+input[type="number"] {
+    width: 100px;
+}
+
+input[type="text"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+select:hover,
+input[type="text"]:hover,
+input[type="number"]:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Community */
+.Community-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Community {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Community img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Community:hover {
+    transform: scale(1.1);
+}
+
+.Community-content {
+    text-align: center;
+}
+
+.titleCommunity {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.profileIcon {
+    width: 75px;
+    height: 75px;
+    background-color: #424242;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    top: 15px; /* Убираем отступ сверху */
+    right: 15px; /* Располагаем элемент у правого края */
+    transform: translateX(50%); /* Сдвигаем элемент, чтобы он был центрирован относительно правого края */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInCircle {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.Project1 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 150px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url("sprites/Icons/Joystick Standart.png"); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project2 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 475px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url('sprites/Icons/Dialogue System.png'); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project3 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 800px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url('sprites/Icons/Standart Player.png'); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project4 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project5 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project6 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 150px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project7 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 475px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project8 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 800px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project9 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project10 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project11 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 150px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project12 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 475px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project13 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 800px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project14 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project15 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInProj {
+    0% {
+        transform: translateX(-50%) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.Project1 {
+    animation-delay: 0s; /* Появляется сразу */
+}
+
+.Project2 {
+    animation-delay: 0.2s; /* Появляется через 0.2 секунды */
+}
+
+.Project3 {
+    animation-delay: 0.4s;
+}
+
+.Project4 {
+    animation-delay: 0.6s;
+}
+
+.Project5 {
+    animation-delay: 0.8s;
+}
+
+.Project6 {
+    animation-delay: 1s;
+}
+
+.Project7 {
+    animation-delay: 1.2s;
+}
+
+.Project8 {
+    animation-delay: 1.4s;
+}
+
+.Project9 {
+    animation-delay: 1.6s;
+}
+
+.Project10 {
+    animation-delay: 1.8s;
+}
+
+.Project11 {
+    animation-delay: 2s;
+}
+
+.Project12 {
+    animation-delay: 2.2s;
+}
+
+.Project13 {
+    animation-delay: 2.4s;
+}
+
+.Project14 {
+    animation-delay: 2.6s;
+}
+
+.Project15 {
+    animation-delay: 2.8s; /* Последний элемент появляется позже всех */
+}
+
+.Search input {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%) scale(0); /* Исходное состояние */
+    width: 25%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Скрыто изначально */
+    animation: appear 0.8s ease-out forwards; /* Анимация появления */
+}
+
+@keyframes appear {
+    0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+        50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* CommunityProj1 */
+.CommunityProj1-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-CommunityProj1 {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-CommunityProj1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-CommunityProj1:hover {
+    transform: scale(1.1);
+}
+
+.openCommunityProj1-content {
+    text-align: center;
+}
+
+.titleCommunityProj1 {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.Joystick-Standart {
+    width: 400px;
+    height: 250px;
+    background-color: #424242;
+    position: absolute; /* Элемент позиционируется относительно окна браузера */
+    cursor: pointer;
+    top: 250px; /* Расстояние от верхнего края */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем элемент влево на половину ширины */
+    opacity: 0;
+    animation: fadeInJoystick-Standart 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url("sprites/Icons/Joystick Standart.png"); /* Путь к изображению */
+    background-size: cover; /* Изображение полностью покрывает элемент */
+    background-position: center; /* Центрируем изображение */
+}
+
+@keyframes fadeInJoystick-Standart {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* Лёгкий дополнительный вертикальный сдвиг */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.Joystick-Standart-Size {
+    position: absolute;
+    top: 425px;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInCircle 2.5s ease-in-out forwards;
+}
+
+.Joystick-Standart-Text {
+    position: absolute;
+    top: 510px;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInCircle 2.5s ease-in-out forwards;
+}
+
+.Joystick-Standart-Download {
+    width: 225px;
+    height: 50px;
+    background-color: #2B2B2B;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 500px;
+    left: 45%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+
+/* Profile */
+
+.Profile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Profile {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Profile:hover {
+    transform: scale(1.1);
+}
+
+.Profile-content {
+    text-align: center;
+}
+
+.titleProfile {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Стиль для круга */
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    top: 75px;
+    left: 47%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInCircle {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для имени пользователя */
+.username {
+    position: absolute;
+    top: 250px;
+    left: 48%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInUsername 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUsername {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* MyProjects */
+
+.MyProjects-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-MyProjects {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-MyProjects img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-MyProjects:hover {
+    transform: scale(1.1);
+}
+
+.MyProjects-content {
+    text-align: center;
+}
+
+.titleMyProjects {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.plus-button {
+    position: absolute;
+    bottom: 15px;
+    left: 40%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+.import-button {
+    position: absolute;
+    bottom: 15px;
+    left: 55%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1.5s;
+}
+
+.project-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 5;
+    background-color: #1A1A1A;
+    border-radius: 8px;
+    opacity: 0;
+    animation: fadeInProjectList 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInProjectList {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Оставляем место для 6 кнопок и запрещаем увеличиваться */
+.project-list {
+    height: 600px; /* Фиксируем высоту */
+    max-height: 600px;
+    overflow-y: auto; /* Прокрутка при превышении 6 кнопок */
+}
+
+.project-container {
+    display: flex; /* Чтобы кнопки располагались в строку */
+    justify-content: flex-start; /* Выравниваем элементы по левому краю */
+    align-items: center; /* Выравниваем элементы по центру */
+    padding: 5px; /* Отступы */
+    gap: 10px; /* Уменьшаем расстояние между элементами */
+}
+
+.project-button {
+    width: 250px;  /* Размер кнопки */
+    height: 60px;  /* Высота кнопки */
+    background: linear-gradient(45deg, #6a0dad, #8a2be2);
+    color: white;
+    font-size: 14px;  /* Уменьшили текст */
+    text-align: center;
+    line-height: 60px;  /* Соответственно высоте кнопки */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+@keyframes fadeInProjectButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-button:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопка меню */
+.menu-button {
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: white; /* Цвет текста */
+    font-size: 20px; /* Размер текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+/* Анимация появления модального окна */
+.modals {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+    opacity: 0;
+    animation: fadeInModal 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInModal {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.modals-content {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    color: black; /* Устанавливаем цвет текста чёрным */
+}
+
+.modals-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modals-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modals-content button:hover {
+    background-color: #218838;
+}
+
+.project-menu {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 30;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: slideInProjectMenu 0.3s ease-in-out forwards;
+    gap: 5px;  /* Уменьшаем расстояние между точками */
+    align-items: center;
+}
+
+@keyframes slideInProjectMenu {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.menu-option {
+    padding: 10px; /* Отступы */
+    border: none; /* Без границы */
+    background: none; /* Без фона */
+    color: #333; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.menu-option:hover {
+    background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+
+/* Стили для иконки проекта */
+.project-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Уменьшаем отступы между иконкой и кнопкой */
+}
+
+.project-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.project-menu .menu-option {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+.project-menu .menu-option:hover {
+    background: #f0f0f0;
+}
+
+.modals-content h1,
+.modals-content p {
+    color: black;
+}
+
+.modals-content input,
+.modals-content select {
+    color: black; /* Устанавливаем цвет текста чёрным */
+    background-color: white; /* Убедимся, что фон остаётся белым */
+}
+
+.modals-content {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    color: black; /* Общий цвет текста внутри модального окна */
+}
+
+.modals-content input,
+.modals-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black; /* Цвет текста в полях */
+    background-color: white; /* Цвет фона в полях */
+}
+
+.modals-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modals-content button:hover {
+    background-color: #218838;
+}
+
+/* Editor */
+
+.Editor-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Editor {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Editor img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Editor:hover {
+    transform: scale(1.1);
+}
+
+.Editor-content {
+    text-align: center;
+}
+
+.titleEditor {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Анимация для плавного появления объектов */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.button {
+    width: 225px;
+    height: 50px;
+    background-color: #252525;
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeIn 1s ease forwards; /* Применение анимации появления */
+    
+    display: flex; /* Flexbox для выравнивания содержимого */
+    justify-content: center; /* Центрирование текста и иконки по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+.button1 {
+    top: 75px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.3s; /* Задержка появления второй кнопки */
+}
+
+.button2 {
+    top: 145px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.4s; /* Задержка появления второй кнопки */
+}
+
+.button3 {
+    top: 215px;
+    animation-delay: 0.5s; /* Задержка появления третьей кнопки */
+}
+
+.button4 {
+    top: 285px;
+    animation-delay: 0.6s; /* Задержка появления четвёртой кнопки */
+}
+
+.button5 {
+    top: 355px;
+    animation-delay: 0.7s; /* Задержка появления пятой кнопки */
+}
+
+.button6 {
+    top: 425px;
+    animation-delay: 0.8s; /* Задержка появления шестой кнопки */
+}
+
+.run {
+    width: 125px;
+    position: absolute;
+    bottom: 25px;
+    opacity: 0; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeIn 1s ease forwards; /* Применение анимации появления */
+    animation-delay: 0.9s; /* Задержка появления кнопки "run" */
+}
+
+.run img {
+    width: 100%;
+    height: 100%;
+}
+
+.text {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #303030;
+    transition: 0.3s;;
+}
+
+.button-icon {
+    width: 24px;  /* Размер иконки */
+    height: 24px;
+    margin-right: 10px;  /* Отступ справа, чтобы текст не прилипал к иконке */
+    vertical-align: middle;
+}
+
+.text {
+    display: flex;
+    align-items: center;  /* Центрирование текста и иконки по вертикали */
+    font-size: 16px;
+    color: white;
+    text-decoration: none;
+}
+
+.button-text {
+    color: white; /* Для дополнительной уверенности, чтобы цвет текста был белым */
+}
+
+/* Scriptings */
+
+.Scriptings-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Scriptings {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Scriptings img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Scriptings:hover {
+    transform: scale(1.1);
+}
+
+.Scriptings-content {
+    text-align: center;
+}
+
+.titleScriptings {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Плавное появление кнопок */
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.plus-button-script {
+    position: absolute;
+    bottom: 15px;
+    left: 40%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.import-button-script {
+    position: absolute;
+    bottom: 15px;
+    left: 55%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1.5s;
+    background-color: #008CBA; /* Голубой цвет */
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 50px;
+}
+
+/* Стили для списка скриптов */
+.script-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 5;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Контейнеры для каждого скрипта */
+.script-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+/* Кнопка скрипта */
+.script-button {
+    width: 275px;
+    height: 60px;
+    background: linear-gradient(45deg, #6a0dad, #8a2be2);
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 60px;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.script-button:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопка меню для каждого скрипта */
+.menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Модальное окно для создания нового скрипта */
+.modalscript {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modalscript-content {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    color: black; /* Добавлено: Текст по умолчанию черный */
+}
+
+.modalscript-content input,
+.modalscript-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    color: black; /* Добавлено: Текст черный */
+}
+
+.modalscript-content select option {
+    color: black; /* Добавлено: Текст черный */
+}
+
+.modalscript-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modalscript-content button:hover {
+    background-color: #218838;
+}
+
+.script-menu {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.menu-option {
+    padding: 10px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+}
+
+.menu-option:hover {
+    background-color: #f0f0f0;
+}
+
+.modalscript-content h2,
+.modalscript-content h1,
+.modalscript-content p {
+    color: black; /* Добавлено: Текст черный */
+}
+
+/* Resources */
+
+.Resources-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Resources {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Resources img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Resources:hover {
+    transform: scale(1.1);
+}
+
+.Resources-content {
+    text-align: center;
+}
+
+.titleResources {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.buttonResources {
+    width: 225px;
+    height: 50px;
+    background-color: #252525;
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0; /* Начальное состояние с нулевой прозрачностью */
+    animation: fadeIn 1s ease forwards; /* Применение анимации появления */
+    
+    display: flex; /* Flexbox для выравнивания содержимого */
+    justify-content: center; /* Центрирование текста и иконки по горизонтали */
+    align-items: center; /* Центрирование по вертикали */
+}
+
+.button1Resources {
+    top: 75px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.3s; /* Задержка появления второй кнопки */
+}
+
+.button2Resources {
+    top: 145px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.4s; /* Задержка появления второй кнопки */
+}
+
+.button3Resources {
+    top: 215px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.5s; /* Задержка появления третьей кнопки */
+}
+
+.button4Resources {
+    top: 285px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.6s; /* Задержка появления четвёртой кнопки */
+}
+
+.button5Resources {
+    top: 355px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.7s; /* Задержка появления пятой кнопки */
+}
+
+.button6Resources {
+    top: 425px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.8s; /* Задержка появления шестой кнопки */
+}
+
+.button7Resources {
+    top: 500px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 0.9s; /* Задержка появления шестой кнопки */
+}
+
+.button8Resources {
+    top: 575px;
+    color: white; /* Устанавливаем цвет текста белым */
+    border: none;
+    font-size: 16px; /* Устанавливаем размер шрифта */
+    animation-delay: 1.0s; /* Задержка появления шестой кнопки */
+}
+
+.text {
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+}
+
+/* VisualScript */
+
+.VisualScript-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-VisualScript {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-VisualScript img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-VisualScript:hover {
+    transform: scale(1.1);
+}
+
+.VisualScript-content {
+    text-align: center;
+}
+
+.titleVisualScript {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Кнопка с анимацией появления */
+.runVSScript {
+    width: 125px;
+    position: fixed;  /* Фиксированное позиционирование */
+    bottom: 15px;
+    right: 15px; /* Отступ от правого края */
+    opacity: 0; /* Начальная прозрачность */
+    animation: fadeInVSRUN 1s ease forwards; /* Применение анимации появления */
+    animation-delay: 0.9s; /* Задержка появления кнопки "runVSScript" */
+}
+
+/* Анимация плавного появления */
+@keyframes fadeInVSRUN {
+    0% {
+        opacity: 0; /* Начальная прозрачность */
+        transform: translateY(10px); /* Начальное смещение вниз */
+    }
+    100% {
+        opacity: 1; /* Конечная прозрачность */
+        transform: translateY(0); /* Возвращаем в исходное положение */
+    }
+}
+
+.runVSScript img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px; /* Скругление углов изображения */
+}
+
+/* Панель с кнопками, расположенная слева */
+.side-panel-VisualScript {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 375px; /* Ширина панели */
+    height: 100%; /* Высота панели на весь экран */
+    background-color: #222222; /* Цвет фона панели */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Начало по вертикали */
+    align-items: center; /* Выравнивание элементов по центру по оси X */
+    padding-top: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%); /* Скрывает панель по умолчанию */
+    animation: slideUp 0.5s ease-in-out forwards; /* Анимация подъема панели */
+    overflow-y: auto; /* Включение вертикальной прокрутки */
+    max-height: 100%; /* Ограничение высоты панели */
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.VisualScriptContainer {
+    position: absolute;
+    top: 50%; /* Центровка по вертикали */
+    left: 50px; /* Отступ от левого края экрана */
+    transform: translateY(-50%); /* Смещение вверх на половину высоты контейнера для полной центровки */
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Отступы между разделами */
+    max-height: calc(100% - 100px); /* Ограничение высоты для прокрутки */
+    overflow-y: auto; /* Включение прокрутки, если контент не помещается */
+}
+
+.VisualScriptSection {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Отступы между кнопками внутри раздела */
+    flex-shrink: 0; /* Не сжимать разделы при переполнении */
+}
+
+.VisualScriptSectionTitle {
+    font-size: 24px;
+    color: white; /* Белый цвет текста */
+    margin: 0 0 10px 0;
+    word-wrap: break-word; /* Автоматический перенос длинных слов */
+}
+
+.VisualScriptButton {
+    width: 300px; /* Ширина кнопки */
+    height: 70px; /* Высота кнопки */
+    border: none;
+    border-radius: 10px;
+    font-size: 18px; /* Крупный текст */
+    cursor: pointer;
+    text-align: left; /* Текст выравнивается по левому краю */
+    padding-left: 15px; /* Отступ текста внутри кнопки */
+}
+
+.VisualScriptOrange {
+    background: linear-gradient(to bottom, #ff9900, #cc6600);
+    color: white;
+}
+
+.VisualScriptYellow {
+    background: linear-gradient(to bottom, #ffcc00, #cc9900);
+    color: white;
+}
+
+.VisualScriptPurple {
+    background: linear-gradient(to bottom, #9933cc, #660099);
+    color: white;
+}
