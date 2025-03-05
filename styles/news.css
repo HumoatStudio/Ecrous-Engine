@@ -1,0 +1,188 @@
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрываем по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 1; /* Помещаем поверх других элементов */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Добавляем полосу прокрутки, если содержимое слишком большое */
+    background-color: rgba(0,0,0,0.4); /* Полупрозрачный фон */
+    font-family: 'CustomFont2', bold;
+}
+
+.modal-content {
+    background-color: #1F1F1F;
+    margin: 15% auto;
+    padding: 25px;
+    border: 5px solid black;
+    width: 80%;
+    height: 40vh;
+    overflow-y: auto; /* Добавляем вертикальную прокрутку */
+    border-radius: 15px;
+    display: flex;
+    position: relative;
+    flex-direction: column; /* Размещаем элементы в колонку */
+    align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.modal-menu {
+    list-style: none; /* Убираем маркеры списка */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Располагаем элементы в строку */
+    gap: 20px; /* Отступ между пунктами */
+    margin-top: 20px; /* Отступ сверху */
+}
+
+.thank-you {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px; /* Отступ под текстом */
+  text-align: center; /* Центрируем текст */
+}
+
+.modal-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.modal-menu li {
+  margin: 10px 0;
+}
+
+.modal-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.modal-menu a:hover {
+  color: #f39c12;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.block-with-text {
+    overflow: hidden;
+}
+
+/* Для больших экранов */
+@media (min-width: 768px) {
+  .modal-content {
+    width: 60%;
+  }
+}
+
+/* Для маленьких экранов */
+@media (max-width: 767px) {
+  .modal-content {
+    width: 90%;
+  }
+}
+
+.news-content {
+  background-color: #1F1F1F;
+  margin: 15% auto;
+  padding: 25px;
+  border: 5px solid black;
+  width: 80%;
+  height: 40vh;
+  overflow: hidden;
+  border-radius: 15px;
+  display: flex;
+  position: relative;
+  flex-direction: column; /* Размещаем элементы в колонку */
+  align-items: center; /* Выравниваем элементы по вертикали */
+}
+
+.NewsText {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 20px; /* Отступ под текстом */
+  text-align: center; /* Центрируем текст */
+}
+
+.closeNews {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #aaa;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.closeNews:hover,
+.closeNews:focus {
+  color: black;
+  text-decoration: none;
+}
+
+.NewsImages {
+  display: flex;
+  justify-content: center; /* Центрируем изображения по горизонтали */
+  gap: 20px; /* Расстояние между изображениями */
+}
+
+.news-image {
+  width: 165px; /* Ширина изображения */
+  height: 240px; /* Высота изображения */
+  object-fit: cover; /* Сохраняем пропорции внутри заданных размеров */
+  border-radius: 10px; /* Закруглённые углы */
+}
+
+.news-image:hover {
+    transform: scale(1.1) rotate(3deg); /* Adds a slight rotation on hover */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.news-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.news-tab {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.news-tab:hover {
+    background-color: #d4d4d4;
+}
+
+.news-tab.active {
+    background-color: #0078d4;
+    color: white;
+}
+
+.news-section {
+    display: none;
+}
+
+.news-section.active {
+    display: block;
+}

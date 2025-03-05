@@ -1,0 +1,114 @@
+/* CommunityProj1 */
+.CommunityProj1-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-CommunityProj1 {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-CommunityProj1 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-CommunityProj1:hover {
+    transform: scale(1.1);
+}
+
+.openCommunityProj1-content {
+    text-align: center;
+}
+
+.titleCommunityProj1 {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.Joystick-Standart {
+    width: 400px;
+    height: 250px;
+    background-color: #424242;
+    position: absolute; /* Элемент позиционируется относительно окна браузера */
+    cursor: pointer;
+    top: 250px; /* Расстояние от верхнего края */
+    left: 50%; /* Центрирование по горизонтали */
+    transform: translateX(-50%); /* Сдвигаем элемент влево на половину ширины */
+    opacity: 0;
+    animation: fadeInJoystick-Standart 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url("../../../sprites/Icons/Joystick Standart.png"); /* Путь к изображению */
+    background-size: cover; /* Изображение полностью покрывает элемент */
+    background-position: center; /* Центрируем изображение */
+}
+
+@keyframes fadeInJoystick-Standart {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -60%); /* Лёгкий дополнительный вертикальный сдвиг */
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.Joystick-Standart-Size {
+    position: absolute;
+    top: 425px;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInCircle 2.5s ease-in-out forwards;
+}
+
+.Joystick-Standart-Text {
+    position: absolute;
+    top: 510px;
+    left: 48%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInCircle 2.5s ease-in-out forwards;
+}
+
+.Joystick-Standart-Download {
+    width: 225px;
+    height: 50px;
+    background-color: #2B2B2B;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 500px;
+    left: 45%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}

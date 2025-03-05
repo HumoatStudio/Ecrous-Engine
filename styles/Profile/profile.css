@@ -1,0 +1,148 @@
+/* Profile */
+
+.Profile-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Profile {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Profile img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Profile:hover {
+    transform: scale(1.1);
+}
+
+.Profile-content {
+    text-align: center;
+}
+
+.titleProfile {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Стиль для круга */
+.circle {
+    width: 150px;
+    height: 150px;
+    background-color: #ff6b6b;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    top: 75px;
+    left: 47%;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInCircle {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Стиль для имени пользователя */
+.username {
+    position: absolute;
+    top: 250px;
+    left: 48%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInUsername 2s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+@keyframes fadeInUsername {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Счётчик и монеты */
+.EcrCoin {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.EcrCoin img {
+    width: 50px;
+    height: 75px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 10px;
+}
+
+.coin-counter {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+#timeSpent {
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    color: white;
+    position: fixed; /* Фиксированное позиционирование */
+    bottom: 0; /* Прижимаем к нижней части экрана */
+    left: 50%; /* Центрируем по горизонтали */
+    transform: translateX(-50%); /* Смещаем на половину ширины элемента */
+    background-color: rgba(0, 0, 0, 0.7); /* Фон для лучшей читаемости */
+    padding: 10px 20px; /* Отступы */
+    border-radius: 10px; /* Скруглённые углы */
+    z-index: 1000; /* Убедимся, что элемент находится поверх других */
+    margin-bottom: 20px; /* Отступ снизу */
+}

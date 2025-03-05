@@ -1,0 +1,96 @@
+/* Library */
+
+.Library-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Library {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Library img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Library:hover {
+    transform: scale(1.1);
+}
+
+.Library-content {
+    text-align: center;
+}
+
+.titleLibrary {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.Pictures {
+    position: absolute;
+    top: 75px;
+    text-align: center;
+    width: 100%;
+    font-size: 24px;
+    color: white;
+    opacity: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.Pic {
+    padding: 25px;
+    justify-content: center; 
+    align-items: center;
+    width: 325px;
+    height: 225px;
+    border-radius: 5%;
+}
+
+.box_pic {
+    align-self: center;
+    width: 80%;
+    height: 60%;
+    top: 150px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInPic1 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInPic1 {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

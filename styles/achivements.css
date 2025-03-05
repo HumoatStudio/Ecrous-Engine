@@ -1,0 +1,129 @@
+/* Achivements */
+
+.Achivements-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Achivements {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Achivements img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Achivements:hover {
+    transform: scale(1.1);
+}
+
+.Achivements-content {
+    text-align: center;
+}
+
+.titleAchivements {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+/* Ачивки */
+
+/* Стили для уведомления */
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.notification.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.notification.visible {
+    opacity: 1;
+}
+
+/* Стили для кнопки сброса */
+#reset-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff5252;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#reset-button:hover {
+    background-color: #e04040;
+}
+
+/* Ачивка 1 */
+
+.achievement {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.achievement.unlocked {
+    background-color: #e0f7fa;
+    border-color: #80deea;
+}
+
+.achievement.unlocked .status {
+    color: #009688;
+}
+
+.status {
+    color: #ff5252;
+    font-weight: bold;
+}
+
+.Ach1title {
+    margin-bottom: 20px;
+    color: #1A1A1A;
+}
+
+/* Ачивка 2 */

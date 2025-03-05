@@ -1,0 +1,290 @@
+/* Общий стиль для загрузочного экрана */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #A6A5A2, #5C5B58); /* Градиентный фон */
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite, changeBackground 10s infinite; /* Анимация фона */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 1s ease-out;
+    font-family: 'CustomFont2', sans-serif; /* Подключаем шрифт */
+    overflow: hidden; /* Чтобы скрыть частицы */
+}
+
+/* Скрытый загрузочный экран */
+.loader.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Контейнер содержимого */
+.loader-content {
+    text-align: center;
+    color: #fff;
+    animation: fadeInContent 2s ease-out;
+}
+
+/* Логотип */
+.engine-image {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    animation: rotateLogo 3s infinite ease-in-out, fadeIn 2s, logoBlink 1s infinite alternate;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Тень для изображения */
+}
+
+/* Заголовок */
+.loader-content h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Светящийся текст */
+    animation: textGlow 2s ease-in-out infinite, fadeIn 2s 0.5s forwards, textMove 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* Подзаголовок */
+.loader-content p {
+    font-size: 1.2em;
+    color: #e0e0e0;
+    animation: fadeIn 2s 1s forwards, textGlow 3s ease-in-out infinite, textMove 3s ease-in-out infinite;
+    opacity: 0;
+}
+
+/* Спиннер */
+.spinner {
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    border-top: 6px solid #fff;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite, pulse 1.5s infinite, growSpinner 1s ease-in-out forwards;
+    margin-top: 20px;
+}
+
+/* Звезды (добавлены для фона) */
+.stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png'); /* Текстура звезд */
+    animation: moveStars 10s linear infinite;
+    z-index: -1;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInContent {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes rotateLogo {
+    0% {
+        transform: perspective(500px) rotateY(0deg);
+    }
+    50% {
+        transform: perspective(500px) rotateY(180deg);
+    }
+    100% {
+        transform: perspective(500px) rotateY(360deg);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Анимация смены фона */
+@keyframes changeBackground {
+    0% {
+        background: linear-gradient(135deg, #A6A5A2, #5C5B58);
+    }
+    50% {
+        background: linear-gradient(135deg, #FFA500, #ff6347); /* Плавное изменение цвета */
+    }
+    100% {
+        background: linear-gradient(135deg, #A6A5A2, #5C5B58);
+    }
+}
+
+/* Движение звезд на фоне */
+@keyframes moveStars {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes logoBlink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes textGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.7);
+    }
+    100% {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    }
+}
+
+@keyframes textMove {
+    0% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes growSpinner {
+    0% {
+        width: 50px;
+        height: 50px;
+    }
+    100% {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Анимация исчезновения загрузочного экрана */
+@keyframes fadeOutLoader {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Для телефонов (ширина экрана до 600px) */
+@media screen and (max-width: 600px) {
+    .loader-content h1 {
+        font-size: 1.8em; /* Уменьшаем размер заголовка */
+    }
+
+    .loader-content p {
+        font-size: 1em; /* Уменьшаем размер подзаголовка */
+    }
+
+    .engine-image {
+        max-width: 120px; /* Уменьшаем логотип */
+    }
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Для планшетов (ширина экрана до 768px) */
+@media screen and (max-width: 768px) {
+    .loader-content h1 {
+        font-size: 2.2em; /* Уменьшаем размер заголовка */
+    }
+
+    .loader-content p {
+        font-size: 1.1em; /* Уменьшаем размер подзаголовка */
+    }
+
+    .engine-image {
+        max-width: 130px; /* Уменьшаем логотип */
+    }
+
+    .spinner {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Для ноутбуков (ширина экрана до 1024px) */
+@media screen and (max-width: 1024px) {
+    .loader-content h1 {
+        font-size: 2.5em; /* Стандартный размер заголовка */
+    }
+
+    .loader-content p {
+        font-size: 1.2em; /* Стандартный размер подзаголовка */
+    }
+
+    .engine-image {
+        max-width: 140px; /* Логотип для ноутбуков */
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+    }
+}

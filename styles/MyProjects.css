@@ -1,0 +1,359 @@
+/* MyProjects */
+
+.MyProjects-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-MyProjects {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-MyProjects img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-MyProjects:hover {
+    transform: scale(1.1);
+}
+
+.MyProjects-content {
+    text-align: center;
+}
+
+.titleMyProjects {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+@keyframes fadeInButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.plus-button {
+    position: absolute;
+    bottom: 15px;
+    left: 40%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1s;
+}
+
+.import-button {
+    position: absolute;
+    bottom: 15px;
+    left: 55%;
+    width: 125px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInButton 1.5s ease-in-out forwards;
+    animation-delay: 1.5s;
+}
+
+.project-list {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 100px);
+    max-height: 600px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 5;
+    background-color: #1A1A1A;
+    border-radius: 8px;
+    opacity: 0;
+    animation: fadeInProjectList 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeInProjectList {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Оставляем место для 6 кнопок и запрещаем увеличиваться */
+.project-list {
+    height: 600px; /* Фиксируем высоту */
+    max-height: 600px;
+    overflow-y: auto; /* Прокрутка при превышении 6 кнопок */
+}
+
+.project-container {
+    display: flex; /* Чтобы кнопки располагались в строку */
+    justify-content: flex-start; /* Выравниваем элементы по левому краю */
+    align-items: center; /* Выравниваем элементы по центру */
+    padding: 5px; /* Отступы */
+    gap: 10px; /* Уменьшаем расстояние между элементами */
+}
+
+.project-button {
+    width: 250px;  /* Размер кнопки */
+    height: 60px;  /* Высота кнопки */
+    background: linear-gradient(45deg, #6a0dad, #8a2be2);
+    color: white;
+    font-size: 14px;  /* Уменьшили текст */
+    text-align: center;
+    line-height: 60px;  /* Соответственно высоте кнопки */
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+@keyframes fadeInProjectButton {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-button:hover {
+    transform: scale(1.05);
+}
+
+/* Кнопка меню */
+.menu-button {
+    background: none; /* Без фона */
+    border: none; /* Без границы */
+    color: white; /* Цвет текста */
+    font-size: 20px; /* Размер текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+/* Общий фон модального окна */
+.modals {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный затемнённый фон */
+    justify-content: center; /* Горизонтальное выравнивание по центру */
+    align-items: center; /* Вертикальное выравнивание по центру */
+    z-index: 1000; /* Поверх всех остальных элементов */
+}
+
+/* Контейнер модального окна */
+.modals-content {
+    background-color: white;
+    padding: 20px 30px; /* Увеличенные отступы */
+    text-align: center;
+    border-radius: 12px; /* Округлённые углы */
+    width: 350px; /* Ширина окна */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Тень */
+    color: black; /* Цвет текста */
+    animation: fadeIn 0.3s ease; /* Анимация появления */
+}
+
+/* Поля ввода */
+.modals-content input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box; /* Учитываем padding */
+}
+
+.modals-content input:focus {
+    outline: none;
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+/* Кнопки */
+.modals-content button {
+    padding: 12px 25px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.modals-content button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.project-menu {
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 30;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    animation: slideInProjectMenu 0.3s ease-in-out forwards;
+    gap: 5px;  /* Уменьшаем расстояние между точками */
+    align-items: center;
+}
+
+@keyframes slideInProjectMenu {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.menu-option {
+    padding: 10px; /* Отступы */
+    border: none; /* Без границы */
+    background: none; /* Без фона */
+    color: #333; /* Цвет текста */
+    cursor: pointer; /* Указатель при наведении */
+}
+
+.menu-option:hover {
+    background-color: #f0f0f0; /* Цвет фона при наведении */
+}
+
+/* Стили для иконки проекта */
+.project-icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px; /* Уменьшаем отступы между иконкой и кнопкой */
+}
+
+.project-menu {
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px;
+}
+
+.project-menu .menu-option {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+.project-menu .menu-option:hover {
+    background: #f0f0f0;
+}
+
+.modals-content h1,
+.modals-content p {
+    color: black;
+}
+
+.modals-content input,
+.modals-content select {
+    color: black; /* Устанавливаем цвет текста чёрным */
+    background-color: white; /* Убедимся, что фон остаётся белым */
+}
+
+.modals-content {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    width: 300px;
+    color: black; /* Общий цвет текста внутри модального окна */
+}
+
+.modals-content input,
+.modals-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black; /* Цвет текста в полях */
+    background-color: white; /* Цвет фона в полях */
+}
+
+.modals-content button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modals-content button:hover {
+    background-color: #218838;
+}

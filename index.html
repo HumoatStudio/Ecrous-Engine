@@ -3,49 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu</title>
-    <link rel="stylesheet" href="styles.css" id="themeStylesheet">
-    <link rel="icon" href="sprites/app.png" type="image/png">
+    <title>Ecrous Engine</title>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="html/loading.js"></script>
+    <link rel="stylesheet" href="styles.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/fonts.css" id="FontsStylesheet">
+    <link rel="stylesheet" href="styles/themes.css" id="ThemesStylesheet">
+    <link rel="stylesheet" href="styles/loading.css" id="LoadingStylesheet">
+    <link rel="stylesheet" href="styles/menu.css" id="MenuStylesheet">
+    <link rel="stylesheet" href="styles/news.css" id="NewsStylesheet">
+    <link rel="stylesheet" href="styles/settings.css" id="SettingsStylesheet">
+    <link rel="stylesheet" href="styles/Commynity/Commynity.css" id="CommynityStylesheet">
+    <link rel="stylesheet" href="styles/Commynity/Commynity_Projects/CommynityProject1.css" id="CommynityProj1Stylesheet">
+    <link rel="stylesheet" href="styles/Profile/profile.css" id="ProfileStylesheet">
+    <link rel="stylesheet" href="styles/Profile/profileInput.css" id="ProfileInputStylesheet">
+    <link rel="stylesheet" href="styles/promocodes.css" id="PromocodesStylesheet">
+    <link rel="stylesheet" href="styles/MyProjects.css" id="MyProjectsStylesheet">
+    <link rel="stylesheet" href="styles/library.css" id="LibraryStylesheet">
+    <link rel="stylesheet" href="styles/achivements.css" id="AchivementsStylesheet">
+    <link rel="stylesheet" href="styles/tutorials.css" id="TutorialsStylesheet">
+    <link rel="stylesheet" href="styles/PlusEcrCoin.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/.css" id="Stylesheet">
+    <link rel="icon" href="sprites/app.jpg" type="image/png">
 </head>
 <body>
-
-    <!-- Элемент загрузки -->
-    <div id="loader" class="loader">
-        <div class="loader-content">
-        <img src="sprites/app.png" alt="Ecrous Engine" class="engine-image">
-        <h1>Загружаем Ecrous Engine...</h1>
-        <p>Не переживайте, все готово будет через пару секунд!</p>
-    </div>
-    <div class="spinner"></div>
-    </div>
-
-    <!-- Соцсети в левом нижнем углу, выводим их в начале страницы -->
+    <!-- Соцсети в левом нижнем углу -->
     <div class="social-links">
         <a href="https://www.youtube.com/@EcrousEngine" target="_blank">
             <img src="sprites/youtube.png" alt="YouTube">
         </a>
-        <a href="https://t.me/EcrousEngine" target="_blank">
+        <a href="tg://ecrousengine" target="_blank">
             <img src="sprites/telegram.png" alt="Telegram">
         </a>
         <a href="https://boosty.to/ecrousengine3/donate" target="_blank">
             <img src="sprites/boosty.png" alt="Boosty">
         </a>
+        <a href="https://discord.gg/m6XzdxBrHf" target="_blank">
+            <img src="sprites/Discord.jpg" alt="Discord">
+        </a>
     </div>
 
     <div class="title">Ecrous Engine</div>
     <div class="side-panel">
-        <button class="menu-button" onclick="openMyProjects()">Мои Проекты</button>
-        <button class="menu-button" onclick="openCommunity()">Комьюнити</button>
-        <button class="menu-button" onclick="openProfile()">Профиль</button>
-        <button class="menu-button" onclick="openSettings()">Настройки</button>
-        <button id="News" class="menu-button">Новости</button>
-        <button id="myBtn" class="menu-button">Благодарности</button>
-        <div class="build-info">24.11.2024 Special Release</div>
+        <button class="menu-button" onclick="openMyProjects()" data-translate="myProjects">Мои Проекты</button>
+        <button class="menu-button" onclick="openCommunity()" data-translate="xStore">XStore</button>
+        <button class="menu-button" data-translate="blackStore">BlackStoreRu</button>
+        <button class="menu-button" onclick="openProfile()" data-translate="profile">Профиль</button>
+        <button id="myBtn" class="menu-button" data-translate="thanks">Благодарности</button>
+        <div class="build-info" data-translate="buildInfo">ECX 2025.05.03</div>
+    </div>
+
+    <div class="ButtonsMenuSmall">
+        <a href="#" onclick="openPromoCodes(event)">
+            <img src="sprites/PromoCodes.png" alt="PromoCodes">
+        </a>
+        <a href="#" onclick="openTutorials(event)">
+            <img src="sprites/Tutorials.png" alt="Tutorials">
+        </a>
+        <a href="#" onclick="openTabby(event)">
+            <img src="sprites/Tabby.png" alt="Tabby">
+        </a>
+        <a href="#" onclick="openAchivements(event)">
+            <img src="sprites/Achivements.png" alt="Achivements">
+        </a>
+        <a href="#" onclick="showNewsContent(event)">
+            <img src="sprites/News.png" alt="News">
+        </a>
+        <a href="#" onclick="openSettings(event)">
+            <img src="sprites/Options.png" alt="Options">
+        </a>
+        <a href="#" onclick="openMore(event)">
+            <img src="sprites/More.png" alt="Options">
+        </a>
     </div>
     
     <div class="center-container">
         <img src="sprites/coffie.png" alt="Your Image" class="center-image">
-        <div class="center-text">
+        <div class="center-text" data-translate="centerText">
             Похоже, у вас еще нет проектов.
             <br>Создайте новый или импортируйте!
         </div>
@@ -53,19 +87,19 @@
 
     <div class="modal-content" id="myModal">
         <span class="close">&times;</span>
-        <div class="thank-you">Спасибо от сообщества Ecrous Engine!</div>
+        <div class="thank-you" data-translate="ThanksCommunity">Спасибо от сообщества Ecrous Engine!</div>
         <ul class="modal-menu">
-            <li><a href="javascript:void(0);" onclick="openSection('authors')">Авторы</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('donors')">Доноры</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('license')">Лицензия</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday')">ДР!</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday_end')">Прошедшие ДР</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection('authors')" data-translate="Autors">Авторы</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection('donors')" data-translate="Donors">Доноры</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection('license')" data-translate="License">Лицензия</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday')" data-translate="HappyBirsday">ДР!</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday_end')" data-translate="HappyBirsdayEnd">Прошедшие ДР</a></li>
         </ul>
 
         <!-- Разделы с текстом -->
         <div id="authors" class="section" style="display:none;">
-            <h3>Авторы</h3>
-            <p>Даниил Домашнев</p>
+            <h3 data-translate="Autors">Авторы</h3>
+            <p data-translate="DaniilDomashnev">Даниил Домашнев</p>
         </div>
 
         <div id="donors" class="section" style="display:none;">
@@ -108,22 +142,53 @@
         </div>
 
         <div id="license" class="section" style="display:none;">
-            <h3>Лицензия</h3>
-            <p>Информация о лицензии, под которой распространяется проект.</p>
+            <h3 data-translate="License">Лицензия 🚀</h3>
+            <p><br>Лицензионное соглашение для Ecrous Engine v1.0<br><br>
+            1. Общие положения 📋<br><br>
+            Данное лицензионное соглашение регулирует использование Ecrous Engine (далее — "Движок"), разработанного Данилом Домажневым.<br>
+            Используя Движок, вы соглашаетесь с условиями настоящей лицензии. ✅<br><br>
+            2. Бесплатное использование 💸<br><br>
+            Ecrous Engine может использоваться бесплатно для разработки игр, приложений и других проектов.<br>
+            Пользователь имеет право зарабатывать деньги 💵 на проектах, созданных с помощью Движка, включая продажу игр 🎮 и монетизацию через рекламу 📢.<br><br>
+            3. Подписки 🏷️<br><br>
+            Ecrous Engine предлагает дополнительные подписки (Pro, Students и другие), которые предоставляют расширенные функции и преимущества. 💼<br>
+            Пользователь не имеет права:<br>
+            🚫 Продавать подписки или передавать их третьим лицам.<br>
+            🚫 Незаконно активировать или обходить платные функции подписок.<br><br>
+            4. Ограничения 🔒<br><br>
+            Пользователь не имеет права:<br>
+            🚫 Изменять исходный код, дизайн или интерфейс самого Движка.<br>
+            🚫 Ломать, декомпилировать или модифицировать Движок с целью получения несанкционированного доступа к функциям.<br>
+            🚫 Распространять модифицированные версии Движка.<br><br>
+            5. Плагины 🔌<br><br>
+            Пользователи могут создавать и использовать собственные плагины для Движка. 🎉<br>
+            Плагины не должны нарушать работу Движка или других пользователей. ⚠️<br><br>
+            6. Авторские права ©️<br><br>
+            Ecrous Engine является интеллектуальной собственностью Данила Домажнева. Все права защищены. 🛡️<br>
+            Логотип, интерфейс, иконки и другие элементы Движка являются его неотъемлемой частью и не могут быть использованы без разрешения автора. 🖌️<br><br>
+            7. Отказ от ответственности ⚠️<br><br>
+            Движок предоставляется "как есть". Автор не несет ответственности за возможный ущерб, вызванный использованием Движка. ⚡<br>
+            Автор не гарантирует, что Движок будет работать без сбоев или ошибок. 🛠️<br><br>
+            8. Нарушение условий ⛔<br><br>
+            В случае нарушения условий лицензии автор оставляет за собой право<br>
+            ограничить доступ к функциям Движка, подпискам и другим услугам. 🔐
+            </p>
         </div>
 
         <div id="happy_dirsday" class="section" style="display:none;">
             <h3>ДР!</h3>
-            <p><br>Поздравляем с днем рождения FingerGD 2.2! 24.11</p>
+            <p><br>Здесь ничего нет :(</p>
         </div>
 
         <div id="happy_dirsday_end" class="section" style="display:none;">
             <h3>Прошедшие дни рождения сотрудников</h3>
             <p><br>Prodemo70 31.07</p>
             <p><br>Вася 11.07</p>
+            <p><br>FingerDG2.2 24.11</p>
         </div>
     </div>
 
+    <!-- News -->
     <div class="news-content" id="myModalNews">
         <span class="closeNews">&times;</span>
         <div class="news-menu">
@@ -134,7 +199,9 @@
         <div id="newNews" class="news-section">
             <div class="NewsText">Что нового?</div>
             <div class="NewsImages">
-                <img src="sprites/Group 4.png" alt="Изображение 4" class="news-image">
+                <img src="sprites/Group 5.pn" alt="Изображение 5" class="news-image">
+                <img src="sprites/Group 6.pn" alt="Изображение 6" class="news-image">
+                <img src="sprites/Group 7.pn" alt="Изображение 7" class="news-image">
             </div>
         </div>
 
@@ -152,96 +219,129 @@
         <button class="close-settings" onclick="closeSettings()">
             <img src="sprites/close.png" alt="Закрыть">
         </button>
-        <h1 class="titleSettings">Настройки</h1>
+        <h1 class="titleSettings" data-translate="Settings">Настройки</h1>
         <div class="settings-content">
 
             <!-- Заголовок -->
-            <div class="titleSettings">Настройки</div>
+            <div class="titleSettings" data-translate="Settings">Настройки</div>
 
-            <div class="Settings-Build-info">Ecrous Engine 24.11.2024 Special Release</div>
+            <div class="Settings-Build-info">Ecrous Engine Build ECX 2025.05.03</div>
 
             <div class="settings-containerr">
                 <div class="settingg">
-                    <label for="file-path">Путь к сборке:</label>
-                    <input type="text" id="file-path" placeholder="Путь...">
+                    <label for="file-path" data-translate="FilePath">Путь к сборке:</label>
+                    <input type="text" id="file-path" placeholder="Путь..." readonly>
+                    <button id="browse-btn" data-translate="Review">Обзор</button>
                 </div>
 
                 <div class="setting">
-                    <label for="gravity">Гравитация:</label>
+                    <label for="gravity" data-translate="Gravity">Гравитация:</label>
                     <input type="number" id="gravity" value="9.81" step="0.1">
                 </div>
 
-                <div class="setting">
+                <!-- <div class="setting">
                     <label for="SystemColision">Система коллизий:</label>
                     <select id="SystemColision">
                         <option value="AABB" selected>AABB</option>
                         <option value="SAT">SAT</option>
                     </select>
-                </div>
+                </div> -->
 
-                <div class="setting">
+                <!-- <div class="setting">
                     <label for="Rendering">Рендеринг:</label>
+                    <label for="Rendering">Select Rendering API:</label>
                     <select id="Rendering">
-                        <option value="OpenGL 1.3">OpenGL 1.3</option>
-                        <option value="OpenGL SE">OpenGL SE</option>
-                        <option value="OpenGL 2.1" selected>OpenGL 2.1</option>
-                        <option value="OpenGL 3.3">OpenGL 3.3</option>
-                        <option value="OpenGL 4.6">OpenGL 4.6</option>
-                        <option value="Vulkan 1.0">Vulkan 1.0</option>
-                        <option value="Vulkan 1.1">Vulkan 1.1</option>
-                        <option value="Vulkan 1.2">Vulkan 1.2</option>
-                        <option value="Vulkan 1.3">Vulkan 1.3</option>>
-                        <option value="DirectX 1.0">DirectX 1.0</option>
-                        <option value="DirectX 2.0">DirectX 2.0</option>
-                        <option value="DirectX 3.0">DirectX 3.0</option>
-                        <option value="DirectX 5.0">DirectX 5.0</option>
-                        <option value="DirectX 6.0">DirectX 6.0</option>
-                        <option value="DirectX 7.0">DirectX 7.0</option>
-                        <option value="DirectX 8.0">DirectX 8.0</option>
-                        <option value="DirectX 9.0">DirectX 9.0</option>
-                        <option value="DirectX 10.0">DirectX 10.0</option>
-                        <option value="DirectX 10.1">DirectX 10.1</option>
-                        <option value="DirectX 11.0">DirectX 11.0</option>
-                        <option value="DirectX 11.1">DirectX 11.1</option>
-                        <option value="DirectX 11.2">DirectX 11.2</option>
-                        <option value="DirectX 12">DirectX 12</option>
-                        <option value="DirectX 12.1">DirectX 12.1</option>
-                        <option value="DirectX 12 Ultimate">DirectX 12 Ultimate</option>
+                        <optgroup label="OpenGL">
+                            <option value="OpenGL 1.3" title="Legacy OpenGL version">OpenGL 1.3</option>
+                            <option value="OpenGL SE" title="Optimized for embedded systems">OpenGL SE</option>
+                            <option value="OpenGL 2.1" selected title="Widely supported">OpenGL 2.1</option>
+                            <option value="OpenGL 3.3" title="Modern OpenGL version">OpenGL 3.3</option>
+                            <option value="OpenGL 4.6" title="Latest OpenGL version">OpenGL 4.6</option>
+                        </optgroup>
+                        <optgroup label="Vulkan">
+                            <option value="Vulkan 1.0" title="First Vulkan release">Vulkan 1.0</option>
+                            <option value="Vulkan 1.1" title="Improved performance">Vulkan 1.1</option>
+                            <option value="Vulkan 1.2" title="Additional extensions">Vulkan 1.2</option>
+                            <option value="Vulkan 1.3" title="Most recent Vulkan release">Vulkan 1.3</option>
+                        </optgroup>
+                        <optgroup label="DirectX">
+                            <option value="DirectX 9.0" title="Legacy DirectX version">DirectX 9.0</option>
+                            <option value="DirectX 10.0" title="Improved graphics support">DirectX 10.0</option>
+                            <option value="DirectX 11.0" title="Widely supported version">DirectX 11.0</option>
+                            <option value="DirectX 12" title="Latest DirectX version">DirectX 12</option>
+                            <option value="DirectX 12 Ultimate" title="Supports ray tracing">DirectX 12 Ultimate</option>
+                        </optgroup>
+                        <optgroup label="Metal">
+                            <option value="Metal 1.0" title="For Apple devices">Metal 1.0</option>
+                            <option value="Metal 2.0" title="Improved Apple graphics API">Metal 2.0</option>
+                        </optgroup>
+                        <optgroup label="Other">
+                            <option value="Software Rendering" title="CPU-based rendering">Software Rendering</option>
+                            <option value="WebGPU" title="Modern web graphics API">WebGPU</option>
+                        </optgroup>
                     </select>
-                </div>
 
-                <div class="setting">
-                    <label for="Rendering">Платформа для сборки:</label>
-                    <select id="Rendering">
+                    <label for="AntiAliasing">Anti-Aliasing:</label>
+                    <select id="AntiAliasing">
+                        <option value="None">None</option>
+                        <option value="2x">2x</option>
+                        <option value="4x">4x</option>
+                        <option value="8x">8x</option>
+                    </select>
+                </div> -->
+
+                <!-- <div class="setting">
+                    <label for="Platform">Платформа для сборки:</label>
+                    <select id="Platform">
                         <option value="Android" selected>Android</option>
                         <option value="Windows">Windows</option>
                         <option value="IOS">IOS</option>
                         <option value="MacOS">MacOS</option>
                     </select>
-                </div>
+                </div> -->
+
+                <!-- <div class="setting">
+                    <label for="Efficiency">Производительность:</label>
+                    <select id="Efficiency">
+                        <option value="Efficiency">Производительность</option>
+                        <option value="Graphyc" selected>Графика</option>
+                    </select>
+                </div> -->
 
                 <div class="setting">
-                    <label for="ThemEditor">Тема редактора:</label>
+                    <label for="ThemEditor" data-translate="ThemEditor">Тема редактора:</label>
                     <select id="ThemEditor">
-                        <option value="Black" selected>Тёмная</option>
-                        <option value="White">Светлая</option>
+                        <option value="Black" data-translate="ThemBlack" selected>Тёмная</option>
+                        <option value="White" data-translate="ThemWhite">Светлая</option>
+                    </select>
+                </div>                
+
+                <div class="setting">
+                    <label for="language" data-translate="labelLanguage">Язык:</label>
+                    <select id="language">
+                        <option value="ru" data-translate="russian" selected>Русский</option>
+                        <option value="en" data-translate="english">Английский</option>
+                        <option value="uk" data-translate="ukraine">Украинский</option>
+                        <option value="kz" data-translate="kazak">Казахский</option>
+                        <option value="pl" data-translate="polski">Польский</option>
+                        <option value="es" data-translate="espano">Испанский</option>
+                        <option value="de" data-translate="deutsch">Немецский</option>
                     </select>
                 </div>
 
                 <div class="setting">
-                    <label for="language">Язык:</label>
-                    <select id="language">
-                        <option value="ru" selected>Русский</option>
-                        <option value="en">Английский</option>
-                        <!--<option value="uk">Украинский</option>
-                        <option value="kz">Казахский</option>
-                        <option value="by">Белорусский</option>
-                        <option value="pl">Польский</option>
-                        <option value="pt-br">Бразильский</option>
-                        <option value="ko">Корейский</option>
-                        <option value="zh">Китайский</option>
-                        <option value="de">Немецкий</option>-->
+                    <label for="fonts" data-translate="labelfonts">Шрифт:</label>
+                    <select id="fonts">
+                        <option value="classic" data-translate="standart" selected>Стандарт</option>
+                        <option value="CustomFont3">AndroCode</option>
+                        <option value="SelectCustom" data-translate="SelectCustom">Выбрать свой...</option>
                     </select>
+                    <input type="file" id="customFontFile" accept=".ttf,.otf,.woff,.woff2" style="display: none;">
+                </div>
+
+                <!-- ✅ Подсказка -->
+                <div id="fontAlert" style="display: none; color: red; font-size: 14px; margin-top: 5px;">
+                    Чтобы стандартный шрифт применился, перезагрузите страницу...
                 </div>
             </div>
         </div>
@@ -252,7 +352,7 @@
         <button class="close-Community" onclick="closeCommunity()">
             <img src="sprites/close.png" alt="Закрыть">
         </button>
-        <h1 class="titleCommunity">Комьюнити</h1>
+        <h1 class="titleCommunity" data-translate="Commynity">Комьюнити</h1>
         <div class="Community-content">
             <!--Проекты!-->
             <button class="Project1" onclick="openCommunityProj1()"></button>
@@ -270,6 +370,10 @@
             <div class="Project13"></div>
             <div class="Project14"></div>
             <div class="Project15"></div>
+
+            <!-- Buttons -->
+            <div class="profileIcon"></div>
+            <div class="upload"></div>
         </div>
     </div>
 
@@ -287,16 +391,88 @@
         </div>
     </div>
 
+    <!-- CommunityUploadProject -->
+    <div id="CommunityUploadProjectPanel" class="CommunityUploadProject-panel" style="display: none;">
+        <button class="close-CommunityUploadProject" onclick="closeCommunityUploadProject()">
+            <img src="sprites/close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleCommunityUploadProject">Библиотека</h1>
+        <div class="CommunityUploadProject-content">
+        </div>
+    </div>
+
     <!-- Profile -->
     <div id="ProfilePanel" class="Profile-panel" style="display: none;">
         <button class="close-Profile" onclick="closeProfile()">
             <img src="sprites/close.png" alt="Закрыть">
         </button>
-        <h1 class="titleProfile">Профиль</h1>
+        <h1 class="titleProfile" data-translate="Profile">Профиль</h1>
         <div class="Profile-content">
             <div class="circle"></div>
-        <div class="username" id="username"></div>
+            <div class="username" id="username"></div>
+            <a href="#" onclick="openProfileInput(event)" class="styled-button" data-translate="OpenProfile">Сменить имя</a>
+            <div class="EcrCoin">
+                <div class="coin-counter">0</div>
+                <img src="sprites/EcrCoin.png" alt="Монета" />
+            </div>
+
+            <div id="timeSpent">
+                <span id="days">00</span>:<span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span>
+            </div>
         </div>
+    </div>
+
+    <!-- Profile Input -->
+    <div id="ProfileInputPanel" class="ProfileInput-panel" style="display: none;">
+        <button class="close-ProfileInput" onclick="closeProfileInput()">
+            <img src="sprites/close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleProfileInput">Введите новое имя</h1>
+        <div class="ProfileInput-content">
+            <div class="center-container-profile">
+                <input type="text" class="styled-input-prof" placeholder="Введите текст...">
+            </div>
+            <button class="save-username-btn">Сохранить</button>
+        </div>
+    </div>
+
+    <!-- PromoCodes -->
+    <div id="PromoCodesPanel" class="PromoCodes-panel" style="display: none;">
+        <button class="close-PromoCodes" onclick="closePromoCodes()">
+            <img src="sprites/close.png" alt="Закрыть">
+        </button>
+        <h1 class="titlePromoCodes" data-translate="Promocodes">Промокоды</h1>
+        <div class="PromoCodes-content">
+            <div class="promo-code">
+                <input type="text" class="promo-input" data-translate="InputPromocode" placeholder="Введите промокод" />
+                <button class="apply-promo" data-translate="ApplyPromocode">Применить промокод</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achivements -->
+    <div id="AchivementsPanel" class="Achivements-panel" style="display: none;">
+        <button class="close-Achivements" onclick="closeAchivements()">
+            <img src="sprites/close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleAchivements">Достижения</h1>
+        <div class="Achivements-content">
+            <div id="achievements">
+                <!-- Достижение "Начало" -->
+                <div class="achievement" id="achievement1">
+                    <span class="Ach1title">Начало</span>
+                    <span class="status">🔒 Заблокировано</span>
+                </div>
+
+                <!-- Кнопка сброса достижений -->
+                <button id="reset-button">Сбросить достижения</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомление о получении достижения -->
+    <div id="notification" class="notification hidden">
+        🎉 Поздравляем! Вы получили достижение: <span id="notification-text"></span>
     </div>
 
     <!-- Мои проекты -->
@@ -304,7 +480,7 @@
         <button class="close-MyProjects" onclick="closeMyProjects()">
             <img src="sprites/close.png" alt="Закрыть">
         </button>
-        <h1 class="titleMyProjects">Мои Проекты</h1>
+        <h1 class="titleMyProjects" data-translate="MyProjects">Мои Проекты</h1>
         <div class="MyProjects-content">
             <!-- Кнопки -->
             <img src="sprites/plus.png" class="plus-button" alt="Добавить">
@@ -318,196 +494,44 @@
                 <div class="modals-content">
                     <h2>Введите название проекта</h2>
                     <input type="text" id="projectName" placeholder="Название проекта">
-                    <label for="platformSelect">Выберите платформу:</label>
-                    <select id="platformSelect">
-                        <option value="Android">Android</option>
-                        <option value="iOS">iOS</option>
-                        <option value="Windows">Windows</option>
-                        <option value="MacOS">MacOS</option>
-                    </select>
                     <button id="submitProject">Готово</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Редактор -->
-    <div id="EditorPanel" class="Editor-panel" style="display: none;">
-        <button class="close-Editor" onclick="closeEditor()">
+    <!-- Tutorials -->
+    <div id="TutorialsPanel" class="Tutorials-panel" style="display: none;">
+        <button class="close-Tutorials" onclick="closeTutorials()">
             <img src="sprites/close.png" alt="Закрыть">
         </button>
-        <h1 class="titleEditor">Имя Проекта</h1>
-        <div class="Editor-content">
-            <!-- Контейнер для кнопок -->
-            <div class="button-container">
-                <button class="button button1" onclick="openScriptings()">
-                    <img src="sprites/IconsE/script.png" alt="Скрипты" class="button-icon">
-                    <span class="button-text">Скрипты</span>
-                </button>
-                <button class="button button2" onclick="openResources()">
-                    <img src="sprites/IconsE/resources.png" alt="Ресурсы" class="button-icon">
-                    <span class="button-text">Ресурсы</span>
-                </button>
-                <div class="button button3">
-                    <a href="Library/lib.html" class="text">
-                        <img src="sprites/IconsE/lib.png" alt="Библиотеки" class="button-icon">
-                        Библиотеки
-                    </a>
-                </div>
-                <div class="button button4">
-                    <a href="Options/options.html" class="text">
-                        <img src="sprites/IconsE/settings.png" alt="Настройки" class="button-icon">
-                        Настройки
-                    </a>
-                </div>
-                <div class="button button5">
-                    <a href="builds/build.html" class="text">
-                        <img src="sprites/IconsE/build.png" alt="Сборка" class="button-icon">
-                        Сборка
-                    </a>
-                </div>
-            </div>
-
-            <div class="button run">
-                <a href="#">
-                    <img src="sprites/run 1.png" alt="Run Button" />
-                </a>
-            </div>
+        <h1 class="titleTutorials">Туториалы & Обучение</h1>
+        <div class="Tutorials-content">
         </div>
     </div>
 
-    <!-- Scriptings -->
-    <div id="ScriptingsPanel" class="Scriptings-panel" style="display: none;">
-        <button class="close-Scriptings" onclick="closeScriptings()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <div class="Scriptings-content">
-            <h1 class="titleScriptings">Управление Скриптами</h1>
-
-            <!-- Кнопки плюс и импорт -->
-            <img src="sprites/plus.png" class="plus-button-script" alt="Добавить">
-            <img src="sprites/import.png" class="import-button-script" alt="Импорт">
-
-            <!-- Контейнер для списка скриптов -->
-            <div class="script-list" id="scriptList"></div>
-
-            <!-- Модальное окно для добавления скрипта -->
-            <div class="modalscript" id="scriptModal">
-                <div class="modalscript-content">
-                    <h2>Введите название скрипта</h2>
-                    <input type="text" id="scriptName" placeholder="Название Скрипта">
-                    <select id="languageSelect">
-                        <option value="visual">Визуальное Программирование</option>
-                        <option value="python">Python</option>
-                        <option value="java">Java</option>
-                        <option value="lua">Lua</option>
-                        <option value="html">Html</option>
-                        <option value="css">CSS</option>
-                        <option value="js">JavaScript</option>
-                        <option value="csharp">C#</option>
-                        <option value="cpp">C++</option>
-                        <option value="php">PHP</option>
-                        <option value="slashscript">SlashScript</option>
-                        <option value="nexlang">NexLang</option>
-                        <option value="jpsscript">JPScript</option>
-                    </select>
-                    <button id="submitScript">Готово</button>
-                </div>
-            </div>
-        </div>
+    <div id="plus-container">
+        <img src="sprites/PlusECRCoin.png" alt="PlusECRCoin">
     </div>
 
-    <!-- Resources -->
-    <div id="ResourcesPanel" class="Resources-panel" style="display: none;">
-        <button class="close-Resources" onclick="closeResources()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleResources">Ресурсы</h1>
-        <div class="Resources-content">
-            <!-- Контейнер для кнопок -->
-            <div class="Resourcesbutton-container">
-                <button class="button button1Resources" onclick="openPictures()">
-                    <img src="sprites/RIcons/pictures.png" alt="Картинки" class="button-icon">
-                    <span class="button-text">Картинки</span>
-                </button>
-                <button class="button button2Resources" onclick="openMusics()">
-                    <img src="sprites/RIcons/musics.png" alt="Музыка" class="button-icon">
-                    <span class="button-text">Музыка</span>
-                </button>
-                <button class="button button3Resources" onclick="openVideo()">
-                    <img src="sprites/RIcons/video.png" alt="Видео" class="button-icon">
-                    <span class="button-text">Видео</span>
-                </button>
-                <button class="button button4Resources" onclick="openGIF()">
-                    <img src="sprites/RIcons/GIF.png" alt="GIF" class="button-icon">
-                    <span class="button-text">GIF</span>
-                </button>
-                <button class="button button5Resources" onclick="openanimations()">
-                    <img src="sprites/RIcons/animations.png" alt="Анимации" class="button-icon">
-                    <span class="button-text">Анимации</span>
-                </button>
-                <button class="button button6Resources" onclick="openfonts()">
-                    <img src="sprites/RIcons/fonts.png" alt="Шрифты" class="button-icon">
-                    <span class="button-text">Шрифты</span>
-                </button>
-                <button class="button button7Resources" onclick="opentextures()">
-                    <img src="sprites/RIcons/textures.png" alt="Текстуры" class="button-icon">
-                    <span class="button-text">Текстуры</span>
-                </button>
-                <button class="button button8Resources" onclick="open3DModels()">
-                    <img src="sprites/RIcons/3D.png" alt="3D" class="button-icon">
-                    <span class="button-text">3D Модели</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- VisualScript -->
-    <div id="VisualScriptPanel" class="VisualScript-panel" style="display: none;">
-        <button class="close-VisualScript" onclick="closeVisualScript()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleVisualScript">Имя Скрипта</h1>
-        <div class="VisualScript-content">
-            <div class="side-panel-VisualScript">
-                <div class="VisualScriptContainer">
-                    <!-- Раздел "События" -->
-                    <div class="VisualScriptSection">
-                        <h2 class="VisualScriptSectionTitle">События</h2>
-                        <button class="VisualScriptButton VisualScriptOrange">При старте</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Создать функцию</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Создать функцию с параметрами</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Пока условие истинно</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Когда значение переменной изменится</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Палец Прикосается к объекту</button>
-                        <button class="VisualScriptButton VisualScriptOrange">Палец отпускает объект</button>
-                    </div>
-
-                    <!-- Раздел "Данные & Текст" -->
-                    <div class="VisualScriptSection">
-                        <h2 class="VisualScriptSectionTitle">Данные & Текст</h2>
-                        <button class="VisualScriptButton VisualScriptYellow">Установить значение переменной</button>
-                        <button class="VisualScriptButton VisualScriptYellow">Добавить значение к переменной</button>
-                        <button class="VisualScriptButton VisualScriptYellow">Создать Текст</button>
-                    </div>
-
-                    <!-- Раздел "Физика" -->
-                    <div class="VisualScriptSection">
-                        <h2 class="VisualScriptSectionTitle">Физика</h2>
-                        <button class="VisualScriptButton VisualScriptPurple">Установить физическое тело объекта</button>
-                        <button class="VisualScriptButton VisualScriptPurple">Удалить физическое тело объекта</button>
-                        <button class="VisualScriptButton VisualScriptPurple">Установить тип объекта</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="runVSScript">
-            <a href="#">
-                <img src="sprites/run 1.png" alt="Run Button" />
-            </a>
-        </div>
-    </div>
-
+    <!-- JavaScript -->
+    <script src="scripts/loading.js"></script>
     <script src="script.js"></script>
+    <script src="scripts/achivements.js"></script>
+    <script src="scripts/transcript.js"></script>
+    <script src="scripts/themes.js"></script>
+    <script src="scripts/library.js"></script>
+    <script src="scripts/promocodes.js"></script>
+    <script src="scripts/tutorials.js"></script>
+    <script src="scripts/news.js"></script>
+    <script src="scripts/settings.js"></script>
+    <script src="scripts/editor.js"></script>
+    <script src="scripts/Community.js"></script>
+    <script src="scripts/Commynity_Projects/CommynityProject1.js"></script>
+    <script src="scripts/Profile/profile.js"></script>
+    <script src="scripts/Profile/profile_input.js"></script>
+    <script src="scripts/MyProjects.js"></script>
+    <script src="scripts/selectFont.js"></script>
+    <script src="scripts/PlusEcrCoin.js"></script>
 </body>
 </html>

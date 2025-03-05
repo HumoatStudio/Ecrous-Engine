@@ -1,0 +1,15 @@
+#plus-container {
+    position: absolute;
+    left: 45%;
+    bottom: 20px;
+    display: none;
+    width: 200px;
+    height: 100px;
+    z-index: 1000;
+}
+#plus-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1000;
+}

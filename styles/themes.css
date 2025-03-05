@@ -1,0 +1,25 @@
+/* Темная тема */
+body.dark-theme {
+    background-color: #1A1A1A;
+    color: #ffffff;
+}
+
+/* Светлая тема */
+body.light-theme {
+    background-color: #F5F5F5;
+    color: #000000;
+}
+
+/* Темная тема для панели */
+body.dark-theme .settings-panel {
+    background-color: #2C2C2C; /* Темно-серый */
+    color: #E0E0E0;           /* Светлый текст */
+    border: 1px solid #444444; /* Дополнительный контур */
+}
+
+/* Светлая тема для панели */
+body.light-theme .settings-panel {
+    background-color: #F5F5F5; /* Белый фон */
+    color: #333333;            /* Темно-серый текст */
+    border: 1px solid #DDDDDD; /* Светлый контур */
+}

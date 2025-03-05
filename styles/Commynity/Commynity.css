@@ -1,0 +1,456 @@
+/* Community */
+.Community-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-Community {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-Community img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-Community:hover {
+    transform: scale(1.1);
+}
+
+.Community-content {
+    text-align: center;
+}
+
+.titleCommunity {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.Project1 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 150px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url("../../sprites/Icons/Joystick Standart.png"); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project2 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 475px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url('../../sprites/Icons/Dialogue System.png'); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project3 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 0px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px;
+    left: 800px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+    background-image: url('../../sprites/Icons/Standart Player.png'); /* Путь к изображению */
+    background-size: cover; /* Чтобы изображение полностью покрывало элемент */
+    background-position: center; /* Центрируем изображение внутри элемента */
+}
+
+.Project4 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project5 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 150px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project6 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 150px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project7 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 475px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project8 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 800px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project9 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project10 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 400px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project11 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 150px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project12 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 475px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project13 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 800px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project14 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 1125px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+.Project15 {
+    width: 300px;
+    height: 200px;
+    background-color: #424242;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 650px; /* Отступ сверху */
+    left: 1450px; /* Размещаем элемент по центру */
+    transform: translateX(-50%); /* Сдвигаем элемент влево, чтобы он был центрирован */
+    opacity: 0;
+    animation: fadeInCircle 1.5s ease-in-out forwards;
+    animation-delay: 0.5s;
+}
+
+@keyframes fadeInProj {
+    0% {
+        transform: translateX(-50%) scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.Project1 {
+    animation-delay: 0s; /* Появляется сразу */
+}
+
+.Project2 {
+    animation-delay: 0.2s; /* Появляется через 0.2 секунды */
+}
+
+.Project3 {
+    animation-delay: 0.4s;
+}
+
+.Project4 {
+    animation-delay: 0.6s;
+}
+
+.Project5 {
+    animation-delay: 0.8s;
+}
+
+.Project6 {
+    animation-delay: 1s;
+}
+
+.Project7 {
+    animation-delay: 1.2s;
+}
+
+.Project8 {
+    animation-delay: 1.4s;
+}
+
+.Project9 {
+    animation-delay: 1.6s;
+}
+
+.Project10 {
+    animation-delay: 1.8s;
+}
+
+.Project11 {
+    animation-delay: 2s;
+}
+
+.Project12 {
+    animation-delay: 2.2s;
+}
+
+.Project13 {
+    animation-delay: 2.4s;
+}
+
+.Project14 {
+    animation-delay: 2.6s;
+}
+
+.Project15 {
+    animation-delay: 2.8s; /* Последний элемент появляется позже всех */
+}
+
+.Search input {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translateX(-50%) scale(0); /* Исходное состояние */
+    width: 25%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    opacity: 0; /* Скрыто изначально */
+    animation: appear 0.8s ease-out forwards; /* Анимация появления */
+}
+
+.upload {
+    width: 50px; /* Указаны единицы измерения */
+    height: 50px;
+    background-color: black;
+    border-radius: 10px;
+    position: absolute;
+    cursor: pointer;
+    top: 15px; /* Отступ сверху */
+    right: 75px; /* Позиционирование */
+    opacity: 0; /* Начальная прозрачность */
+    animation: fadeInTitle 1s ease-in-out forwards; /* Добавлено "forwards" */
+}
+
+@keyframes appear {
+    0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+        50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* CommunityUploadProject */
+
+.CommunityUploadProject-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-CommunityUploadProject {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-CommunityUploadProject img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-CommunityUploadProject:hover {
+    transform: scale(1.1);
+}
+
+.CommunityUploadProject-content {
+    text-align: center;
+}
+
+.titleCommunityUploadProject {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}

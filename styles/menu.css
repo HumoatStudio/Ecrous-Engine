@@ -1,0 +1,252 @@
+.title {
+    position: absolute;
+    top: 25px;
+    left: 40%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 75px;
+    opacity: 0;
+    font-weight: bold;
+    font-family: 'CustomFont2', sans-serif;
+    animation: fadeInTitle 2s ease-in-out forwards;
+    white-space: nowrap; /* Запрещает перенос текста */
+}
+
+.center-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.center-image {
+    width: 100px; /* Размер картинки */
+    height: auto;
+    margin-bottom: 20px; /* Отступ между картинкой и текстом */
+    opacity: 0; /* Начальная невидимость */
+    animation: fadeInImage 2s ease-in-out forwards; /* Анимация появления картинки */
+}
+
+.center-text {
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    opacity: 0; /* Начальная невидимость */
+    animation: fadeInText 2s ease-in-out forwards; /* Анимация появления текста */
+    margin-top: 20px; /* Дополнительное смещение вниз */
+}
+
+@keyframes fadeInImage {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* Картинка начинает чуть выше */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Картинка появляется в центре */
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px); /* Текст начинается чуть ниже */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Текст появляется в центре */
+    }
+}
+
+@keyframes fadeInTitle {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    opacity: 0;
+    animation: fadeInContainer 3s ease-in-out forwards;
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Анимация для соцсетей */
+.social-links {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    color: rgba(255, 255, 255, 1.0); /* Цвет текста кнопки */
+    background-color: rgba(37, 37, 37, 1.0); /* Цвет фона кнопки */
+    border-radius: 30px;
+    opacity: 0;
+    padding: 10px; /* Увеличиваем отступы внутри кнопки для большего фона */
+    animation: fadeInSocialLinks 4.5s ease-in-out forwards;
+}
+
+@keyframes fadeInSocialLinks {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.social-links a {
+    margin-right: 10px;
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px; /* Добавляет закругленность углов */
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.social-links img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    opacity: 0.8; /* Добавляет эффект уменьшения непрозрачности */
+    background-color: rgba(0, 255, 204, 1.0); /* Цвет фона при наведении */
+    border-color: rgba(255, 255, 255, 1.0); /* Цвет обводки при наведении */
+    transform: translateY(-2px); /* Немного поднимаем кнопку при наведении */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличиваем тень при наведении */
+}
+
+/* Анимация для ButtonsMenuSmall */
+.ButtonsMenuSmall {
+    position: absolute;
+    top: 15px; /* Размещение кнопок сверху */
+    right: 15px;
+    color: rgba(255, 255, 255, 1.0); /* Цвет текста кнопки */
+    background-color: rgba(40, 40, 40, 1.0); /* Цвет фона кнопки */
+    border-radius: 30px;
+    opacity: 0;
+    padding: 10px; /* Увеличиваем отступы внутри кнопки для большего фона */
+    animation: fadeInSocialLinks 4.5s ease-in-out forwards;
+}
+
+.ButtonsMenuSmall a {
+    margin-right: 10px;
+}
+
+.ButtonsMenuSmall img {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px; /* Добавляет закруглённость углов */
+    background: none; /* Убираем фон у изображения */
+    border: none; /* Убираем обводку изображения */
+    transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+
+.ButtonsMenuSmall img:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+    opacity: 0.8; /* Добавляет эффект уменьшения непрозрачности */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5); /* Увеличиваем тень при наведении */
+}
+
+@media (max-width: 400px) {
+    .menu-button {
+        width: 80%;
+    }
+}
+
+/* Панель с кнопками, расположенная слева */
+.side-panel {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 300px; /* Ширина панели */
+    height: 100%; /* Высота панели на весь экран */
+    background-color: #222222; /* Цвет фона панели */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Центрирование кнопок по вертикали */
+    align-items: center; /* Выравнивание элементов по центру по оси X */
+    padding-top: 20px;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.3);
+    transform: translateY(100%); /* Скрывает панель по умолчанию */
+    animation: slideUp 0.5s ease-in-out forwards; /* Анимация подъема панели */
+}
+
+/* Анимация подъема панели */
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Стили для текста с версией билда */
+.build-info {
+    position: absolute;
+    top: 20px; /* Располагаем текст вверху панели */
+    color: rgba(255, 255, 255, 0.7); /* Белый цвет с прозрачностью */
+    font-size: 30px;
+    font-weight: normal;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'CustomFont2', sans-serif; /* Если шрифт установлен в системе */
+    width: 100%;
+}
+
+/* Кнопки внутри панели */
+.side-panel .menu-button {
+    width: 250px; /* Ширина кнопок */
+    height: 60px; /* Высота кнопок */
+    margin: 10px 0; /* Отступы между кнопками */
+    color: rgba(255, 255, 255, 1.0);
+    background-color: #303030;
+    border-radius: 15px;
+    border: 2px solid rgba(0, 255, 204, 1.0);
+    font-size: 22px; /* Размер шрифта кнопок */
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.side-panel .menu-button:hover {
+    background-color: #1E1E1E; /* Slightly darker on hover */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 400px) {
+    .side-panel {
+        width: 100%; /* При меньших разрешениях панель будет занимать всю ширину */
+    }
+
+    .side-panel .menu-button {
+        width: 80%; /* Кнопки будут занимать 80% от ширины экрана */
+    }
+}
