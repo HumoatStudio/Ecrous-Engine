@@ -1,0 +1,28 @@
+/* Для мобильных устройств (меньше 600px) */
+@media (max-width: 600px) {
+    .leftPanel {
+        width: 60px;
+        height: calc(50vh - 100px); /* Уменьшаем высоту на мобильных */
+    }
+    
+    .Cursor, .Transform, .Rotate, .Scale {
+        width: 50px; /* Уменьшаем ширину кнопок */
+        height: 60px; /* Уменьшаем высоту кнопок */
+    }
+
+    .Cursor {
+        top: 5px;
+    }
+
+    .Transform {
+        top: 80px;
+    }
+
+    .Rotate {
+        top: 160px;
+    }
+
+    .Scale {
+        top: 240px;
+    }
+}

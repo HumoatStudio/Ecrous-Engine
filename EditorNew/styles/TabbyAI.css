@@ -1,0 +1,142 @@
+/* AIEditor */
+
+.AIEditor-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px; /* Ширина панели */
+    height: 600px; /* Высота панели */
+    background-image: linear-gradient(90deg, rgb(102, 96, 103), rgb(133, 121, 145));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transform: translate(-50%, -50%); /* Центрирование панели */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Добавление тени */
+    border-radius: 20px; /* Закругленные углы */
+}
+
+.close-AIEditor {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-AIEditor img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-AIEditor:hover {
+    transform: scale(1.1);
+}
+
+.AIEditor-content {
+    text-align: center;
+}
+
+.titleAIEditor {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+#userQuestion {
+    width: 80%;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: none;
+    outline: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+#userQuestion:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 255, 0.5);
+}
+
+.send-button {
+    padding: 10px 20px;
+    background-color: #7a6d92;
+    color: white;
+    font-size: 1rem;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.send-button:hover {
+    transform: scale(1.1);
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90%;
+    height: 350px; /* Размер области чата */
+    overflow-y: auto;
+    margin-bottom: 20px;
+}
+
+.messages-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+#userMessageContainer p {
+    background-color: #4e6a9a;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    align-self: flex-end; /* Вопросы справа */
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+#AIMessageContainer p {
+    background-color: #7a6d92;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    align-self: flex-start; /* Ответы слева */
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+#AIAnswer {
+    font-size: 1.2rem;
+    color: #ddd;
+    opacity: 0;
+    animation: fadeInAnswer 2s ease-in-out forwards;
+}
+
+@keyframes fadeInAnswer {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,57 @@
+/* PlusObjectsEditor */
+
+.PlusObjectsEditor-panel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 400px; /* Ширина панели */
+    height: 600px; /* Высота панели */
+    background-image: linear-gradient(90deg, rgb(102, 96, 103), rgb(133, 121, 145));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    transform: translate(-50%, -50%); /* Центрирование панели */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Добавление тени */
+    border-radius: 20px; /* Закругленные углы */
+}
+
+.close-PlusObjectsEditor {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-PlusObjectsEditor img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-PlusObjectsEditor:hover {
+    transform: scale(1.1);
+}
+
+.PlusObjectsEditor-content {
+    text-align: center;
+}
+
+.titlePlusObjectsEditor {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}

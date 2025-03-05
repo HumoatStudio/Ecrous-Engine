@@ -1,0 +1,118 @@
+.upPanel {
+    height: 80px;
+    width: calc(100vw - 100px); /* Устанавливает ширину элемента на 100px меньше ширины окна */
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(90deg, rgb(61, 61, 61), rgb(133, 121, 145));
+    border-radius: 25px;
+    border: 3px solid rgb(120, 110, 118);
+    z-index: 10; /* Значение больше, чем у square */
+}
+
+.Exit {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.ExitImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Exit.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Exit {
+    top: 10px;
+    left: 10px;
+}
+
+.Plus {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.PlusImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Plus.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Plus {
+    top: 10px;
+    left: 100px;
+}
+.Scripting {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.ScriptingImg {
+    height: 45px;
+    width: 65px;
+    background-image: url('../../sprites/CMD.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Scripting {
+    top: 10px;
+    left: 190px;
+}
+
+.AI {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.AIImg {
+    height: 45px;
+    width: 65px;
+    background-image: url('../../sprites/AI.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.AI {
+    top: 10px;
+    left: 280px;
+}

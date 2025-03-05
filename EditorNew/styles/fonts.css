@@ -1,0 +1,5 @@
+/* Первыйй шрифт */
+@font-face {
+    font-family: 'CustomFont';
+    src: url('../fonts/Khand-Bold.ttf') format('opentype');
+}

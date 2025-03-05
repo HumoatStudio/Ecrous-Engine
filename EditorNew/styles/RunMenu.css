@@ -1,0 +1,59 @@
+/* RunMenu */
+
+.RunMenu-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-RunMenu {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-RunMenu img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-RunMenu:hover {
+    transform: scale(1.1);
+}
+
+.RunMenu-content {
+    text-align: center;
+}
+
+.close-RunMenu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-RunMenu img {
+    width: 20px;
+    height: 20px;
+}
