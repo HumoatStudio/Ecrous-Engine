@@ -3,535 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecrous Engine</title>
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="html/loading.js"></script>
+    <title>Editor</title>
     <link rel="stylesheet" href="styles.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/TabbyAI.css" id="AIStylesheet">
+    <link rel="stylesheet" href="styles/SpriteEditor.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/3dObjects.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/UpPanel/UpPanel.css" id="UpPanelStylesheet">
+    <link rel="stylesheet" href="styles/UpPanel/UpPanelScreenSize.css" id="UpPanelScreenSizeStylesheet">
+    <link rel="stylesheet" href="styles/RightPanel/RightPanel.css" id="RightPanelStylesheet">
+    <link rel="stylesheet" href="styles/RightPanel/RightPanelScreenSize.css" id="RightPanelScreenSizeStylesheet">
+    <link rel="stylesheet" href="styles/LeftPanel/LeftPanel.css" id="LeftPanelStylesheet">
+    <link rel="stylesheet" href="styles/LeftPanel/LeftPanelScreenSize.css" id="LeftPanelScreenSizeStylesheet">
+    <link rel="stylesheet" href="styles/SlashScript/SlashScript.css" id="SlashScriptStylesheet">
+    <link rel="stylesheet" href="styles/NexLang/NexLang.css" id="NexLangStylesheet">
+    <link rel="stylesheet" href="styles/BuildSettingsMenu.css" id="BUildSettingStylesheet">
+    <link rel="stylesheet" href="styles/ScriptMenu.css" id="ScriptMenuStylesheet">
+    <link rel="stylesheet" href="styles/RunMenu.css" id="RunMenuStylesheet">
     <link rel="stylesheet" href="styles/fonts.css" id="FontsStylesheet">
-    <link rel="stylesheet" href="styles/themes.css" id="ThemesStylesheet">
-    <link rel="stylesheet" href="styles/loading.css" id="LoadingStylesheet">
-    <link rel="stylesheet" href="styles/menu.css" id="MenuStylesheet">
-    <link rel="stylesheet" href="styles/news.css" id="NewsStylesheet">
-    <link rel="stylesheet" href="styles/settings.css" id="SettingsStylesheet">
-    <link rel="stylesheet" href="styles/Commynity/Commynity.css" id="CommynityStylesheet">
-    <link rel="stylesheet" href="styles/Commynity/Commynity_Projects/CommynityProject1.css" id="CommynityProj1Stylesheet">
-    <link rel="stylesheet" href="styles/Profile/profile.css" id="ProfileStylesheet">
-    <link rel="stylesheet" href="styles/Profile/profileInput.css" id="ProfileInputStylesheet">
-    <link rel="stylesheet" href="styles/promocodes.css" id="PromocodesStylesheet">
-    <link rel="stylesheet" href="styles/MyProjects.css" id="MyProjectsStylesheet">
-    <link rel="stylesheet" href="styles/library.css" id="LibraryStylesheet">
-    <link rel="stylesheet" href="styles/achivements.css" id="AchivementsStylesheet">
-    <link rel="stylesheet" href="styles/tutorials.css" id="TutorialsStylesheet">
-    <link rel="stylesheet" href="styles/PlusEcrCoin.css" id="Stylesheet">
-    <link rel="stylesheet" href="styles/.css" id="Stylesheet">
-    <link rel="icon" href="sprites/app.jpg" type="image/png">
+    <link rel="stylesheet" href="styles/RunLoading.css" id="RunLoadingStylesheet">
+    <link rel="stylesheet" href="styles/BackgroundOptions.css" id="BGOptionsStylesheet">
+    <link rel="stylesheet" href="styles/UI Menu.css" id="GUIMenuStylesheet">
+    <link rel="stylesheet" href="styles/CameraPanel.css" id="CameraPanelStylesheet">
+    <link rel="stylesheet" href="styles/3dObjects.css" id="3dObjectsStylesheet">
+    <link rel="stylesheet" href="styles/PlusObjectsEditor.css" id="PlusObjectsEditorStylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="icon" href="/sprites/app.jpg" type="image/png">
 </head>
 <body>
-    <!-- Соцсети в левом нижнем углу -->
-    <div class="social-links">
-        <a href="https://www.youtube.com/@EcrousEngine" target="_blank">
-            <img src="sprites/youtube.png" alt="YouTube">
-        </a>
-        <a href="tg://ecrousengine" target="_blank">
-            <img src="sprites/telegram.png" alt="Telegram">
-        </a>
-        <a href="https://boosty.to/ecrousengine3/donate" target="_blank">
-            <img src="sprites/boosty.png" alt="Boosty">
-        </a>
-        <a href="https://discord.gg/m6XzdxBrHf" target="_blank">
-            <img src="sprites/Discord.jpg" alt="Discord">
-        </a>
-    </div>
-
-    <div class="title">Ecrous Engine</div>
-    <div class="side-panel">
-        <button class="menu-button" onclick="openMyProjects()" data-translate="myProjects">Мои Проекты</button>
-        <button class="menu-button" onclick="openCommunity()" data-translate="xStore">XStore</button>
-        <button class="menu-button" data-translate="blackStore">BlackStoreRu</button>
-        <button class="menu-button" onclick="openProfile()" data-translate="profile">Профиль</button>
-        <button id="myBtn" class="menu-button" data-translate="thanks">Благодарности</button>
-        <div class="build-info" data-translate="buildInfo">ECX 2025.05.03</div>
-    </div>
-
-    <div class="ButtonsMenuSmall">
-        <a href="#" onclick="openPromoCodes(event)">
-            <img src="sprites/PromoCodes.png" alt="PromoCodes">
-        </a>
-        <a href="#" onclick="openTutorials(event)">
-            <img src="sprites/Tutorials.png" alt="Tutorials">
-        </a>
-        <a href="#" onclick="openTabby(event)">
-            <img src="sprites/Tabby.png" alt="Tabby">
-        </a>
-        <a href="#" onclick="openAchivements(event)">
-            <img src="sprites/Achivements.png" alt="Achivements">
-        </a>
-        <a href="#" onclick="showNewsContent(event)">
-            <img src="sprites/News.png" alt="News">
-        </a>
-        <a href="#" onclick="openSettings(event)">
-            <img src="sprites/Options.png" alt="Options">
-        </a>
-        <a href="#" onclick="openMore(event)">
-            <img src="sprites/More.png" alt="Options">
-        </a>
-    </div>
-    
-    <div class="center-container">
-        <img src="sprites/coffie.png" alt="Your Image" class="center-image">
-        <div class="center-text" data-translate="centerText">
-            Похоже, у вас еще нет проектов.
-            <br>Создайте новый или импортируйте!
-        </div>
-    </div>
-
-    <div class="modal-content" id="myModal">
-        <span class="close">&times;</span>
-        <div class="thank-you" data-translate="ThanksCommunity">Спасибо от сообщества Ecrous Engine!</div>
-        <ul class="modal-menu">
-            <li><a href="javascript:void(0);" onclick="openSection('authors')" data-translate="Autors">Авторы</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('donors')" data-translate="Donors">Доноры</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('license')" data-translate="License">Лицензия</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday')" data-translate="HappyBirsday">ДР!</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection('happy_dirsday_end')" data-translate="HappyBirsdayEnd">Прошедшие ДР</a></li>
-        </ul>
-
-        <!-- Разделы с текстом -->
-        <div id="authors" class="section" style="display:none;">
-            <h3 data-translate="Autors">Авторы</h3>
-            <p data-translate="DaniilDomashnev">Даниил Домашнев</p>
-        </div>
-
-        <div id="donors" class="section" style="display:none;">
-            <h3><br>Доноры<br>Я хочу выразить свою благодарность следующим людям:</h3>
-            <p>
-                <h3><br>Программисты</h3>
-                <br>Shodiyor - за помощь с кодом<br>
-                Dragon Reis - за помощь с кодом<br>
-                Sevasik - за помощь с кодом<br>
-                Vasilii1411 - за помощь с кодом<br>
-                Prodemo70 - за помощь с кодом
-            </p>
-            <p>
-                <h3><br>Beta Testers</h3>
-                <br>W1NDOW - за тестирование<br>
-                Квистер - за тестирование<br>
-                Sevasik - за тестирование<br>
-                Простiй - за тестирование<br>
-                [[RUSLAN'S ACCOUNT]] - за тестирование<br>
-                FingerGD2.2 - за тестирование<br>
-                Dark Games - за тестирование<br>
-                Mr. pro - за тестирование<br>
-                Учёный Года - за тестирование<br>
-                WhyLorn - за тестирование<br>
-                Prodemo70 - за тестирование<br>
-            </p>
-            <p>
-                <h3><br>Поддержка</h3>
-                <br>Моим Подписчиков - за моральную поддержку<br>
-                Квистер - за критику и отзывы<br>
-                Mate - за дружбу
-            </p>
-            <p>
-                <h3><br>Дизайнеры</h3>
-                <br>WesllemCG - за помощь с дизайном<br>
-                Humbleoff - за помощь с дизайном<br>
-                Totalitarian Utopia - за помощь с дизайном<br>
-                Sevasik - за помощь с дизайном
-            </p>
-        </div>
-
-        <div id="license" class="section" style="display:none;">
-            <h3 data-translate="License">Лицензия 🚀</h3>
-            <p><br>Лицензионное соглашение для Ecrous Engine v1.0<br><br>
-            1. Общие положения 📋<br><br>
-            Данное лицензионное соглашение регулирует использование Ecrous Engine (далее — "Движок"), разработанного Данилом Домажневым.<br>
-            Используя Движок, вы соглашаетесь с условиями настоящей лицензии. ✅<br><br>
-            2. Бесплатное использование 💸<br><br>
-            Ecrous Engine может использоваться бесплатно для разработки игр, приложений и других проектов.<br>
-            Пользователь имеет право зарабатывать деньги 💵 на проектах, созданных с помощью Движка, включая продажу игр 🎮 и монетизацию через рекламу 📢.<br><br>
-            3. Подписки 🏷️<br><br>
-            Ecrous Engine предлагает дополнительные подписки (Pro, Students и другие), которые предоставляют расширенные функции и преимущества. 💼<br>
-            Пользователь не имеет права:<br>
-            🚫 Продавать подписки или передавать их третьим лицам.<br>
-            🚫 Незаконно активировать или обходить платные функции подписок.<br><br>
-            4. Ограничения 🔒<br><br>
-            Пользователь не имеет права:<br>
-            🚫 Изменять исходный код, дизайн или интерфейс самого Движка.<br>
-            🚫 Ломать, декомпилировать или модифицировать Движок с целью получения несанкционированного доступа к функциям.<br>
-            🚫 Распространять модифицированные версии Движка.<br><br>
-            5. Плагины 🔌<br><br>
-            Пользователи могут создавать и использовать собственные плагины для Движка. 🎉<br>
-            Плагины не должны нарушать работу Движка или других пользователей. ⚠️<br><br>
-            6. Авторские права ©️<br><br>
-            Ecrous Engine является интеллектуальной собственностью Данила Домажнева. Все права защищены. 🛡️<br>
-            Логотип, интерфейс, иконки и другие элементы Движка являются его неотъемлемой частью и не могут быть использованы без разрешения автора. 🖌️<br><br>
-            7. Отказ от ответственности ⚠️<br><br>
-            Движок предоставляется "как есть". Автор не несет ответственности за возможный ущерб, вызванный использованием Движка. ⚡<br>
-            Автор не гарантирует, что Движок будет работать без сбоев или ошибок. 🛠️<br><br>
-            8. Нарушение условий ⛔<br><br>
-            В случае нарушения условий лицензии автор оставляет за собой право<br>
-            ограничить доступ к функциям Движка, подпискам и другим услугам. 🔐
-            </p>
-        </div>
-
-        <div id="happy_dirsday" class="section" style="display:none;">
-            <h3>ДР!</h3>
-            <p><br>Здесь ничего нет :(</p>
-        </div>
-
-        <div id="happy_dirsday_end" class="section" style="display:none;">
-            <h3>Прошедшие дни рождения сотрудников</h3>
-            <p><br>Prodemo70 31.07</p>
-            <p><br>Вася 11.07</p>
-            <p><br>FingerDG2.2 24.11</p>
-        </div>
-    </div>
-
-    <!-- News -->
-    <div class="news-content" id="myModalNews">
-        <span class="closeNews">&times;</span>
-        <div class="news-menu">
-            <button class="news-tab" onclick="openNewsSection('newNews')">Что нового?</button>
-            <button class="news-tab" onclick="openNewsSection('oldNews')">Что старого?</button>
-        </div>
-        
-        <div id="newNews" class="news-section">
-            <div class="NewsText">Что нового?</div>
-            <div class="NewsImages">
-                <img src="sprites/Group 5.pn" alt="Изображение 5" class="news-image">
-                <img src="sprites/Group 6.pn" alt="Изображение 6" class="news-image">
-                <img src="sprites/Group 7.pn" alt="Изображение 7" class="news-image">
-            </div>
-        </div>
-
-        <div id="oldNews" class="news-section" style="display: none;">
-            <div class="NewsText">Что старого?</div>
-            <div class="NewsOldText">
-                <p>Улучшены вкладки</p>
-                <p>Реализованы анимации и улучшенный дизайн.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Settings -->
-    <div id="settingsPanel" class="settings-panel" style="display: none;">
-        <button class="close-settings" onclick="closeSettings()">
-            <img src="sprites/close.png" alt="Закрыть">
+    <div class="upPanel">
+        <button class="Exit" onclick="ExitEditor()">
+            <div class="ExitImg"></div>
         </button>
-        <h1 class="titleSettings" data-translate="Settings">Настройки</h1>
-        <div class="settings-content">
+        <button class="Plus" onclick="openPlusObjectsEditor()">
+            <div class="PlusImg"></div>
+        </button>
+        <button class="Scripting" onclick="openScriptMenu()">
+            <div class="ScriptingImg"></div>
+        </button>
+        <button class="AI" onclick="openAIEditor()">
+            <div class="AIImg"></div>
+        </button>
+    </div>
+    <div class="rightPanel">
+        <button class="VisualScript" onclick="openVisualScriptEditor()">
+            <div class="VisualScriptImg"></div>
+        </button>
+        <button class="Resources" onclick="openResourcesEditor()">
+            <div class="ResourcesImg"></div>
+        </button>
+        <button class="Ads">
+            <div class="AdsImg"></div>
+        </button>
+        <button class="BuildSettings" onclick="openBuildSettingsMenu()">
+            <div class="BuildSettingsImg"></div>
+        </button>
 
-            <!-- Заголовок -->
-            <div class="titleSettings" data-translate="Settings">Настройки</div>
+        <button class="Settings" onclick="openSettingsEditor()">
+            <div class="SettingsImg"></div>
+        </button>
+        <button class="Play" onclick="openRunLoading()">
+            <div class="PlayImg"></div>
+        </button>
+    </div>
 
-            <div class="Settings-Build-info">Ecrous Engine Build ECX 2025.05.03</div>
+    <div class="leftPanel">
+        <button class="Cursor" onclick="enableCursorMode()">
+            <div class="CursorImg"></div>
+        </button>
+        <button class="Transform" onclick="enableTransformMode()">
+            <div class="TransformImg"></div>
+        </button>
+        <button class="Rotate" onclick="enableRotateMode()">
+            <div class="RotateImg"></div>
+        </button>
+        <button class="Scale" onclick="enableScaleMode()">
+            <div class="ScaleImg"></div>
+        </button>
+    </div>
 
-            <div class="settings-containerr">
-                <div class="settingg">
-                    <label for="file-path" data-translate="FilePath">Путь к сборке:</label>
-                    <input type="text" id="file-path" placeholder="Путь..." readonly>
-                    <button id="browse-btn" data-translate="Review">Обзор</button>
+    <div id="panel"></div>
+
+    <!-- PlusObjectsEditor -->
+    <div id="PlusObjectsEditorPanel" class="PlusObjectsEditor-panel" style="display: none;">
+        <button class="close-PlusObjectsEditor" onclick="closePlusObjectsEditor()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titlePlusObjectsEditor" style="font-family: 'CustomFont2', sans-serif;">Создать</h1>
+        <div class="scroll-containerPlus">
+            <div class="PlusObjectsEditor-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <!-- <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    3D Object (broken)
+                </button> -->
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="open2DMenu()">
+                    2D Object (broken)
+                </button>
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openUIMenu()">
+                    UI
+                </button>                
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;">
+                    Light (broken)
+                </button>
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openCameraMenu()">
+                    Camera
+                </button>
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openBackgroundOptions()">
+                    Background Options
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AIEditor -->
+    <div id="AIEditorPanel" class="AIEditor-panel" style="display: none;">
+        <button class="close-AIEditor" onclick="closeAIEditor()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleAIEditor" style="font-family: 'CustomFont2', sans-serif;">Tabby AI</h1>
+        <div class="AIEditor-content">
+            <div class="chat-container">
+                <div id="userMessageContainer" class="messages-container"></div>
+                <div id="AIMessageContainer" class="messages-container"></div>
+            </div>
+            <input type="text" id="userQuestion" placeholder="Задайте вопрос..." onkeydown="handleEnter(event)">
+            <button class="send-button" onclick="checkQuestion()">Отправить</button>
+        </div>
+    </div>          
+
+    <!-- 3DObjects Submenu -->
+    <div id="ThreeDObjectsMenuPanel" class="PlusObjectsEditor-panel" style="display: none;">
+        <button class="close-ThreeDObjectsMenu" onclick="closeThreeDMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleThreeDObjectsMenu" style="font-family: 'CustomFont2', sans-serif;">3D Объекты</h1>
+        <div class="scroll-containerPlus">
+            <div class="ThreeDObjectsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateGUIPanel()">
+                    Cube
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateGUIText()">
+                    Sphere
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
+                    Capsule
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
+                    Cylinder
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
+                    Plane
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3DObjects Submenu -->
+    <div id="ThreeDObjectsMenuPanel" class="PlusObjectsEditor-panel" style="display: none;">
+        <button class="close-ThreeDObjectsMenu" onclick="closeThreeDMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleThreeDObjectsMenu" style="font-family: 'CustomFont2', sans-serif;">2D Объекты</h1>
+        <div class="scroll-containerPlus">
+            <div class="ThreeDObjectsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                    GUI Square
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                    GUI Circle
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                    GUI Triangle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UI Submenu -->
+    <div id="UIMenuPanel" class="PlusObjectsEditor-panel" style="display: none;">
+        <button class="close-UIMenu" onclick="closeUIMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleUIMenu" style="font-family: 'CustomFont2', sans-serif;">UI</h1>
+        <div class="scroll-containerPlus">
+            <div class="UIMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIPanel()">
+                    UI Panel
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIText()">
+                    UI Text
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIImage()">
+                    UI Image
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIVideo()">
+                    UI Video
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIButton()">
+                    UI Button
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUITextField()">
+                    UI InputField
+                </button>
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
+                    UI Scroll (broken)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CameraMenu -->
+    <div id="CameraMenu" class="CameraMenu-panel" style="display: none;">
+        <button class="close-CameraMenu" onclick="closeCameraMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleCameraMenu" style="font-family: 'CustomFont2', sans-serif;">Создать</h1>
+        <div class="scroll-containerPlus">
+            <div class="CameraMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="CreateCamera2d()">
+                    Camera 2D
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera 3D (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera AR (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera VR (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera XR (broken)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BackgroundOptions Submenu -->
+    <div id="BackgroundOptionsPanel" class="PlusObjectsEditor-panel" style="display: none;">
+        <button class="close-BackgroundOptions" onclick="closeBackgroundOptions()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleBackgroundOptions" style="font-family: 'CustomFont2', sans-serif;">Настройки Фона</h1>
+        <div class="scroll-containerPlus">
+            <div class="BackgroundOptions-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <input type="color" id="backgroundColor" class="text-input-BackgroundOptions" value="#000000">
+                <input type="text" id="backgroundUrl" class="text-input-BackgroundOptions" placeholder="Enter image URL">
+                <button id="applyBackground">Apply Background</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ScriptMenu -->
+    <div id="ScriptMenuPanel" class="ScriptMenu-panel" style="display: none;">
+        <button class="close-ScriptMenu" onclick="closeScriptMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleScriptMenu" style="font-family: 'CustomFont2', sans-serif;">Выбор ЯП</h1>
+        <div class="scroll-containerPlus">
+            <div class="ScriptMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <!-- NexLang Button with version selector -->
+                <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
+                    <button id="NexLangBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="openNexLangScript()">
+                        NexLang <span id="NexLangVersion">[1.6]</span>
+                    </button>
+                    <select id="NexLangSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('NexLang')">
+                        <option value="1.2">Alpha 1.2</option>
+                        <option value="1.3">Beta 1.3</option>
+                        <option value="1.4">Beta 1.4</option>
+                        <option value="1.5">Beta 1.5</option>
+                        <option value="1.6" selected>Beta 1.6</option>
+                    </select>
                 </div>
 
-                <div class="setting">
-                    <label for="gravity" data-translate="Gravity">Гравитация:</label>
-                    <input type="number" id="gravity" value="9.81" step="0.1">
-                </div>
-
-                <!-- <div class="setting">
-                    <label for="SystemColision">Система коллизий:</label>
-                    <select id="SystemColision">
-                        <option value="AABB" selected>AABB</option>
-                        <option value="SAT">SAT</option>
-                    </select>
-                </div> -->
-
-                <!-- <div class="setting">
-                    <label for="Rendering">Рендеринг:</label>
-                    <label for="Rendering">Select Rendering API:</label>
-                    <select id="Rendering">
-                        <optgroup label="OpenGL">
-                            <option value="OpenGL 1.3" title="Legacy OpenGL version">OpenGL 1.3</option>
-                            <option value="OpenGL SE" title="Optimized for embedded systems">OpenGL SE</option>
-                            <option value="OpenGL 2.1" selected title="Widely supported">OpenGL 2.1</option>
-                            <option value="OpenGL 3.3" title="Modern OpenGL version">OpenGL 3.3</option>
-                            <option value="OpenGL 4.6" title="Latest OpenGL version">OpenGL 4.6</option>
-                        </optgroup>
-                        <optgroup label="Vulkan">
-                            <option value="Vulkan 1.0" title="First Vulkan release">Vulkan 1.0</option>
-                            <option value="Vulkan 1.1" title="Improved performance">Vulkan 1.1</option>
-                            <option value="Vulkan 1.2" title="Additional extensions">Vulkan 1.2</option>
-                            <option value="Vulkan 1.3" title="Most recent Vulkan release">Vulkan 1.3</option>
-                        </optgroup>
-                        <optgroup label="DirectX">
-                            <option value="DirectX 9.0" title="Legacy DirectX version">DirectX 9.0</option>
-                            <option value="DirectX 10.0" title="Improved graphics support">DirectX 10.0</option>
-                            <option value="DirectX 11.0" title="Widely supported version">DirectX 11.0</option>
-                            <option value="DirectX 12" title="Latest DirectX version">DirectX 12</option>
-                            <option value="DirectX 12 Ultimate" title="Supports ray tracing">DirectX 12 Ultimate</option>
-                        </optgroup>
-                        <optgroup label="Metal">
-                            <option value="Metal 1.0" title="For Apple devices">Metal 1.0</option>
-                            <option value="Metal 2.0" title="Improved Apple graphics API">Metal 2.0</option>
-                        </optgroup>
-                        <optgroup label="Other">
-                            <option value="Software Rendering" title="CPU-based rendering">Software Rendering</option>
-                            <option value="WebGPU" title="Modern web graphics API">WebGPU</option>
-                        </optgroup>
-                    </select>
-
-                    <label for="AntiAliasing">Anti-Aliasing:</label>
-                    <select id="AntiAliasing">
-                        <option value="None">None</option>
-                        <option value="2x">2x</option>
-                        <option value="4x">4x</option>
-                        <option value="8x">8x</option>
-                    </select>
-                </div> -->
-
-                <!-- <div class="setting">
-                    <label for="Platform">Платформа для сборки:</label>
-                    <select id="Platform">
-                        <option value="Android" selected>Android</option>
-                        <option value="Windows">Windows</option>
-                        <option value="IOS">IOS</option>
-                        <option value="MacOS">MacOS</option>
-                    </select>
-                </div> -->
-
-                <!-- <div class="setting">
-                    <label for="Efficiency">Производительность:</label>
-                    <select id="Efficiency">
-                        <option value="Efficiency">Производительность</option>
-                        <option value="Graphyc" selected>Графика</option>
-                    </select>
-                </div> -->
-
-                <div class="setting">
-                    <label for="ThemEditor" data-translate="ThemEditor">Тема редактора:</label>
-                    <select id="ThemEditor">
-                        <option value="Black" data-translate="ThemBlack" selected>Тёмная</option>
-                        <option value="White" data-translate="ThemWhite">Светлая</option>
-                    </select>
-                </div>                
-
-                <div class="setting">
-                    <label for="language" data-translate="labelLanguage">Язык:</label>
-                    <select id="language">
-                        <option value="ru" data-translate="russian" selected>Русский</option>
-                        <option value="en" data-translate="english">Английский</option>
-                        <option value="uk" data-translate="ukraine">Украинский</option>
-                        <option value="kz" data-translate="kazak">Казахский</option>
-                        <option value="pl" data-translate="polski">Польский</option>
-                        <option value="es" data-translate="espano">Испанский</option>
-                        <option value="de" data-translate="deutsch">Немецский</option>
+                <!-- SlashScript Button with version selector -->
+                <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
+                    <button id="SlashScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="openSlashScript()">
+                        SlashScript <span id="SlashScriptVersion">[2.0]</span>
+                    </button>
+                    <select id="SlashScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('SlashScript')">
+                        <option value="1.0">1.0</option>
+                        <option value="2.0" selected>2.0</option>
                     </select>
                 </div>
 
-                <div class="setting">
-                    <label for="fonts" data-translate="labelfonts">Шрифт:</label>
-                    <select id="fonts">
-                        <option value="classic" data-translate="standart" selected>Стандарт</option>
-                        <option value="CustomFont3">AndroCode</option>
-                        <option value="SelectCustom" data-translate="SelectCustom">Выбрать свой...</option>
+                <!-- PJScript Button with version selector -->
+                <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
+                    <button id="PJScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
+                        PJScript <span id="PJScriptVersion">[1.0]</span>
+                    </button>
+                    <select id="PJScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('PJScript')">
+                        <option value="1.0">1.0</option>
                     </select>
-                    <input type="file" id="customFontFile" accept=".ttf,.otf,.woff,.woff2" style="display: none;">
-                </div>
-
-                <!-- ✅ Подсказка -->
-                <div id="fontAlert" style="display: none; color: red; font-size: 14px; margin-top: 5px;">
-                    Чтобы стандартный шрифт применился, перезагрузите страницу...
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Community -->
-    <div id="CommunityPanel" class="Community-panel" style="display: none;">
-        <button class="close-Community" onclick="closeCommunity()">
-            <img src="sprites/close.png" alt="Закрыть">
+    <!-- NexLangScript -->
+    <div id="NexLangScriptPanel" class="NexLangScript-panel" style="display: none;">
+        <button class="close-NexLangScript" onclick="closeNexLangScript()">
+            <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleCommunity" data-translate="Commynity">Комьюнити</h1>
-        <div class="Community-content">
-            <!--Проекты!-->
-            <button class="Project1" onclick="openCommunityProj1()"></button>
-            <div class="Project2"></div>
-            <div class="Project3"></div>
-            <div class="Project4"></div>
-            <div class="Project5"></div>
-            <div class="Project6"></div>
-            <div class="Project7"></div>
-            <div class="Project8"></div>
-            <div class="Project9"></div>
-            <div class="Project10"></div>
-            <div class="Project11"></div>
-            <div class="Project12"></div>
-            <div class="Project13"></div>
-            <div class="Project14"></div>
-            <div class="Project15"></div>
-
-            <!-- Buttons -->
-            <div class="profileIcon"></div>
-            <div class="upload"></div>
-        </div>
-    </div>
-
-    <!-- CommunityProj1 -->
-    <div id="CommunityProj1Panel" class="CommunityProj1-panel" style="display: none;">
-        <button class="close-CommunityProj1" onclick="closeCommunityProj1()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleCommunityProj1">Joystick Standart</h1>
-        <div class="CommunityProj1-content">
-            <div class="Joystick-Standart"></div>
-            <div class="Joystick-Standart-Size">3.30  МБ</div>
-            <div class="Joystick-Standart-Download"></div>
-            <h1 class="Joystick-Standart-Text">Скачать</h1>
-        </div>
-    </div>
-
-    <!-- CommunityUploadProject -->
-    <div id="CommunityUploadProjectPanel" class="CommunityUploadProject-panel" style="display: none;">
-        <button class="close-CommunityUploadProject" onclick="closeCommunityUploadProject()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleCommunityUploadProject">Библиотека</h1>
-        <div class="CommunityUploadProject-content">
-        </div>
-    </div>
-
-    <!-- Profile -->
-    <div id="ProfilePanel" class="Profile-panel" style="display: none;">
-        <button class="close-Profile" onclick="closeProfile()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleProfile" data-translate="Profile">Профиль</h1>
-        <div class="Profile-content">
-            <div class="circle"></div>
-            <div class="username" id="username"></div>
-            <a href="#" onclick="openProfileInput(event)" class="styled-button" data-translate="OpenProfile">Сменить имя</a>
-            <div class="EcrCoin">
-                <div class="coin-counter">0</div>
-                <img src="sprites/EcrCoin.png" alt="Монета" />
+        <h1 class="titleNexLangScript" style="font-family: 'CustomFont2', sans-serif;">NexLang IDE</h1>
+        <div class="NexLangScript-content">
+            <div class="ide-text-field-container" style="left: 50px; top: 50px;">
+                <div class="drag-handle" style="font-family: 'CustomFont2', sans-serif;">Переместите</div>
+                <textarea id="codeInput" class="ide-text-field" placeholder="Введите ваш код..." style="font-family: 'CustomFont2', sans-serif;"></textarea>
+                <div class="resize-corner"></div>
             </div>
+            <button onclick="processCode()" class="create-button" style="font-family: 'CustomFont2', sans-serif;">Создать</button> <!-- New button -->
+        </div>
+    </div>
 
-            <div id="timeSpent">
-                <span id="days">00</span>:<span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span>
+    <!-- SlashScript -->
+    <div id="SlashScriptPanel" class="SlashScript-panel" style="display: none;">
+        <button class="close-SlashScript" onclick="closeSlashScript()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleSlashScript" style="font-family: 'CustomFont2', sans-serif;">SlashScript IDE</h1>
+        <div class="SlashScript-content">
+            <div class="ide-text-field-container-sls" style="left: 50px; top: 50px;">
+                <div class="drag-handle-sls" style="font-family: 'CustomFont2', sans-serif;">Переместите</div>
+                <textarea id="codeInput" class="ide-text-field-sls" placeholder="Введите ваш код..." style="font-family: 'CustomFont2', sans-serif;"></textarea>
+                <div class="resize-corner-sls"></div>
+            </div>
+            <button onclick="processCode()" class="create-button-sls" style="font-family: 'CustomFont2', sans-serif;">Создать</button> <!-- New button -->
+        </div>
+    </div>
+
+    <!-- SpritesEditor -->
+    <div id="SpritesEditorPanel" class="SpritesEditor-panel" style="display: none;">
+        <button class="close-SpritesEditor" onclick="closeSpritesEditor()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleSpritesEditor">Загрузить...</h1>
+        <div class="SpritesEditor-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <input type="file" id="uploadSprite" accept="image/*" style="padding: 10px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer;">
+            <div id="spritePreview" style="margin-top: 20px; display: flex; justify-content: center; align-items: center; border: 1px dashed #ccc; width: 300px; height: 300px; background-color: #f0f0f0;">
+                <span style="color: #aaa;">Предпросмотр изображения</span>
             </div>
         </div>
     </div>
 
-    <!-- Profile Input -->
-    <div id="ProfileInputPanel" class="ProfileInput-panel" style="display: none;">
-        <button class="close-ProfileInput" onclick="closeProfileInput()">
-            <img src="sprites/close.png" alt="Закрыть">
+    <!-- BuildSettingsMenu -->
+    <div id="BuildSettingsMenuPanel" class="BuildSettingsMenu-panel" style="display: none;">
+        <button class="close-BuildSettingsMenu" onclick="closeBuildSettingsMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleProfileInput">Введите новое имя</h1>
-        <div class="ProfileInput-content">
-            <div class="center-container-profile">
-                <input type="text" class="styled-input-prof" placeholder="Введите текст...">
-            </div>
-            <button class="save-username-btn">Сохранить</button>
-        </div>
-    </div>
-
-    <!-- PromoCodes -->
-    <div id="PromoCodesPanel" class="PromoCodes-panel" style="display: none;">
-        <button class="close-PromoCodes" onclick="closePromoCodes()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titlePromoCodes" data-translate="Promocodes">Промокоды</h1>
-        <div class="PromoCodes-content">
-            <div class="promo-code">
-                <input type="text" class="promo-input" data-translate="InputPromocode" placeholder="Введите промокод" />
-                <button class="apply-promo" data-translate="ApplyPromocode">Применить промокод</button>
+        <h1 class="titleBuildSettingsMenu" style="font-family: 'CustomFont2', sans-serif;">Настройки</h1>
+        <div class="scroll-containerPlus">
+            <div class="BuildSettingsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;"style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectName" class="text-input-BuildSettingsMenu" placeholder="Название проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectPackage" class="text-input-BuildSettingsMenu" placeholder="Пакет проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectVersion" class="text-input-BuildSettingsMenu" placeholder="Версия проекта v.1.0.0"style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectAuthor" class="text-input-BuildSettingsMenu" placeholder="Автор проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectBuildNum" class="text-input-BuildSettingsMenu" placeholder="Номер сборки 1"style="font-family: 'CustomFont2', sans-serif;">
             </div>
         </div>
+        <button class="save-json-button" onclick="saveJSON()" style="font-family: 'CustomFont2', sans-serif;">Сохранить JSON</button>
     </div>
 
-    <!-- Achivements -->
-    <div id="AchivementsPanel" class="Achivements-panel" style="display: none;">
-        <button class="close-Achivements" onclick="closeAchivements()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleAchivements">Достижения</h1>
-        <div class="Achivements-content">
-            <div id="achievements">
-                <!-- Достижение "Начало" -->
-                <div class="achievement" id="achievement1">
-                    <span class="Ach1title">Начало</span>
-                    <span class="status">🔒 Заблокировано</span>
-                </div>
-
-                <!-- Кнопка сброса достижений -->
-                <button id="reset-button">Сбросить достижения</button>
+    <!-- RunLoading -->
+    <div id="RunLoadingPanel" class="RunLoading-panel" style="display: none;">
+        <div class="RunLoading-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <h1 class="MadeWithTitle">Made With Ecrous Engine</h1>
+            <div class="AppMade">
+                <img src="sprites/app.jpg" alt="LogoApp">
             </div>
         </div>
     </div>
 
-    <!-- Уведомление о получении достижения -->
-    <div id="notification" class="notification hidden">
-        🎉 Поздравляем! Вы получили достижение: <span id="notification-text"></span>
-    </div>
-
-    <!-- Мои проекты -->
-    <div id="MyProjectsPanel" class="MyProjects-panel" style="display: none;">
-        <button class="close-MyProjects" onclick="closeMyProjects()">
-            <img src="sprites/close.png" alt="Закрыть">
+    <!-- RunMenu -->
+    <div id="RunMenuPanel" class="RunMenu-panel" style="display: none;">
+        <button class="close-RunMenu" onclick="this.parentElement.style.display = 'none'">
+            <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleMyProjects" data-translate="MyProjects">Мои Проекты</h1>
-        <div class="MyProjects-content">
-            <!-- Кнопки -->
-            <img src="sprites/plus.png" class="plus-button" alt="Добавить">
-            <img src="sprites/import.png" class="import-button" alt="Импорт">
-
-            <!-- Список проектов -->
-            <div class="project-list" id="projectList"></div>
-
-            <!-- Модальное окно -->
-            <div class="modals" id="projectModal">
-                <div class="modals-content">
-                    <h2>Введите название проекта</h2>
-                    <input type="text" id="projectName" placeholder="Название проекта">
-                    <button id="submitProject">Готово</button>
-                </div>
-            </div>
+        <div class="RunMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <!-- Сюда добавляются новые элементы -->
         </div>
     </div>
 
-    <!-- Tutorials -->
-    <div id="TutorialsPanel" class="Tutorials-panel" style="display: none;">
-        <button class="close-Tutorials" onclick="closeTutorials()">
-            <img src="sprites/close.png" alt="Закрыть">
-        </button>
-        <h1 class="titleTutorials">Туториалы & Обучение</h1>
-        <div class="Tutorials-content">
-        </div>
-    </div>
-
-    <div id="plus-container">
-        <img src="sprites/PlusECRCoin.png" alt="PlusECRCoin">
-    </div>
-
-    <!-- JavaScript -->
-    <script src="scripts/loading.js"></script>
     <script src="script.js"></script>
-    <script src="scripts/achivements.js"></script>
-    <script src="scripts/transcript.js"></script>
-    <script src="scripts/themes.js"></script>
-    <script src="scripts/library.js"></script>
-    <script src="scripts/promocodes.js"></script>
-    <script src="scripts/tutorials.js"></script>
-    <script src="scripts/news.js"></script>
-    <script src="scripts/settings.js"></script>
-    <script src="scripts/editor.js"></script>
-    <script src="scripts/Community.js"></script>
-    <script src="scripts/Commynity_Projects/CommynityProject1.js"></script>
-    <script src="scripts/Profile/profile.js"></script>
-    <script src="scripts/Profile/profile_input.js"></script>
-    <script src="scripts/MyProjects.js"></script>
-    <script src="scripts/selectFont.js"></script>
-    <script src="scripts/PlusEcrCoin.js"></script>
+    <script src="scripts/TabbyAI.js"></script>
+    <script src="scripts/3dObjects.js"></script>
+    <script src="scripts/SpriteEditor.js"></script>
+    <script src="scripts/BackgroundOptions.js"></script>
+    <script src="scripts/ScriptMenu.js"></script>
+    <script src="scripts/BuildSettingsMenu.js"></script>
+    <script src="scripts/RunLoading.js"></script>
+    <script src="scripts/RunMenu.js"></script>
+    <script src="scripts/PlusObjectsEditor.js"></script>
+    <script src="scripts/NexLang/NexLang.js"></script>
+    <script src="scripts/SlashScript/SlashScript.js"></script>
+    <script src="scripts/UIMenu.js"></script>
+    <script src="scripts/LPVersion.js"></script>
+    <script src="scripts/UIPanel.js"></script>
+    <script src="scripts/LeftPanel.js"></script>
+    <script src="scripts/CameraPanel.js"></script>
+    <script src="scripts/Camera2d.js"></script>
+    <script src="scripts/UIText.js"></script>
+    <script src="scripts/UIImage.js"></script>
+    <script src="scripts/UIVideo.js"></script>
+    <script src="scripts/UIField.js"></script>
+    <script src="scripts/UIButton.js"></script>
+    <script src="scripts/Transform.js"></script>
+    <script src="scripts/Matter.js"></script>
 </body>
 </html>

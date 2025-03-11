@@ -1,0 +1,76 @@
+/* RunLoading */
+.RunLoading-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, rgb(51, 51, 65), rgb(133, 121, 145));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0; /* Скрываем панель по умолчанию */
+    animation: fadeInPanel 1s ease-in-out forwards; /* Анимация появления */
+}
+
+/* Анимация появления панели */
+@keyframes fadeInPanel {
+    0% {
+        opacity: 0;
+        transform: scale(0.9); /* Легкое уменьшение */
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1); /* Возвращение к исходному размеру */
+    }
+}
+
+/* Анимация загрузочного контента */
+.RunLoading-content {
+    text-align: center;
+    animation: pulse 2s infinite; /* Пульсация */
+}
+
+/* Анимация пульсации */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+.MadeWithTitle {
+    position: absolute;
+    top: -200px; /* Текст у верхней границы экрана */
+    left: 0; /* Текст слева у края */
+    font-size: 36px;
+    animation: slideDown 1.5s ease-out; /* Анимация спуска */
+    font-family: 'CustomFont', sans-serif; /* Укажите шрифт по своему предпочтению */
+    text-align: center; /* Выравнивание текста по левому краю */
+    margin: 20px; /* Отступ от верхнего и левого края */
+}
+
+/* Анимация спуска текста */
+@keyframes slideDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.AppMade img {
+    height: 250px;
+    width: 250px;
+    border-radius: 20px;
+}

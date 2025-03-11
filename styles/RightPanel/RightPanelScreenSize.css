@@ -1,0 +1,112 @@
+/* Медиазапросы для адаптивности */
+
+/* Для мобильных устройств (меньше 600px) */
+@media (max-width: 600px) {
+    .rightPanel {
+        width: 60px;
+        height: calc(70vh - 60px); /* Уменьшаем высоту на мобильных */
+    }
+    
+    .VisualScript, .Resources, .Ads, .BuildSettings, .Settings, .Play {
+        width: 50px; /* Уменьшаем ширину кнопок */
+        height: 60px; /* Уменьшаем высоту кнопок */
+    }
+
+    .VisualScript {
+        top: 5px;
+    }
+
+    .Resources {
+        top: 80px;
+    }
+
+    .Ads {
+        top: 160px;
+    }
+
+    .BuildSettings {
+        top: 240px;
+    }
+
+    .Settings {
+        top: 320px;
+    }
+
+    .Play {
+        top: 400px;
+    }
+}
+
+/* Для планшетов (от 601px до 1024px) */
+@media (max-width: 1024px) and (min-width: 601px) {
+    .rightPanel {
+        width: 70px;
+        height: calc(75vh - 80px); /* Подстраиваем высоту под планшеты */
+    }
+
+    .VisualScript, .Resources, .Ads, .BuildSettings, .Settings, .Play {
+        width: 55px; /* Ширина кнопок на планшетах */
+        height: 70px; /* Высота кнопок на планшетах */
+    }
+
+    .VisualScript {
+        top: 10px;
+    }
+
+    .Resources {
+        top: 120px;
+    }
+
+    .Ads {
+        top: 200px;
+    }
+
+    .BuildSettings {
+        top: 280px;
+    }
+
+    .Settings {
+        top: 360px;
+    }
+
+    .Play {
+        top: 420px;
+    }
+}
+
+/* Для больших экранов (больше 1024px) */
+@media (min-width: 1025px) {
+    .rightPanel {
+        width: 80px;
+        height: calc(80vh - 100px); /* Выровняем для больших экранов */
+    }
+
+    .VisualScript, .Resources, .Ads, .BuildSettings, .Settings, .Play {
+        width: 60px; /* Стандартная ширина для больших экранов */
+        height: 80px; /* Стандартная высота */
+    }
+
+    .VisualScript {
+        top: 10px;
+    }
+
+    .Resources {
+        top: 100px;
+    }
+
+    .Ads {
+        top: 190px;
+    }
+
+    .BuildSettings {
+        top: 300px;
+    }
+
+    .Settings {
+        top: 390px;
+    }
+
+    .Play {
+        top: 490px;
+    }
+}

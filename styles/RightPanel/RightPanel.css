@@ -1,0 +1,174 @@
+.rightPanel {
+    height: calc(80vh - 100px);
+    width: 80px;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    background-image: linear-gradient(90deg, rgb(61, 61, 61), rgb(133, 121, 145));
+    border-radius: 25px;
+    border: 3px solid rgb(120, 110, 118);
+    transform: translateY(-50%);
+    z-index: 10; /* Значение больше, чем у square */
+}
+
+.VisualScript {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.VisualScriptImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/VSScript.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.VisualScript {
+    top: 10px;
+    left: 10px;
+}
+
+.Resources {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.ResourcesImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Resources.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Resources {
+    top: 100px;
+    left: 10px;
+}
+
+.Ads {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.AdsImg {
+    height: 40px;
+    width: 60px;
+    background-image: url('../../sprites/AD.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Ads {
+    top: 190px;
+    left: 10px;
+}
+
+.BuildSettings {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.BuildSettingsImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/BuildSettings.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.BuildSettings {
+    top: 300px;
+    left: 10px;
+}
+
+.Settings {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.SettingsImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Settings.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Settings {
+    top: 390px;
+    left: 10px;
+}
+
+.Play {
+    height: 60px;
+    width: 80px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.PlayImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Play.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Play {
+    top: 490px;
+    left: 10px;
+}

@@ -1,17 +1,10 @@
-/* Первый шрифт */
+/* Первыйй шрифт */
 @font-face {
     font-family: 'CustomFont';
-    src: url('../fonts/font.otf') format('opentype');
+    src: url('/fonts/Khand-Bold.ttf') format('opentype');
 }
 
-/* Второй шрифт */
 @font-face {
     font-family: 'CustomFont2';
-    src: url('../fonts/Khand-Bold.ttf') format('opentype');
-}
-
-/* Третий шрифт */
-@font-face {
-    font-family: 'CustomFont3';
-    src: url('../fonts/04b03.ttf') format('opentype');
+    src: url('/fonts/ofont.ttf') format('opentype');
 }

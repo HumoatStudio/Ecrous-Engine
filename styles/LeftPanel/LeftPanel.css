@@ -1,0 +1,120 @@
+.leftPanel {
+    height: calc(50vh - 100px);
+    width: 70px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    background-image: linear-gradient(90deg, rgb(61, 61, 61), rgb(133, 121, 145));
+    border-radius: 25px;
+    border: 3px solid rgb(120, 110, 118);
+    transform: translateY(-50%);
+    z-index: 10; /* Значение больше, чем у square */
+}
+
+.Cursor {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.CursorImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/cursor.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Cursor {
+    top: 10px;
+    right: 5px;
+}
+
+.Transform {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.TransformImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Transform.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Transform {
+    top: 100px;
+    right: 5px;
+}
+
+.Rotate {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.RotateImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Rotate.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Rotate {
+    top: 190px;
+    right: 5px;
+}
+
+.Scale {
+    height: 80px;
+    width: 60px;
+    position: absolute;
+    background-image: linear-gradient(90deg, rgb(81, 78, 78), rgb(62, 55, 62)); /* Фон кнопки */
+    border-radius: 15px;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center; /* Центрируем содержимое по горизонтали */
+    align-items: center; /* Центрируем содержимое по вертикали */
+}
+
+.ScaleImg {
+    height: 50px;
+    width: 70px;
+    background-image: url('../../sprites/Scale.png'); /* Изображение для кнопки */
+    background-size: contain; /* Уменьшаем изображение, чтобы оно помещалось в кнопке */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.Scale {
+    top: 280px;
+    right: 5px;
+}

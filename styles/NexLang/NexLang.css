@@ -1,0 +1,131 @@
+/* NexLangScript */
+
+.NexLangScript-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1A1A1A; /* Тёмно-серый цвет фона */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.close-NexLangScript {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10;
+    background: none;
+    border: none;
+    padding: 0;
+    animation: fadeInTitle 2s ease-in-out forwards;
+}
+
+.close-NexLangScript img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.close-NexLangScript:hover {
+    transform: scale(1.1);
+}
+
+.NexLangScript-content {
+    text-align: center;
+}
+
+.titleNexLangScript {
+    position: absolute;
+    top: 35px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: fadeInTitle 1s ease-in-out;
+}
+
+.ide-text-field-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    height: 200px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+.drag-handle {
+    background-color: #333;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px;
+    cursor: move;
+    user-select: none;
+    border-bottom: 2px solid #000;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.ide-text-field {
+    flex: 1;
+    width: 100%;
+    border: none;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    resize: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.ide-text-field::placeholder {
+    color: #6a9955;
+}
+.resize-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #333;
+    bottom: 0;
+    right: 0;
+    cursor: se-resize;
+    border-bottom-right-radius: 5px;
+}
+
+.circle {
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin-top: 10px;
+}
+
+.create-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.create-button:hover {
+    background-color: #2980b9;
+}
+
+.create-button:focus {
+    outline: none;
+}
