@@ -1,9 +1,16 @@
+function deselectElement() {
+    if (selectedElement) {
+        selectedElement.style.border = '2px solid white'; // Возвращаем стандартный стиль
+        selectedElement = null;
+    }
+}
+
 let textFieldIdCounter = 0; // Глобальный счетчик ID
 
 function CreateUITextField() {
     const textField = document.createElement('input');
     textField.type = 'text';
-    textField.classList.add('text-field-element');
+    textField.classList.add('text-field-element', 'text-element'); // Добавляем text-element
     textField.dataset.id = textFieldIdCounter++; // Уникальный ID
     textField.value = 'Введите текст';
     textField.style.position = 'absolute';
@@ -17,7 +24,8 @@ function CreateUITextField() {
     textField.style.zIndex = '1';
 
     document.body.appendChild(textField);
-    syncTextFieldsToRunMenu(); // Сразу добавляем в RunMenu
+    syncTextFieldsToRunMenu();
+    syncTextsToRunMenu(); // 🛠 Синхронизируем новый текстовый элемент
 
     textField.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -57,6 +65,29 @@ function syncTextFieldsToRunMenu() {
     });
 }
 
+// 🆕 **Обновление RunMenuPanel для текстовых элементов**
+function syncTextsToRunMenu() {
+    const runMenuPanel = document.getElementById('RunMenuPanel');
+    const runMenuContent = runMenuPanel.querySelector('.RunMenu-content');
+
+    // Удаляем только текстовые элементы, не затрагивая кнопки и панели
+    runMenuContent.querySelectorAll('.text-element').forEach(el => el.remove());
+
+    document.querySelectorAll('.text-element').forEach((sourceText) => {
+        let textElement = document.createElement('div');
+        textElement.classList.add('text-element');
+        textElement.dataset.id = sourceText.dataset.id;
+        textElement.innerText = sourceText.innerText;
+        textElement.style.color = sourceText.style.color;
+        textElement.style.fontSize = sourceText.style.fontSize;
+        textElement.style.position = 'absolute';
+        textElement.style.left = sourceText.style.left;
+        textElement.style.top = sourceText.style.top;
+
+        runMenuContent.appendChild(textElement);
+    });
+}
+
 // 🎨 **Контекстное меню для TextField**
 function showTextFieldContextMenu(event, textField) {
     const existingMenu = document.getElementById('context-menu');
@@ -83,7 +114,8 @@ function showTextFieldContextMenu(event, textField) {
         const newColor = prompt('Введите цвет текста:', textField.style.color);
         if (newColor) {
             textField.style.color = newColor;
-            syncTextFieldsToRunMenu(); // 🛠 Обновляем RunMenu после изменения цвета
+            syncTextFieldsToRunMenu();
+            syncTextsToRunMenu(); // 🛠 Синхронизируем текстовые элементы
         }
         contextMenu.remove();
     });
@@ -95,7 +127,8 @@ function showTextFieldContextMenu(event, textField) {
     deleteOption.style.color = 'red';
     deleteOption.addEventListener('click', () => {
         textField.remove();
-        syncTextFieldsToRunMenu(); // 🛠 Обновляем RunMenu после удаления
+        syncTextFieldsToRunMenu();
+        syncTextsToRunMenu(); // 🛠 Удаляем текстовые элементы из RunMenu
         contextMenu.remove();
     });
 
@@ -126,7 +159,8 @@ function enableDragging(textField) {
         if (isDragging) {
             textField.style.left = `${event.clientX - offsetX}px`;
             textField.style.top = `${event.clientY - offsetY}px`;
-            syncTextFieldsToRunMenu(); // 🛠 Обновляем RunMenu после перемещения
+            syncTextFieldsToRunMenu();
+            syncTextsToRunMenu();
         }
     });
 

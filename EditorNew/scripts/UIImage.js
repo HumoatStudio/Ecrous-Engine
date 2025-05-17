@@ -11,7 +11,8 @@ function CreateUIImage() {
     guiImage.style.top = `${window.innerHeight / 2 - 150}px`;
     guiImage.style.cursor = 'grab';
     guiImage.style.zIndex = '1';
-    guiImage.src = 'your-image-url.png';
+    // Устанавливаем изначальное изображение
+    guiImage.src = 'https://i.postimg.cc/rmVzvMDw/tttt.png';
     
     document.body.appendChild(guiImage);
     
@@ -111,10 +112,40 @@ function CreateUIImage() {
             }
             contextMenu.remove();
         });
+
+        const changeBorderRadiusOption = document.createElement('div');
+        changeBorderRadiusOption.innerText = 'Изменить закругление углов';
+        changeBorderRadiusOption.style.cursor = 'pointer';
+        changeBorderRadiusOption.style.padding = '5px';
+        changeBorderRadiusOption.addEventListener('click', () => {
+            const newRadius = prompt('Введите радиус закругления (px):', guiImage.style.borderRadius.replace('px', ''));
+            if (newRadius !== null) {
+                guiImage.style.borderRadius = `${newRadius}px`;
+            }
+            contextMenu.remove();
+        });
+
+        const deleteOption = document.createElement('div');
+        deleteOption.innerText = 'Удалить изображение';
+        deleteOption.style.cursor = 'pointer';
+        deleteOption.style.padding = '5px';
+        deleteOption.style.color = 'red';
+        deleteOption.addEventListener('click', () => {
+            guiImage.remove();
+            removeFromRunMenu(guiImage.dataset.id);
+            contextMenu.remove();
+        });
+
+        contextMenu.appendChild(deleteOption);
+        
+        document.addEventListener('click', () => contextMenu.remove(), { once: true });
+        document.body.appendChild(contextMenu);
         
         contextMenu.appendChild(changeSrcOption);
         contextMenu.appendChild(changeSrcUrlOption);
         contextMenu.appendChild(changeSizeOption);
+        contextMenu.appendChild(changeBorderRadiusOption);
+        contextMenu.appendChild(deleteOption);
         
         document.addEventListener('click', () => contextMenu.remove(), { once: true });
         document.body.appendChild(contextMenu);
@@ -141,6 +172,7 @@ function CreateInRunMenuImage(sourceImage) {
     image.style.left = sourceImage.style.left;
     image.style.top = sourceImage.style.top;
     image.style.transform = sourceImage.style.transform;
+    image.style.borderRadius = sourceImage.style.borderRadius;
 }
 
 function applySrcToRunMenuImage(newSrc, imageId) {
@@ -149,5 +181,14 @@ function applySrcToRunMenuImage(newSrc, imageId) {
     let image = runMenuContent.querySelector(`.image[data-id="${imageId}"]`);
     if (image) {
         image.src = newSrc;
+    }
+}
+
+function removeFromRunMenu(imageId) {
+    const runMenuPanel = document.getElementById('RunMenuPanel');
+    const runMenuContent = runMenuPanel.querySelector('.RunMenu-content');
+    let image = runMenuContent.querySelector(`.image[data-id="${imageId}"]`);
+    if (image) {
+        image.remove();
     }
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,11 +25,13 @@
     <link rel="stylesheet" href="styles/UI Menu.css" id="GUIMenuStylesheet">
     <link rel="stylesheet" href="styles/CameraPanel.css" id="CameraPanelStylesheet">
     <link rel="stylesheet" href="styles/3dObjects.css" id="3dObjectsStylesheet">
-    <link rel="stylesheet" href="styles/PlusObjectsEditor.css" id="Stylesheet">
+    <link rel="stylesheet" href="styles/PlusObjectsEditor.css" id="PlusObjectsEditorStylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <link rel="icon" href="/sprites/app.jpg" type="image/png">
 </head>
 <body>
     <div class="upPanel">
-        <button class="Exit">
+        <button class="Exit" onclick="ExitEditor()">
             <div class="ExitImg"></div>
         </button>
         <button class="Plus" onclick="openPlusObjectsEditor()">
@@ -86,25 +88,25 @@
         <button class="close-PlusObjectsEditor" onclick="closePlusObjectsEditor()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titlePlusObjectsEditor">Создать</h1>
+        <h1 class="titlePlusObjectsEditor" style="font-family: 'CustomFont2', sans-serif;">Создать</h1>
         <div class="scroll-containerPlus">
             <div class="PlusObjectsEditor-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <!-- <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="openThreeDMenu()">
+                <!-- <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
                     3D Object (broken)
                 </button> -->
-                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="open2DMenu()">
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="open2DMenu()">
                     2D Object (broken)
                 </button>
-                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="openUIMenu()">
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openUIMenu()">
                     UI
-                </button>
-                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;">
+                </button>                
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;">
                     Light (broken)
                 </button>
-                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="openCameraPanel()">
-                    Camera (broken)
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openCameraMenu()">
+                    Camera
                 </button>
-                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onclick="openBackgroundOptions()">
+                <button class="PlusObjectsEditor-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openBackgroundOptions()">
                     Background Options
                 </button>
             </div>
@@ -116,7 +118,7 @@
         <button class="close-AIEditor" onclick="closeAIEditor()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleAIEditor">Tabby AI</h1>
+        <h1 class="titleAIEditor" style="font-family: 'CustomFont2', sans-serif;">Tabby AI</h1>
         <div class="AIEditor-content">
             <div class="chat-container">
                 <div id="userMessageContainer" class="messages-container"></div>
@@ -132,22 +134,22 @@
         <button class="close-ThreeDObjectsMenu" onclick="closeThreeDMenu()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleThreeDObjectsMenu">3D Объекты</h1>
+        <h1 class="titleThreeDObjectsMenu" style="font-family: 'CustomFont2', sans-serif;">3D Объекты</h1>
         <div class="scroll-containerPlus">
             <div class="ThreeDObjectsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateGUIPanel()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateGUIPanel()">
                     Cube
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateGUIText()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateGUIText()">
                     Sphere
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
                     Capsule
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
                     Cylinder
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
                     Plane
                 </button>
             </div>
@@ -159,7 +161,7 @@
         <button class="close-ThreeDObjectsMenu" onclick="closeThreeDMenu()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleThreeDObjectsMenu">2D Объекты</h1>
+        <h1 class="titleThreeDObjectsMenu" style="font-family: 'CustomFont2', sans-serif;">2D Объекты</h1>
         <div class="scroll-containerPlus">
             <div class="ThreeDObjectsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
                 <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
@@ -180,32 +182,56 @@
         <button class="close-UIMenu" onclick="closeUIMenu()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleUIMenu">UI</h1>
+        <h1 class="titleUIMenu" style="font-family: 'CustomFont2', sans-serif;">UI</h1>
         <div class="scroll-containerPlus">
             <div class="UIMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUIPanel()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIPanel()">
                     UI Panel
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUIText()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIText()">
                     UI Text
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
-                    UI RawImage (broken)
-                </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUIImage()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIImage()">
                     UI Image
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUIVideo()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIVideo()">
                     UI Video
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUIButton()">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUIButton()">
                     UI Button
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="CreateUITextField()">
-                    UI Input Field (broken)
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="CreateUITextField()">
+                    UI InputField
                 </button>
-                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                <button class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
                     UI Scroll (broken)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- CameraMenu -->
+    <div id="CameraMenu" class="CameraMenu-panel" style="display: none;">
+        <button class="close-CameraMenu" onclick="closeCameraMenu()">
+            <img src="sprites/Close.png" alt="Закрыть">
+        </button>
+        <h1 class="titleCameraMenu" style="font-family: 'CustomFont2', sans-serif;">Создать</h1>
+        <div class="scroll-containerPlus">
+            <div class="CameraMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="CreateCamera2d()">
+                    Camera 2D
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera 3D (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera AR (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera VR (broken)
+                </button>
+                <button class="CameraMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; font-family: 'CustomFont2', sans-serif;" onclick="openThreeDMenu()">
+                    Camera XR (broken)
                 </button>
             </div>
         </div>
@@ -216,7 +242,7 @@
         <button class="close-BackgroundOptions" onclick="closeBackgroundOptions()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleBackgroundOptions">Настройки Фона</h1>
+        <h1 class="titleBackgroundOptions" style="font-family: 'CustomFont2', sans-serif;">Настройки Фона</h1>
         <div class="scroll-containerPlus">
             <div class="BackgroundOptions-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
                 <input type="color" id="backgroundColor" class="text-input-BackgroundOptions" value="#000000">
@@ -231,15 +257,15 @@
         <button class="close-ScriptMenu" onclick="closeScriptMenu()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleScriptMenu">Выбор ЯП</h1>
+        <h1 class="titleScriptMenu" style="font-family: 'CustomFont2', sans-serif;">Выбор ЯП</h1>
         <div class="scroll-containerPlus">
             <div class="ScriptMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
                 <!-- NexLang Button with version selector -->
                 <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
-                    <button id="NexLangBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="openNexLangScript()">
+                    <button id="NexLangBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="openNexLangScript()">
                         NexLang <span id="NexLangVersion">[1.6]</span>
                     </button>
-                    <select id="NexLangSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px;" onchange="updateVersion('NexLang')">
+                    <select id="NexLangSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('NexLang')">
                         <option value="1.2">Alpha 1.2</option>
                         <option value="1.3">Beta 1.3</option>
                         <option value="1.4">Beta 1.4</option>
@@ -250,10 +276,10 @@
 
                 <!-- SlashScript Button with version selector -->
                 <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
-                    <button id="SlashScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;" onclick="openSlashScript()">
+                    <button id="SlashScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;" onclick="openSlashScript()">
                         SlashScript <span id="SlashScriptVersion">[2.0]</span>
                     </button>
-                    <select id="SlashScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px;" onchange="updateVersion('SlashScript')">
+                    <select id="SlashScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('SlashScript')">
                         <option value="1.0">1.0</option>
                         <option value="2.0" selected>2.0</option>
                     </select>
@@ -261,10 +287,10 @@
 
                 <!-- PJScript Button with version selector -->
                 <div class="language-panel" style="display: flex; flex-direction: column; align-items: center;">
-                    <button id="PJScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer;">
+                    <button id="PJScriptBtn" class="GUIMenu-button" style="width: 300px; height: 100px; background: linear-gradient(45deg, rgb(132, 126, 133), rgb(163, 151, 175)); border: none; border-radius: 10px; color: white; font-size: 18px; cursor: pointer; font-family: 'CustomFont2', sans-serif;">
                         PJScript <span id="PJScriptVersion">[1.0]</span>
                     </button>
-                    <select id="PJScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px;" onchange="updateVersion('PJScript')">
+                    <select id="PJScriptSelect" style="margin-top: 10px; width: 100px; padding: 5px; font-size: 16px; font-family: 'CustomFont2', sans-serif;" onchange="updateVersion('PJScript')">
                         <option value="1.0">1.0</option>
                     </select>
                 </div>
@@ -277,14 +303,14 @@
         <button class="close-NexLangScript" onclick="closeNexLangScript()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleNexLangScript">NexLang IDE</h1>
+        <h1 class="titleNexLangScript" style="font-family: 'CustomFont2', sans-serif;">NexLang IDE</h1>
         <div class="NexLangScript-content">
             <div class="ide-text-field-container" style="left: 50px; top: 50px;">
-                <div class="drag-handle">Переместите</div>
-                <textarea id="codeInput" class="ide-text-field" placeholder="Введите ваш код..."></textarea>
+                <div class="drag-handle" style="font-family: 'CustomFont2', sans-serif;">Переместите</div>
+                <textarea id="codeInput" class="ide-text-field" placeholder="Введите ваш код..." style="font-family: 'CustomFont2', sans-serif;"></textarea>
                 <div class="resize-corner"></div>
             </div>
-            <button onclick="processCode()" class="create-button">Создать</button> <!-- New button -->
+            <button onclick="processCode()" class="create-button" style="font-family: 'CustomFont2', sans-serif;">Создать</button> <!-- New button -->
         </div>
     </div>
 
@@ -293,14 +319,14 @@
         <button class="close-SlashScript" onclick="closeSlashScript()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleSlashScript">SlashScript IDE</h1>
+        <h1 class="titleSlashScript" style="font-family: 'CustomFont2', sans-serif;">SlashScript IDE</h1>
         <div class="SlashScript-content">
             <div class="ide-text-field-container-sls" style="left: 50px; top: 50px;">
-                <div class="drag-handle-sls">Переместите</div>
-                <textarea id="codeInput" class="ide-text-field-sls" placeholder="Введите ваш код..."></textarea>
+                <div class="drag-handle-sls" style="font-family: 'CustomFont2', sans-serif;">Переместите</div>
+                <textarea id="codeInput" class="ide-text-field-sls" placeholder="Введите ваш код..." style="font-family: 'CustomFont2', sans-serif;"></textarea>
                 <div class="resize-corner-sls"></div>
             </div>
-            <button onclick="processCode()" class="create-button-sls">Создать</button> <!-- New button -->
+            <button onclick="processCode()" class="create-button-sls" style="font-family: 'CustomFont2', sans-serif;">Создать</button> <!-- New button -->
         </div>
     </div>
 
@@ -323,17 +349,17 @@
         <button class="close-BuildSettingsMenu" onclick="closeBuildSettingsMenu()">
             <img src="sprites/Close.png" alt="Закрыть">
         </button>
-        <h1 class="titleBuildSettingsMenu">Настройки</h1>
+        <h1 class="titleBuildSettingsMenu" style="font-family: 'CustomFont2', sans-serif;">Настройки</h1>
         <div class="scroll-containerPlus">
-            <div class="BuildSettingsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
-                <input type="text" id="projectName" class="text-input-BuildSettingsMenu" placeholder="Название проекта...">
-                <input type="text" id="projectPackage" class="text-input-BuildSettingsMenu" placeholder="Пакет проекта...">
-                <input type="text" id="projectVersion" class="text-input-BuildSettingsMenu" placeholder="Версия проекта v.1.0.0">
-                <input type="text" id="projectAuthor" class="text-input-BuildSettingsMenu" placeholder="Автор проекта...">
-                <input type="text" id="projectBuildNum" class="text-input-BuildSettingsMenu" placeholder="Номер сборки 1">
+            <div class="BuildSettingsMenu-content" style="display: flex; flex-direction: column; align-items: center; gap: 20px;"style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectName" class="text-input-BuildSettingsMenu" placeholder="Название проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectPackage" class="text-input-BuildSettingsMenu" placeholder="Пакет проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectVersion" class="text-input-BuildSettingsMenu" placeholder="Версия проекта v.1.0.0"style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectAuthor" class="text-input-BuildSettingsMenu" placeholder="Автор проекта..."style="font-family: 'CustomFont2', sans-serif;">
+                <input type="text" id="projectBuildNum" class="text-input-BuildSettingsMenu" placeholder="Номер сборки 1"style="font-family: 'CustomFont2', sans-serif;">
             </div>
         </div>
-        <button class="save-json-button" onclick="saveJSON()">Сохранить JSON</button>
+        <button class="save-json-button" onclick="saveJSON()" style="font-family: 'CustomFont2', sans-serif;">Сохранить JSON</button>
     </div>
 
     <!-- RunLoading -->
@@ -371,12 +397,15 @@
     <script src="scripts/UIMenu.js"></script>
     <script src="scripts/LPVersion.js"></script>
     <script src="scripts/UIPanel.js"></script>
+    <script src="scripts/LeftPanel.js"></script>
     <script src="scripts/CameraPanel.js"></script>
+    <script src="scripts/Camera2d.js"></script>
     <script src="scripts/UIText.js"></script>
     <script src="scripts/UIImage.js"></script>
     <script src="scripts/UIVideo.js"></script>
-    <script src="scripts/UIField.js.js"></script>
+    <script src="scripts/UIField.js"></script>
     <script src="scripts/UIButton.js"></script>
     <script src="scripts/Transform.js"></script>
+    <script src="scripts/Matter.js"></script>
 </body>
 </html>

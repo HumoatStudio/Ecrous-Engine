@@ -1,24 +1,159 @@
+// Подключаем Matter.js
+const { Engine, Render, Runner, World, Bodies, Events } = Matter;
+
+// Создаем физический движок
+const engine = Engine.create();
+engine.world.gravity.y = 1; // Включаем гравитацию
+const { world } = engine;
+
+// Создаем рендерер
+const render = Render.create({
+    element: document.getElementById('RunMenuPanel'),
+    engine: engine,
+    options: {
+        width: document.getElementById('RunMenuPanel').clientWidth,
+        height: document.getElementById('RunMenuPanel').clientHeight,
+        wireframes: false,
+        background: 'transparent'
+    }
+});
+
+Render.run(render);
+Runner.run(Runner.create(), engine);
+
+// Функция добавления физики
+function addRigidbody2D(element) {
+    //if (element.id === 'RunMenuPanel') return; // Запрещаем добавлять RunMenuPanel в физический мир
+
+    const rect = element.getBoundingClientRect();
+    const body = Bodies.rectangle(
+        rect.left + rect.width / 2,
+        rect.top + rect.height / 2,
+        rect.width,
+        rect.height,
+        {
+            isStatic: false,
+            restitution: 0.2,
+            friction: 0.8,
+            density: 0.001,
+            render: {
+                fillStyle: element.style.backgroundColor || 'white'
+            }
+        }
+    );
+
+    element.dataset.bodyId = body.id;
+    World.add(world, body);
+}
+
+// Функция удаления физического объекта
+function removeRigidbody2D(element) {
+    const bodyId = element.dataset.bodyId;
+    if (bodyId) {
+        const body = world.bodies.find(b => b.id === parseInt(bodyId));
+        if (body) {
+            World.remove(world, body);
+        }
+        delete element.dataset.bodyId;
+    }
+}
+
+// Обновляем позиции элементов
+Events.on(engine, 'beforeUpdate', () => {
+    world.bodies.forEach(body => {
+        const el = document.querySelector(`[data-body-id='${body.id}']`);
+        if (el) {
+            el.style.left = `${body.position.x - body.bounds.max.x / 2}px`;
+            el.style.top = `${body.position.y - body.bounds.max.y / 2}px`;
+            el.style.transform = `rotate(${body.angle}rad)`;
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let keyComboTracker = [];
+const activationKeys = ['ShiftLeft', 'KeyU', 'KeyP'];
+
+document.addEventListener('keydown', function(event) {
+    if (activationKeys.includes(event.code)) {
+        if (event.code === 'ShiftLeft' && keyComboTracker.length === 0) {
+            keyComboTracker.push(event.code);
+        } else if (keyComboTracker.length > 0 && activationKeys[keyComboTracker.length] === event.code) {
+            keyComboTracker.push(event.code);
+        } else {
+            keyComboTracker = []; // Сбрасываем, если последовательность нарушена
+        }
+
+        if (keyComboTracker.length === activationKeys.length) {
+            CreateUIPanel(); // Вызываем CreateUIPanel()
+            closeUIMenu(); // Закрываем меню
+            keyComboTracker = []; // Сброс после успешного ввода
+        }
+    } else {
+        keyComboTracker = []; // Сброс, если нажата не та клавиша
+    }
+});
+
 // Функция генерации уникального ID
 function generateUniqueId() {
     return 'panel-' + Math.random().toString(36).substr(2, 9);
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+    const targetElement = document.getElementById('context-menu');
+
+    if (!targetElement) {
+        //console.error('Ошибка: Элемент #contextmenu не найден!');
+        return;
+    }
+
+    let pressTimer;
+
+    targetElement.addEventListener('touchstart', function (event) {
+        pressTimer = setTimeout(() => {
+            event.preventDefault();
+            openContextMenu(event.touches[0].clientX, event.touches[0].clientY);
+        }, 500);
+    });
+
+    targetElement.addEventListener('touchend', function () {
+        clearTimeout(pressTimer);
+    });
+
+    targetElement.addEventListener('touchmove', function () {
+        clearTimeout(pressTimer);
+    });
+});
+
 function CreateUIPanel() {
     const guiPanel = document.createElement('div');
     guiPanel.classList.add('square');
     guiPanel.id = generateUniqueId();
-    guiPanel.style.width = '500px';
-    guiPanel.style.height = '300px';
+    guiPanel.style.width = '300px';
+    guiPanel.style.height = '200px';
     guiPanel.style.position = 'absolute';
     guiPanel.style.backgroundColor = 'rgb(255,255,255)';
-    guiPanel.style.left = `${window.innerWidth / 2 - 250}px`;
-    guiPanel.style.top = `${window.innerHeight / 2 - 150}px`;
+    guiPanel.style.left = `${window.innerWidth / 2 - 150}px`;
+    guiPanel.style.top = `${window.innerHeight / 2 - 100}px`;
     guiPanel.style.cursor = 'grab';
     guiPanel.style.zIndex = '1';
     guiPanel.style.transform = 'rotate(0deg)';
 
     document.body.appendChild(guiPanel);
-    CreateInRunMenuPanel(guiPanel);
+    CreateInRunMenuPanel(guiPanel); // Создаём копию в RunMenuPanel
 
     guiPanel.addEventListener('click', () => {
         selectedElement = guiPanel;
@@ -102,6 +237,43 @@ function CreateUIPanel() {
             }
         });
 
+        function createCheckbox(labelText, property, callback) {
+            const wrapper = document.createElement('div');
+            wrapper.style.display = 'flex';
+            wrapper.style.alignItems = 'center';
+            wrapper.style.gap = '5px';
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.checked = guiPanel.dataset[property] === 'true';
+            checkbox.addEventListener('change', (e) => {
+                guiPanel.dataset[property] = e.target.checked;
+                callback(e.target.checked);
+            });
+            
+            const label = document.createElement('label');
+            label.innerText = labelText;
+            label.style.fontSize = '14px';
+
+            wrapper.appendChild(checkbox);
+            wrapper.appendChild(label);
+            return wrapper;
+        }
+
+        //Компоненты
+        const rigidbodyToggle = createCheckbox('Rigidbody2D', 'rigidbody', (enabled) => {
+            if (enabled) {
+                console.log('Rigidbody2D добавлен');
+                guiPanel.dataset.rigidbody = 'true';
+                addRigidbody2D(guiPanel);
+            } else {
+                console.log('Rigidbody2D удалён');
+                guiPanel.dataset.rigidbody = 'false';
+                removeRigidbody2D(guiPanel);
+            }
+            syncProperties(guiPanel);
+        });
+
         // Кнопка удаления
         const deleteButton = document.createElement('button');
         deleteButton.innerText = 'Удалить';
@@ -135,6 +307,7 @@ function CreateUIPanel() {
         contextMenu.appendChild(rotateInput);
         contextMenu.appendChild(sizeLabel);
         contextMenu.appendChild(sizeInput);
+        contextMenu.appendChild(rigidbodyToggle);
         contextMenu.appendChild(deleteButton);
 
         document.body.appendChild(contextMenu);
@@ -145,6 +318,16 @@ function CreateUIPanel() {
             }
         }, { once: true });
     });
+
+    setTimeout(() => {
+        document.addEventListener('click', (e) => {
+            const contextMenu = document.getElementById('context-menu'); // Находим заново
+            if (contextMenu && !contextMenu.contains(e.target)) {
+                contextMenu.remove();
+            }
+        }, { once: true });
+    }, 100);    
+    
 
     let isDragging = false;
     let offsetX, offsetY;
@@ -168,6 +351,39 @@ function CreateUIPanel() {
         isDragging = false;
         guiPanel.style.cursor = 'grab';
     });
+
+    //Mobile Controller
+
+    function startDrag(event) {
+        isDragging = true;
+        let clientX = event.clientX || event.touches[0].clientX;
+        let clientY = event.clientY || event.touches[0].clientY;
+        offsetX = clientX - guiPanel.getBoundingClientRect().left;
+        offsetY = clientY - guiPanel.getBoundingClientRect().top;
+        guiPanel.style.cursor = 'grabbing';
+    }
+
+    function drag(event) {
+        if (isDragging) {
+            let clientX = event.clientX || event.touches[0].clientX;
+            let clientY = event.clientY || event.touches[0].clientY;
+            guiPanel.style.left = `${clientX - offsetX}px`;
+            guiPanel.style.top = `${clientY - offsetY}px`;
+            syncProperties(guiPanel);
+        }
+    }
+
+    function stopDrag() {
+        isDragging = false;
+        guiPanel.style.cursor = 'grab';
+    }
+
+    guiPanel.addEventListener('mousedown', startDrag);
+    guiPanel.addEventListener('touchstart', startDrag, { passive: true });
+    document.addEventListener('mousemove', drag);
+    document.addEventListener('touchmove', drag, { passive: true });
+    document.addEventListener('mouseup', stopDrag);
+    document.addEventListener('touchend', stopDrag);
 }
 
 function CreateInRunMenuPanel(sourceSquare) {
@@ -187,6 +403,21 @@ function CreateInRunMenuPanel(sourceSquare) {
     }
 
     syncProperties(sourceSquare);
+
+    // Добавляем физику только к панели в RunMenuPanel
+    if (sourceSquare.dataset.rigidbody === 'true') {
+        addRigidbody2D(square);
+    }
+
+    const runMenuBody = Bodies.rectangle(
+        runMenuPanel.offsetLeft + runMenuPanel.clientWidth / 2,
+        runMenuPanel.offsetTop + runMenuPanel.clientHeight / 2,
+        runMenuPanel.clientWidth,
+        runMenuPanel.clientHeight,
+        { isStatic: true } // Делаем его неподвижным
+    );
+    World.add(world, runMenuBody);
+    
 }
 
 function syncProperties(sourceSquare) {
@@ -207,6 +438,17 @@ function syncProperties(sourceSquare) {
     square.style.left = sourceSquare.style.left;
     square.style.top = sourceSquare.style.top;
     square.style.transform = sourceSquare.style.transform;
+
+    // Синхронизация Rigidbody2D
+    if (sourceSquare.dataset.rigidbody === 'true') {
+        if (!square.dataset.bodyId) {
+            addRigidbody2D(square);
+        }
+    } else {
+        if (square.dataset.bodyId) {
+            removeRigidbody2D(square);
+        }
+    }
 }
 
 function syncPanelsToRunMenu() {
@@ -229,6 +471,7 @@ function syncPanelsToRunMenu() {
         square.style.left = sourceSquare.style.left;
         square.style.top = sourceSquare.style.top;
         square.style.transform = sourceSquare.style.transform;
+
 
         runMenuContent.appendChild(square);
     });
